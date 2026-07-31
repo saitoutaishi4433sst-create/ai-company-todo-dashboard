@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TODO Management Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg-primary: #0F172A;
+    --bg-secondary: #1E293B;
+    --bg-tertiary: #334155;
+    --accent-orange: #F97316;
+    --accent-cyan: #06B6D4;
+    --accent-emerald: #10B981;
+    --accent-gold: #FBBF24;
+    --accent-diamond: #A78BFA;
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --glow-orange: 0 0 20px rgba(249,115,22,0.3);
+    --glow-cyan: 0 0 20px rgba(6,182,212,0.3);
+    --glow-emerald: 0 0 15px rgba(16,185,129,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-primary); }
+  ::-webkit-scrollbar-thumb { background: var(--bg-tertiary); border-radius: 3px; }
+
+  /* XP Bar */
+  .xp-bar-bg {
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    height: 28px;
+  }
+  .xp-bar-fill {
+    height: 100%;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #EA580C, #F97316, #FB923C);
+    position: relative;
+    transition: width 1.5s ease-out;
+    box-shadow: var(--glow-orange);
+  }
+  .xp-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+    animation: xpShimmer 2s ease-in-out infinite;
+  }
+  @keyframes xpShimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* Level Badge */
+  .level-hex {
+    width: 72px; height: 72px;
+    background: linear-gradient(135deg, #EA580C, #F97316);
+    clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--glow-orange);
+    position: relative;
+  }
+  .level-hex-inner {
+    width: 62px; height: 62px;
+    background: var(--bg-primary);
+    clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Panels */
+  .panel {
+    background: var(--bg-secondary);
+    border: 1px solid var(--bg-tertiary);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(249,115,22,0.3), transparent);
+  }
+  .panel-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  /* Skill Node colors */
+  .star-0 { --node-color: #475569; --node-glow: none; }
+  .star-1 { --node-color: #92400E; --node-glow: 0 0 8px rgba(146,64,14,0.3); }
+  .star-2 { --node-color: #B45309; --node-glow: 0 0 10px rgba(180,83,9,0.3); }
+  .star-3 { --node-color: #9CA3AF; --node-glow: 0 0 12px rgba(156,163,175,0.3); }
+  .star-4 { --node-color: #FBBF24; --node-glow: 0 0 14px rgba(251,191,36,0.35); }
+  .star-5 { --node-color: #A78BFA; --node-glow: 0 0 16px rgba(167,139,250,0.4); }
+
+  .skill-node {
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .skill-node:hover { filter: brightness(1.2); }
+  .skill-node.active { filter: brightness(1.3); }
+
+  /* Achievement Cards */
+  .achievement-card {
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-width: 150px;
+  }
+  .achievement-card:hover { transform: translateY(-3px); }
+  .achievement-card.locked {
+    background: rgba(30,41,59,0.6);
+    border: 1px solid #334155;
+    opacity: 0.5;
+  }
+  .achievement-card.unlocked {
+    background: var(--bg-secondary);
+    border: 1px solid;
+  }
+  .tier-1 { border-color: #CD7F32 !important; background: linear-gradient(135deg, rgba(205,127,50,0.15), transparent) !important; }
+  .tier-1 .tier-badge { background: linear-gradient(135deg, #CD7F32, #92400E); }
+  .tier-2 { border-color: #C0C0C0 !important; border-width: 2px !important; background: linear-gradient(135deg, rgba(192,192,192,0.15), transparent) !important; }
+  .tier-2 .tier-badge { background: linear-gradient(135deg, #E8E8E8, #9CA3AF); }
+  .tier-3 { border-color: #FFD700 !important; border-width: 2px !important; box-shadow: 0 0 16px rgba(255,215,0,0.35), inset 0 0 20px rgba(255,215,0,0.08) !important; background: linear-gradient(135deg, rgba(255,215,0,0.12), transparent) !important; }
+  .tier-3 .tier-badge { background: linear-gradient(135deg, #FFD700, #FFA500); }
+
+  /* Factory Pipeline */
+  .factory-section { position: relative; overflow: visible; }
+  .factory-svg { width:100%; height:auto; }
+  .factory-svg text { font-family:'JetBrains Mono',monospace; }
+  .pipe-line { fill:none; stroke-linecap:round; }
+  .station-box { cursor:pointer; }
+  .station-box:hover rect { filter:brightness(1.4); }
+  .station-box:hover .station-glow { opacity:0.5; }
+  @keyframes flowAnim {
+    to { stroke-dashoffset: -24; }
+  }
+  .flow-active {
+    stroke-dasharray: 8 16;
+    animation: flowAnim 1.5s linear infinite;
+  }
+  .fuel-line {
+    stroke-dasharray: 4 8;
+    animation: flowAnim 3s linear infinite;
+  }
+
+  /* Streak flame */
+  .flame {
+    display: inline-block;
+    animation: flicker 0.5s ease-in-out infinite alternate;
+  }
+  @keyframes flicker {
+    0% { transform: scale(1) rotate(-2deg); }
+    100% { transform: scale(1.05) rotate(2deg); }
+  }
+
+  /* Knowledge grid */
+  .knowledge-cell {
+    background: var(--bg-primary);
+    border: 1px solid var(--bg-tertiary);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .knowledge-cell:hover {
+    border-color: var(--accent-cyan);
+  }
+
+  /* Workload bars */
+  .workload-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .workload-row.is-today {
+    background: rgba(6,182,212,0.1);
+    border: 1px solid rgba(6,182,212,0.2);
+  }
+  .workload-date {
+    width: 80px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+  .workload-bar-container {
+    flex: 1;
+    height: 12px;
+    background: var(--bg-primary);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+  .workload-bar {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 1s ease-out;
+  }
+  .workload-count {
+    width: 30px;
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+  .workload-label-0 { background: #334155; }
+  .workload-label-low { background: var(--accent-cyan); box-shadow: 0 0 8px rgba(6,182,212,0.3); }
+  .workload-label-mid { background: var(--accent-orange); box-shadow: 0 0 8px rgba(249,115,22,0.3); }
+  .workload-label-high { background: #EF4444; box-shadow: 0 0 10px rgba(239,68,68,0.4); }
+
+  .week-calendar-scroll { overflow-x: auto; padding-bottom: 4px; }
+  .week-calendar { min-width: 860px; display: grid; grid-template-columns: 54px repeat(5, minmax(150px, 1fr)); border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; background: #fff; }
+  .week-calendar-corner, .week-calendar-day { min-height: 54px; border-bottom: 1px solid #e5e7eb; background: #fafafa; padding: 9px 10px; }
+  .week-calendar-day { border-left: 1px solid #e5e7eb; }
+  .week-calendar-day.today { background: #eff6ff; box-shadow: inset 0 3px 0 #2563eb; }
+  .week-calendar-time { height: var(--slot-height, 64px); padding: 7px 8px 0 0; text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: #6b7280; border-bottom: 1px solid #f3f4f6; }
+  .week-calendar-timeline { height: 576px; position: relative; border-left: 1px solid #e5e7eb; background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--slot-height, 64px) - 1px), #e5e7eb var(--slot-height, 64px)); }
+  .today-calendar { min-width: 0; }
+  .week-calendar-event { position: absolute; z-index: 2; border-left: 3px solid; border-radius: 5px; padding: 4px 6px; overflow: hidden; font-size: 0.69rem; line-height: 1.15; color: #1f2937; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08); }
+  .week-calendar-event.meeting { background: #e5e7eb; border-color: #6b7280; }
+  .week-calendar-event.task { background: #dcfce7; border-color: #16a34a; }
+  .week-calendar-event.overdue { background: #dcfce7; border-color: #16a34a; }
+  .week-calendar-event.iw_focus { background: #ede9fe; border-color: #7c3aed; }
+  .week-calendar-event .event-time { display: block; color: #4b5563; font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; font-weight: 700; margin-bottom: 2px; }
+
+  /* Tooltip */
+  .tooltip-box {
+    position: fixed;
+    background: var(--bg-primary);
+    border: 1px solid var(--accent-orange);
+    border-radius: 8px;
+    padding: 14px;
+    z-index: 100;
+    pointer-events: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5), var(--glow-orange);
+    max-width: 280px;
+    display: none;
+  }
+
+  /* Loading */
+  .loading-spinner {
+    border: 3px solid var(--bg-tertiary);
+    border-top-color: var(--accent-orange);
+    border-radius: 50%;
+    width: 40px; height: 40px;
+    animation: spin 0.8s linear infinite;
+    margin: 40px auto;
+  }
+  @keyframes spin { 100% { transform: rotate(360deg); } }
+
+  /* Error state */
+  .error-box {
+    background: rgba(239,68,68,0.1);
+    border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+  }
+
+  /* Grid background pattern */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(51,65,85,0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(51,65,85,0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #app { position: relative; z-index: 1; }
+
+  /* Star display */
+  .stars { color: var(--accent-gold); letter-spacing: 1px; }
+  .stars-empty { color: var(--bg-tertiary); }
+
+  /* Workload Viewer Styles */
+  .project-PEP2 { background-color: #dbeafe !important; color: #1e40af !important; }
+  .project-FSI { background-color: #dcfce7 !important; color: #166534 !important; }
+  .project-IW { background-color: #f3f4f6 !important; color: #374151 !important; }
+  .project-OTHER { background-color: #fef9c3 !important; color: #854d0e !important; }
+  .goal-tag { font-size: 0.65rem; padding: 1px 4px; border-radius: 4px; background: #e5e7eb; color: #6b7280; }
+  #workload-view { background-color: #f9fafb; color: #111827; border-radius: 12px; }
+  #workload-view .bg-white { background-color: #ffffff !important; }
+  #workload-view .text-gray-800 { color: #1f2937 !important; }
+  #workload-view .text-gray-700 { color: #374151 !important; }
+  #workload-view .text-gray-600 { color: #4b5563 !important; }
+  #workload-view .text-gray-500 { color: #6b7280 !important; }
+  #workload-view .text-gray-400 { color: #9ca3af !important; }
+  .hidden { display: none !important; }
+</style>
+<script src="./le-document-view.js"></script>
+</head>
+<body>
+<div id="app">
+  <div id="loading" style="display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;">
+    <div class="loading-spinner"></div>
+    <p class="font-mono" style="color:var(--text-muted);margin-top:16px;font-size:0.85rem;">LOADING TODO DASHBOARD...</p>
+  </div>
+  <div id="dashboard" style="display:none;max-width:1920px;margin:0 auto;padding:16px 24px 40px;">
+    <!-- View Toggle -->
+    <div style="display:flex; justify-content:center; margin-bottom: 24px; position: relative; z-index: 10;">
+      <div style="display:flex; background: var(--bg-secondary); border: 1px solid var(--bg-tertiary); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+        <button id="btn-view-workload" onclick="switchView('workload')" style="padding: 10px 24px; border: none; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700; cursor: pointer; background: var(--accent-orange); color: white; transition: all 0.2s;">TODO管理</button>
+        <button id="btn-view-pipeline" onclick="switchView('pipeline')" style="padding: 10px 24px; border: none; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700; cursor: pointer; background: transparent; color: var(--text-secondary); transition: all 0.2s;">情報管理</button>
+        <button id="btn-view-le-document" onclick="switchView('le-document')" style="padding: 10px 24px; border: none; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700; cursor: pointer; background: transparent; color: var(--text-secondary); transition: all 0.2s;">LEドキュメント</button>
+      </div>
+    </div>
+
+    <div id="pipeline-view">
+      <!-- 1. MISSION TARGETS -->
+      <div id="mission-targets" class="panel" style="margin-bottom:16px;">
+        <div class="panel-title">// Goal Management</div>
+        <div id="goals-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:24px;">
+          <!-- Goals injected via JS -->
+        </div>
+      </div>
+
+      <!-- 2. GROWTH ZONE -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+      <div class="panel">
+        <div class="panel-title">// Task Throughput</div>
+        <div style="height:200px;">
+          <canvas id="taskGrowthChart"></canvas>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">// Knowledge Growth</div>
+        <div style="height:200px;">
+          <canvas id="knowledgeGrowthChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. DAILY ACTIVITY + STATS -->
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:16px;">
+      <div class="panel">
+        <div class="panel-title">// Daily Completed Tasks</div>
+        <div style="height:180px;">
+          <canvas id="timelineChart"></canvas>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">// Stats</div>
+        <div id="stats-panel"></div>
+      </div>
+    </div>
+
+  </div> <!-- end #pipeline-view -->
+
+  <!-- Workload View (Light Theme) -->
+  <div id="workload-view" class="hidden" style="max-width: 1000px; margin: 0 auto; padding-bottom: 40px;">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-5">
+            <div>
+                <h1 class="text-3xl font-extrabold text-gray-900">TODO管理</h1>
+                <p class="text-sm text-gray-500 mt-2">今日の会議と作業枠を先に見る。</p>
+            </div>
+        </div>
+
+        <div id="wl-main-content">
+            <div id="wl-today-plan" class="mb-5"></div>
+
+            <!-- Summary Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6" id="wl-summary-cards">
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-5 text-center transition-all hover:shadow-md">
+                    <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">今日のタスク</div>
+                    <div class="text-4xl font-black text-blue-600" id="wl-card-today">-</div>
+                    <div class="text-xs font-medium text-gray-400 mt-1">件</div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-5 text-center transition-all hover:shadow-md">
+                    <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">今週の残タスク</div>
+                    <div class="text-4xl font-black text-gray-700" id="wl-card-week">-</div>
+                    <div class="text-xs font-medium text-gray-400 mt-1">件</div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-5 text-center transition-all hover:shadow-md" id="wl-overdue-card">
+                    <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">超過</div>
+                    <div class="text-4xl font-black text-red-600" id="wl-card-overdue">-</div>
+                    <div class="text-xs font-medium text-gray-400 mt-1">件</div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-5 text-center transition-all hover:shadow-md">
+                    <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">日平均</div>
+                    <div class="text-4xl font-black text-gray-700" id="wl-card-avg">-</div>
+                    <div class="text-xs font-medium text-gray-400 mt-1">件/日</div>
+                </div>
+            </div>
+
+            <!-- Chart -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-6">
+                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">負荷推移（14営業日）</h3>
+                <div style="height: 250px; position: relative;">
+                    <canvas id="wl-workloadChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Day List -->
+            <div id="wl-day-list" class="space-y-3">
+                <div class="text-gray-400 text-center py-12 bg-white rounded-2xl border border-dashed border-gray-300">読み込み中...</div>
+            </div>
+
+            <!-- Undated & Waiting -->
+            <div id="wl-extra-sections" class="mt-6 space-y-3"></div>
+        </div>
+
+    </div>
+  </div>
+
+  <!-- LE Document View -->
+  <div id="le-document-view" class="hidden" style="max-width:1000px;margin:0 auto;padding-bottom:40px;background:#f9fafb;color:#111827;border-radius:12px;">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+      <div class="flex items-start justify-between gap-4 mb-8">
+        <div>
+          <h1 class="text-3xl font-extrabold text-gray-900">PPDG-1096 LE Document</h1>
+          <p class="text-sm text-gray-500 mt-2">改定の目標と実績。平日だけ、1日10ページを進める。</p>
+        </div>
+        <span class="shrink-0 rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-700">IW / LE DOC</span>
+      </div>
+
+      <div id="le-doc-summary-cards" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"></div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+        <div class="flex flex-wrap items-baseline justify-between gap-2 mb-4">
+          <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider">実績 vs 累積目標</h3>
+          <span id="le-doc-chart-caption" class="text-xs text-gray-400"></span>
+        </div>
+        <div style="height:300px;position:relative;"><canvas id="le-doc-progress-chart"></canvas></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+          <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">実績履歴</h3>
+          <div id="le-doc-history" class="space-y-3"></div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+          <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">データの扱い</h3>
+          <div id="le-doc-source-note" class="text-sm leading-6 text-gray-600"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div> <!-- end #dashboard -->
+  <div id="error-state" style="display:none;max-width:600px;margin:80px auto;padding:0 24px;">
+    <div class="error-box">
+      <div style="font-size:3rem;margin-bottom:16px;">&#x26A0;</div>
+      <h2 class="font-mono" style="font-size:1.2rem;color:#F87171;margin-bottom:12px;">DATA NOT FOUND</h2>
+      <p style="color:var(--text-secondary);margin-bottom:20px;">Could not load <code class="font-mono" style="color:var(--accent-orange);">profile.json</code></p>
+      <p style="color:var(--text-muted);font-size:0.85rem;">Run the extractor first, or ensure <code class="font-mono" style="font-size:0.8rem;">../data/profile.json</code> exists relative to this HTML file.</p>
+      <button onclick="loadFallbackData()" style="margin-top:20px;background:var(--accent-orange);color:white;border:none;padding:10px 24px;border-radius:6px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:0.85rem;">Load Sample Data</button>
+    </div>
+  </div>
+</div>
+
+<!-- Tooltip -->
+<div id="tooltip" class="tooltip-box"></div>
+
+<script id="embedded-data" type="application/json">{"updated_at": "2026-07-31T14:38:45.570522", "workload": {"source_file": "2026-07-31", "days": [{"date": "2026-07-31", "weekday": "金", "task_count": 7, "meeting_count": 4, "tasks": [{"name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]", "project": "FSI", "kind": "task"}, {"name": "AXHB501D BMシート修正（バルブ発注数量50個→130個変更。添付: FSI_AXHB501D(3)_292642_R1.pdf。依頼元: 久富翔平さん 07/31 9:59受領）[G1:専門性]", "project": "FSI", "kind": "task"}, {"name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]", "project": "FSI", "kind": "task"}, {"start": "10:00", "end": "11:00", "name": "SUPER USER TRAINING", "project": "-", "kind": "meeting"}, {"start": "11:30", "end": "12:00", "name": "weekly report", "project": "-", "kind": "meeting"}, {"start": "11:45", "end": "11:55", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}, {"start": "13:30", "end": "14:55", "name": "職場連絡会", "project": "-", "kind": "meeting"}], "is_today": true}, {"date": "2026-08-03", "weekday": "月", "task_count": 2, "meeting_count": 2, "tasks": [{"start": "10:30", "end": "10:55", "name": "SPMAT weekly toolbox meeting", "project": "FSI", "kind": "meeting"}, {"start": "17:15", "end": "17:25", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}], "is_today": false}, {"date": "2026-08-04", "weekday": "火", "task_count": 2, "meeting_count": 2, "tasks": [{"start": "11:00", "end": "11:50", "name": "PEP2: PIP REQ, TBE & VP status update", "project": "FSI", "kind": "meeting"}, {"start": "17:15", "end": "17:25", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}], "is_today": false}, {"date": "2026-08-05", "weekday": "水", "task_count": 4, "meeting_count": 4, "tasks": [{"start": "14:00", "end": "14:55", "name": "【UNION/57期】定例評議員会", "project": "-", "kind": "meeting"}, {"start": "15:00", "end": "15:30", "name": "[IW: LE Document改定] Weekly進捗レビュー", "project": "IW", "kind": "meeting"}, {"start": "17:00", "end": "18:00", "name": "SPMAT new version (APEX and SRD+) Training : how to install and login", "project": "FSI", "kind": "meeting"}, {"start": "17:15", "end": "17:25", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}], "is_today": false}, {"date": "2026-08-06", "weekday": "木", "task_count": 2, "meeting_count": 2, "tasks": [{"start": "15:30", "end": "16:00", "name": "[IW: JIS/JPI重量登録] Weekly進捗レビュー", "project": "IW", "kind": "meeting"}, {"start": "17:15", "end": "17:25", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}], "is_today": false}, {"date": "2026-08-07", "weekday": "金", "task_count": 4, "meeting_count": 4, "tasks": [{"start": "11:30", "end": "12:00", "name": "weekly report", "project": "-", "kind": "meeting"}, {"start": "14:00", "end": "15:00", "name": "SUPER USER TRAINING", "project": "-", "kind": "meeting"}, {"start": "15:00", "end": "15:55", "name": "Material Team Meeting (2026/Jul./31)", "project": "-", "kind": "meeting"}, {"start": "17:15", "end": "17:25", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}], "is_today": false}, {"date": "2026-08-10", "weekday": "月", "task_count": 2, "meeting_count": 2, "tasks": [{"start": "10:30", "end": "10:55", "name": "SPMAT weekly toolbox meeting", "project": "FSI", "kind": "meeting"}, {"start": "17:15", "end": "17:25", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}], "is_today": false}, {"date": "2026-08-11", "weekday": "火", "task_count": 2, "meeting_count": 2, "tasks": [{"start": "11:00", "end": "11:50", "name": "PEP2: PIP REQ, TBE & VP status update", "project": "FSI", "kind": "meeting"}, {"start": "17:15", "end": "17:25", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}], "is_today": false}, {"date": "2026-08-12", "weekday": "水", "task_count": 2, "meeting_count": 2, "tasks": [{"start": "15:00", "end": "15:30", "name": "[IW: LE Document改定] Weekly進捗レビュー", "project": "IW", "kind": "meeting"}, {"start": "17:15", "end": "17:25", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}], "is_today": false}, {"date": "2026-08-13", "weekday": "木", "task_count": 3, "meeting_count": 3, "tasks": [{"start": "12:10", "end": "12:55", "name": "FW: 介護カフェ☕開催案内（変則木曜）", "project": "-", "kind": "meeting"}, {"start": "15:30", "end": "16:00", "name": "[IW: JIS/JPI重量登録] Weekly進捗レビュー", "project": "IW", "kind": "meeting"}, {"start": "17:15", "end": "17:25", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}], "is_today": false}, {"date": "2026-08-14", "weekday": "金", "is_today": false, "task_count": 0, "tasks": []}, {"date": "2026-08-17", "weekday": "月", "is_today": false, "task_count": 0, "tasks": []}, {"date": "2026-08-18", "weekday": "火", "is_today": false, "task_count": 0, "tasks": []}, {"date": "2026-08-19", "weekday": "水", "is_today": false, "task_count": 0, "tasks": []}], "overdue": [{"name": "2ST14: Flange 25A・40AをSPMAT登録（S.50.06 Spec Filter追加・Ident Build。REQ発行状況を事前確認）[G1:専門性]", "project": "FSI"}, {"name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]", "project": "FSI"}, {"name": "LexiRaid: 射程幾何とタワーアイコン一致・無人実行ジョブ稼働中（claude-foundry-20260730-110652-647985、テスト/デプロイ完了待ち）[G6:生産性]", "project": "AI Company"}], "overdue_count": 3, "undated": [{"name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW"}, {"name": "JIS JPI 重量確認 [G1:専門性]", "project": "IW"}, {"name": "SPMAT録画確認 [G1:専門性]", "project": "IW"}], "undated_count": 3, "waiting": [], "waiting_count": 0, "daily_actuals": [], "completed_today_count": 1, "today_schedule": {"date": "2026-07-31", "weekday": "金", "is_workday": true, "source_file": "2026-07-31_Today.md", "calendar_source": "daily_todo", "work_hours": {"start": "09:00", "lunch_start": "12:00", "lunch_end": "13:00", "end": "18:00"}, "default_task_minutes": 60, "events": [{"start": "09:00", "end": "10:00", "name": "2ST14: Flange 25A・40AをSPMAT登録（S.50.06 Spec Filter追加・Ident Build。REQ発行状況を事前確認）[G1:専門性]", "project": "FSI", "kind": "overdue", "auto_scheduled": true}, {"start": "10:00", "end": "11:00", "name": "SUPER USER TRAINING", "project": "-", "kind": "meeting"}, {"start": "11:30", "end": "12:00", "name": "weekly report", "project": "-", "kind": "meeting"}, {"start": "11:45", "end": "11:55", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}, {"start": "13:30", "end": "14:55", "name": "職場連絡会", "project": "-", "kind": "meeting"}, {"start": "14:55", "end": "15:55", "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]", "project": "FSI", "kind": "overdue", "auto_scheduled": true}, {"start": "15:55", "end": "16:55", "name": "LexiRaid: 射程幾何とタワーアイコン一致・無人実行ジョブ稼働中（claude-foundry-20260730-110652-647985、テスト/デプロイ完了待ち）[G6:生産性]", "project": "AI Company", "kind": "overdue", "auto_scheduled": true}, {"start": "16:55", "end": "17:55", "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]", "project": "FSI", "kind": "task", "auto_scheduled": true}], "unscheduled_tasks": [{"name": "AXHB501D BMシート修正（バルブ発注数量50個→130個変更。添付: FSI_AXHB501D(3)_292642_R1.pdf。依頼元: 久富翔平さん 07/31 9:59受領）[G1:専門性]", "project": "FSI", "duration_minutes": 60}, {"name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]", "project": "FSI", "duration_minutes": 60}], "task_count": 6, "iw_focus_minutes": 0, "meeting_count": 4}, "week_schedules": [{"date": "2026-07-31", "weekday": "金", "is_workday": true, "source_file": "2026-07-31_Today.md", "calendar_source": "daily_todo", "work_hours": {"start": "09:00", "lunch_start": "12:00", "lunch_end": "13:00", "end": "18:00"}, "default_task_minutes": 60, "events": [{"start": "09:00", "end": "10:00", "name": "2ST14: Flange 25A・40AをSPMAT登録（S.50.06 Spec Filter追加・Ident Build。REQ発行状況を事前確認）[G1:専門性]", "project": "FSI", "kind": "overdue", "auto_scheduled": true}, {"start": "10:00", "end": "11:00", "name": "SUPER USER TRAINING", "project": "-", "kind": "meeting"}, {"start": "11:30", "end": "12:00", "name": "weekly report", "project": "-", "kind": "meeting"}, {"start": "11:45", "end": "11:55", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}, {"start": "13:30", "end": "14:55", "name": "職場連絡会", "project": "-", "kind": "meeting"}, {"start": "14:55", "end": "15:55", "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]", "project": "FSI", "kind": "overdue", "auto_scheduled": true}, {"start": "15:55", "end": "16:55", "name": "LexiRaid: 射程幾何とタワーアイコン一致・無人実行ジョブ稼働中（claude-foundry-20260730-110652-647985、テスト/デプロイ完了待ち）[G6:生産性]", "project": "AI Company", "kind": "overdue", "auto_scheduled": true}, {"start": "16:55", "end": "17:55", "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]", "project": "FSI", "kind": "task", "auto_scheduled": true}], "unscheduled_tasks": [{"name": "AXHB501D BMシート修正（バルブ発注数量50個→130個変更。添付: FSI_AXHB501D(3)_292642_R1.pdf。依頼元: 久富翔平さん 07/31 9:59受領）[G1:専門性]", "project": "FSI", "duration_minutes": 60}, {"name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]", "project": "FSI", "duration_minutes": 60}], "task_count": 6, "iw_focus_minutes": 0, "meeting_count": 4}, {"date": "2026-08-03", "weekday": "月", "is_workday": true, "source_file": "2026-08-03.md", "calendar_source": "daily_todo", "work_hours": {"start": "09:00", "lunch_start": "12:00", "lunch_end": "13:00", "end": "18:00"}, "default_task_minutes": 60, "events": [{"start": "09:00", "end": "10:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "10:30", "end": "10:55", "name": "SPMAT weekly toolbox meeting", "project": "FSI", "kind": "meeting"}, {"start": "10:55", "end": "11:55", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "13:00", "end": "14:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "14:00", "end": "15:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "15:00", "end": "16:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "16:00", "end": "17:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "17:15", "end": "17:25", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}], "unscheduled_tasks": [], "task_count": 0, "iw_focus_minutes": 360, "meeting_count": 2}, {"date": "2026-08-04", "weekday": "火", "is_workday": true, "source_file": "2026-08-04.md", "calendar_source": "daily_todo", "work_hours": {"start": "09:00", "lunch_start": "12:00", "lunch_end": "13:00", "end": "18:00"}, "default_task_minutes": 60, "events": [{"start": "09:00", "end": "10:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "10:00", "end": "11:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "11:00", "end": "11:50", "name": "PEP2: PIP REQ, TBE & VP status update", "project": "FSI", "kind": "meeting"}, {"start": "13:00", "end": "14:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "14:00", "end": "15:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "15:00", "end": "16:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "16:00", "end": "17:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "17:15", "end": "17:25", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}], "unscheduled_tasks": [], "task_count": 0, "iw_focus_minutes": 360, "meeting_count": 2}, {"date": "2026-08-05", "weekday": "水", "is_workday": true, "source_file": "2026-08-05.md", "calendar_source": "daily_todo", "work_hours": {"start": "09:00", "lunch_start": "12:00", "lunch_end": "13:00", "end": "18:00"}, "default_task_minutes": 60, "events": [{"start": "09:00", "end": "10:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "10:00", "end": "11:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "11:00", "end": "12:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "13:00", "end": "14:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "14:00", "end": "14:55", "name": "【UNION/57期】定例評議員会", "project": "-", "kind": "meeting"}, {"start": "15:00", "end": "15:30", "name": "[IW: LE Document改定] Weekly進捗レビュー", "project": "IW", "kind": "meeting"}, {"start": "15:30", "end": "16:30", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "17:00", "end": "18:00", "name": "SPMAT new version (APEX and SRD+) Training : how to install and login", "project": "FSI", "kind": "meeting"}, {"start": "17:15", "end": "17:25", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}], "unscheduled_tasks": [], "task_count": 0, "iw_focus_minutes": 300, "meeting_count": 4}, {"date": "2026-08-06", "weekday": "木", "is_workday": true, "source_file": "2026-08-06.md", "calendar_source": "daily_todo", "work_hours": {"start": "09:00", "lunch_start": "12:00", "lunch_end": "13:00", "end": "18:00"}, "default_task_minutes": 60, "events": [{"start": "09:00", "end": "10:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "10:00", "end": "11:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "11:00", "end": "12:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "13:00", "end": "14:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "14:00", "end": "15:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "15:30", "end": "16:00", "name": "[IW: JIS/JPI重量登録] Weekly進捗レビュー", "project": "IW", "kind": "meeting"}, {"start": "16:00", "end": "17:00", "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]", "project": "IW", "kind": "iw_focus", "auto_scheduled": true}, {"start": "17:15", "end": "17:25", "name": "SPMAT Dairy meeting 17:15-", "project": "FSI", "kind": "meeting"}], "unscheduled_tasks": [], "task_count": 0, "iw_focus_minutes": 360, "meeting_count": 2}], "summary": {"today_count": 7, "week_remaining": 17, "avg_daily": 2.1, "busiest_date": "2026-07-31", "busiest_count": 7}}, "goal_progress": {"period": "2026-07", "days_elapsed": 23, "days_total": 23, "week_current": 4, "weeks_total": 4, "pillars": [{"id": "g1", "label": "G1 専門性向上", "current": 49, "target_monthly": 80, "target_weekly": 20, "progress_pct": 61.3, "weekly": [18, 11, 10, 10], "on_track": false}, {"id": "g5", "label": "G5 コミュ・英語", "current": 32, "target_monthly": 18, "target_weekly": 4, "progress_pct": 177.8, "weekly": [11, 8, 9, 4], "on_track": true}, {"id": "total", "label": "総タスク完了数", "current": 88, "target_monthly": 120, "target_weekly": 30, "progress_pct": 73.3, "weekly": [34, 19, 18, 17], "on_track": false}], "season": {"label": "2026年 シーズン目標", "goals": ["TOEIC 700点以上安定取得", "FSI業務プロセス 5件以上改善"]}}, "le_document": {"project_code": "PPDG-1096", "project_name": "LE Document 改定", "target_pages_per_business_day": 10, "target_start_date": "2026-07-30", "total_pages": null, "source_label": "IW LE DOC PM進捗ログ", "history": [{"date": "2026-04-01", "completed_pages": 8}, {"date": "2026-06-26", "completed_pages": 16}, {"date": "2026-07-01", "completed_pages": 18}, {"date": "2026-07-06", "completed_pages": 19}, {"date": "2026-07-07", "completed_pages": 19}, {"date": "2026-07-24", "completed_pages": 31}], "target_schedule": [{"date": "2026-07-30", "target_pages": 41}, {"date": "2026-07-31", "target_pages": 51}, {"date": "2026-08-03", "target_pages": 61}, {"date": "2026-08-04", "target_pages": 71}, {"date": "2026-08-05", "target_pages": 81}, {"date": "2026-08-06", "target_pages": 91}, {"date": "2026-08-07", "target_pages": 101}, {"date": "2026-08-10", "target_pages": 111}, {"date": "2026-08-11", "target_pages": 121}, {"date": "2026-08-12", "target_pages": 131}, {"date": "2026-08-13", "target_pages": 141}, {"date": "2026-08-14", "target_pages": 151}], "current_pages": 31, "last_recorded_date": "2026-07-24", "today_target_pages": 51, "gap_pages": -20, "generated_for_date": "2026-07-31"}, "stats": {"total_tasks": 515, "total_knowledge": 352, "knowledge_categories": {"architecture": 1, "inbox": 6, "procedures": 86, "projects": 39, "reports": 3, "specs": 130, "tools": 60, "troubleshooting": 27, "_archive": 853}, "total_trace": 2, "trace_max_depth": 5, "total_feedback": 50, "total_sessions": 102, "english_sessions": 5, "comm_sessions": 17}, "task_history_by_cat": [{"date": "2026-03-16", "total": 5, "spmat": 2, "tc_tbe": 0, "eng": 0, "comm": 0, "other": 3}, {"date": "2026-03-17", "total": 17, "spmat": 8, "tc_tbe": 1, "eng": 1, "comm": 0, "other": 7}, {"date": "2026-03-18", "total": 21, "spmat": 8, "tc_tbe": 1, "eng": 1, "comm": 2, "other": 9}, {"date": "2026-03-19", "total": 32, "spmat": 11, "tc_tbe": 4, "eng": 2, "comm": 2, "other": 13}, {"date": "2026-03-23", "total": 35, "spmat": 11, "tc_tbe": 4, "eng": 2, "comm": 2, "other": 16}, {"date": "2026-03-24", "total": 43, "spmat": 11, "tc_tbe": 4, "eng": 3, "comm": 4, "other": 21}, {"date": "2026-03-25", "total": 44, "spmat": 11, "tc_tbe": 4, "eng": 3, "comm": 5, "other": 21}, {"date": "2026-03-26", "total": 52, "spmat": 14, "tc_tbe": 4, "eng": 4, "comm": 6, "other": 24}, {"date": "2026-03-27", "total": 60, "spmat": 14, "tc_tbe": 4, "eng": 5, "comm": 7, "other": 30}, {"date": "2026-03-29", "total": 62, "spmat": 14, "tc_tbe": 4, "eng": 7, "comm": 7, "other": 30}, {"date": "2026-03-30", "total": 74, "spmat": 18, "tc_tbe": 6, "eng": 9, "comm": 8, "other": 33}, {"date": "2026-03-31", "total": 80, "spmat": 20, "tc_tbe": 6, "eng": 11, "comm": 8, "other": 35}, {"date": "2026-04-01", "total": 88, "spmat": 21, "tc_tbe": 6, "eng": 12, "comm": 8, "other": 41}, {"date": "2026-04-02", "total": 95, "spmat": 23, "tc_tbe": 6, "eng": 14, "comm": 9, "other": 43}, {"date": "2026-04-03", "total": 100, "spmat": 24, "tc_tbe": 7, "eng": 15, "comm": 11, "other": 43}, {"date": "2026-04-06", "total": 112, "spmat": 26, "tc_tbe": 11, "eng": 16, "comm": 12, "other": 47}, {"date": "2026-04-07", "total": 118, "spmat": 30, "tc_tbe": 11, "eng": 18, "comm": 12, "other": 47}, {"date": "2026-04-08", "total": 127, "spmat": 33, "tc_tbe": 11, "eng": 21, "comm": 12, "other": 50}, {"date": "2026-04-09", "total": 133, "spmat": 35, "tc_tbe": 13, "eng": 23, "comm": 12, "other": 50}, {"date": "2026-04-10", "total": 138, "spmat": 39, "tc_tbe": 14, "eng": 23, "comm": 12, "other": 50}, {"date": "2026-04-13", "total": 142, "spmat": 39, "tc_tbe": 16, "eng": 24, "comm": 12, "other": 51}, {"date": "2026-04-14", "total": 147, "spmat": 43, "tc_tbe": 16, "eng": 25, "comm": 12, "other": 51}, {"date": "2026-04-15", "total": 151, "spmat": 44, "tc_tbe": 17, "eng": 26, "comm": 12, "other": 52}, {"date": "2026-04-16", "total": 155, "spmat": 45, "tc_tbe": 17, "eng": 27, "comm": 12, "other": 54}, {"date": "2026-04-17", "total": 167, "spmat": 50, "tc_tbe": 20, "eng": 28, "comm": 13, "other": 56}, {"date": "2026-04-19", "total": 168, "spmat": 50, "tc_tbe": 20, "eng": 28, "comm": 13, "other": 57}, {"date": "2026-04-20", "total": 176, "spmat": 53, "tc_tbe": 23, "eng": 28, "comm": 13, "other": 59}, {"date": "2026-04-21", "total": 181, "spmat": 55, "tc_tbe": 25, "eng": 28, "comm": 14, "other": 59}, {"date": "2026-04-22", "total": 186, "spmat": 58, "tc_tbe": 25, "eng": 29, "comm": 15, "other": 59}, {"date": "2026-04-23", "total": 187, "spmat": 58, "tc_tbe": 25, "eng": 30, "comm": 15, "other": 59}, {"date": "2026-04-24", "total": 191, "spmat": 62, "tc_tbe": 25, "eng": 30, "comm": 15, "other": 59}, {"date": "2026-04-27", "total": 197, "spmat": 65, "tc_tbe": 27, "eng": 31, "comm": 15, "other": 59}, {"date": "2026-04-28", "total": 201, "spmat": 65, "tc_tbe": 31, "eng": 31, "comm": 15, "other": 59}, {"date": "2026-05-01", "total": 204, "spmat": 68, "tc_tbe": 31, "eng": 31, "comm": 15, "other": 59}, {"date": "2026-05-02", "total": 206, "spmat": 69, "tc_tbe": 31, "eng": 31, "comm": 15, "other": 60}, {"date": "2026-05-07", "total": 214, "spmat": 73, "tc_tbe": 32, "eng": 31, "comm": 16, "other": 62}, {"date": "2026-05-08", "total": 223, "spmat": 80, "tc_tbe": 32, "eng": 31, "comm": 16, "other": 64}, {"date": "2026-05-11", "total": 226, "spmat": 82, "tc_tbe": 32, "eng": 31, "comm": 16, "other": 65}, {"date": "2026-05-12", "total": 233, "spmat": 86, "tc_tbe": 34, "eng": 31, "comm": 16, "other": 66}, {"date": "2026-05-13", "total": 240, "spmat": 88, "tc_tbe": 34, "eng": 32, "comm": 17, "other": 69}, {"date": "2026-05-14", "total": 245, "spmat": 88, "tc_tbe": 34, "eng": 33, "comm": 18, "other": 72}, {"date": "2026-05-15", "total": 247, "spmat": 90, "tc_tbe": 34, "eng": 33, "comm": 18, "other": 72}, {"date": "2026-05-18", "total": 251, "spmat": 92, "tc_tbe": 34, "eng": 33, "comm": 18, "other": 74}, {"date": "2026-05-19", "total": 261, "spmat": 99, "tc_tbe": 35, "eng": 34, "comm": 19, "other": 74}, {"date": "2026-05-20", "total": 282, "spmat": 111, "tc_tbe": 38, "eng": 34, "comm": 19, "other": 80}, {"date": "2026-05-21", "total": 284, "spmat": 111, "tc_tbe": 40, "eng": 34, "comm": 19, "other": 80}, {"date": "2026-05-22", "total": 290, "spmat": 113, "tc_tbe": 42, "eng": 35, "comm": 19, "other": 81}, {"date": "2026-05-23", "total": 291, "spmat": 113, "tc_tbe": 42, "eng": 35, "comm": 20, "other": 81}, {"date": "2026-05-25", "total": 296, "spmat": 118, "tc_tbe": 42, "eng": 35, "comm": 20, "other": 81}, {"date": "2026-05-26", "total": 301, "spmat": 121, "tc_tbe": 42, "eng": 35, "comm": 20, "other": 83}, {"date": "2026-05-27", "total": 319, "spmat": 126, "tc_tbe": 42, "eng": 39, "comm": 24, "other": 88}, {"date": "2026-05-28", "total": 334, "spmat": 135, "tc_tbe": 42, "eng": 41, "comm": 24, "other": 92}, {"date": "2026-05-29", "total": 338, "spmat": 138, "tc_tbe": 42, "eng": 41, "comm": 25, "other": 92}, {"date": "2026-06-01", "total": 346, "spmat": 141, "tc_tbe": 43, "eng": 43, "comm": 26, "other": 93}, {"date": "2026-06-02", "total": 352, "spmat": 144, "tc_tbe": 43, "eng": 44, "comm": 26, "other": 95}, {"date": "2026-06-04", "total": 358, "spmat": 148, "tc_tbe": 43, "eng": 45, "comm": 27, "other": 95}, {"date": "2026-06-05", "total": 365, "spmat": 151, "tc_tbe": 43, "eng": 47, "comm": 28, "other": 96}, {"date": "2026-06-08", "total": 370, "spmat": 154, "tc_tbe": 43, "eng": 48, "comm": 28, "other": 97}, {"date": "2026-06-09", "total": 376, "spmat": 156, "tc_tbe": 43, "eng": 50, "comm": 28, "other": 99}, {"date": "2026-06-10", "total": 386, "spmat": 160, "tc_tbe": 43, "eng": 51, "comm": 29, "other": 103}, {"date": "2026-06-11", "total": 390, "spmat": 163, "tc_tbe": 43, "eng": 51, "comm": 29, "other": 104}, {"date": "2026-06-12", "total": 398, "spmat": 168, "tc_tbe": 43, "eng": 51, "comm": 30, "other": 106}, {"date": "2026-06-22", "total": 408, "spmat": 173, "tc_tbe": 44, "eng": 51, "comm": 31, "other": 109}, {"date": "2026-06-23", "total": 412, "spmat": 175, "tc_tbe": 44, "eng": 52, "comm": 31, "other": 110}, {"date": "2026-06-24", "total": 417, "spmat": 177, "tc_tbe": 44, "eng": 52, "comm": 31, "other": 113}, {"date": "2026-06-25", "total": 420, "spmat": 179, "tc_tbe": 44, "eng": 52, "comm": 32, "other": 113}, {"date": "2026-06-26", "total": 422, "spmat": 179, "tc_tbe": 44, "eng": 54, "comm": 32, "other": 113}, {"date": "2026-06-29", "total": 423, "spmat": 179, "tc_tbe": 44, "eng": 54, "comm": 32, "other": 114}, {"date": "2026-06-30", "total": 427, "spmat": 181, "tc_tbe": 44, "eng": 54, "comm": 32, "other": 116}, {"date": "2026-07-01", "total": 435, "spmat": 186, "tc_tbe": 44, "eng": 54, "comm": 32, "other": 119}, {"date": "2026-07-02", "total": 445, "spmat": 189, "tc_tbe": 44, "eng": 55, "comm": 34, "other": 123}, {"date": "2026-07-03", "total": 446, "spmat": 190, "tc_tbe": 44, "eng": 55, "comm": 34, "other": 123}, {"date": "2026-07-05", "total": 447, "spmat": 190, "tc_tbe": 44, "eng": 55, "comm": 34, "other": 124}, {"date": "2026-07-06", "total": 453, "spmat": 192, "tc_tbe": 44, "eng": 56, "comm": 34, "other": 127}, {"date": "2026-07-07", "total": 461, "spmat": 198, "tc_tbe": 44, "eng": 58, "comm": 34, "other": 127}, {"date": "2026-07-08", "total": 464, "spmat": 199, "tc_tbe": 44, "eng": 58, "comm": 35, "other": 128}, {"date": "2026-07-09", "total": 468, "spmat": 202, "tc_tbe": 44, "eng": 58, "comm": 36, "other": 128}, {"date": "2026-07-10", "total": 471, "spmat": 205, "tc_tbe": 44, "eng": 58, "comm": 36, "other": 128}, {"date": "2026-07-13", "total": 477, "spmat": 210, "tc_tbe": 44, "eng": 58, "comm": 36, "other": 129}, {"date": "2026-07-14", "total": 480, "spmat": 213, "tc_tbe": 44, "eng": 58, "comm": 36, "other": 129}, {"date": "2026-07-15", "total": 483, "spmat": 216, "tc_tbe": 44, "eng": 58, "comm": 36, "other": 129}, {"date": "2026-07-16", "total": 492, "spmat": 224, "tc_tbe": 44, "eng": 58, "comm": 36, "other": 130}, {"date": "2026-07-17", "total": 496, "spmat": 228, "tc_tbe": 44, "eng": 58, "comm": 36, "other": 130}, {"date": "2026-07-21", "total": 498, "spmat": 229, "tc_tbe": 44, "eng": 58, "comm": 36, "other": 131}, {"date": "2026-07-22", "total": 503, "spmat": 233, "tc_tbe": 44, "eng": 58, "comm": 36, "other": 132}, {"date": "2026-07-23", "total": 504, "spmat": 234, "tc_tbe": 44, "eng": 58, "comm": 36, "other": 132}, {"date": "2026-07-27", "total": 505, "spmat": 235, "tc_tbe": 44, "eng": 58, "comm": 36, "other": 132}, {"date": "2026-07-30", "total": 514, "spmat": 238, "tc_tbe": 44, "eng": 58, "comm": 36, "other": 138}, {"date": "2026-07-31", "total": 515, "spmat": 239, "tc_tbe": 44, "eng": 58, "comm": 36, "other": 138}], "knowledge_history": [{"date": "2026-03-16", "total": 2, "architecture": 0, "inbox": 0, "procedures": 0, "projects": 1, "reports": 0, "specs": 1, "tools": 0, "troubleshooting": 0}, {"date": "2026-04-15", "total": 5, "architecture": 0, "inbox": 1, "procedures": 1, "projects": 1, "reports": 0, "specs": 2, "tools": 0, "troubleshooting": 0}, {"date": "2026-04-16", "total": 8, "architecture": 0, "inbox": 1, "procedures": 1, "projects": 2, "reports": 0, "specs": 4, "tools": 0, "troubleshooting": 0}, {"date": "2026-04-17", "total": 13, "architecture": 0, "inbox": 1, "procedures": 1, "projects": 2, "reports": 0, "specs": 9, "tools": 0, "troubleshooting": 0}, {"date": "2026-04-19", "total": 14, "architecture": 0, "inbox": 2, "procedures": 1, "projects": 2, "reports": 0, "specs": 9, "tools": 0, "troubleshooting": 0}, {"date": "2026-04-22", "total": 135, "architecture": 0, "inbox": 2, "procedures": 26, "projects": 15, "reports": 0, "specs": 75, "tools": 12, "troubleshooting": 5}, {"date": "2026-04-23", "total": 136, "architecture": 0, "inbox": 2, "procedures": 26, "projects": 15, "reports": 0, "specs": 76, "tools": 12, "troubleshooting": 5}, {"date": "2026-04-24", "total": 141, "architecture": 0, "inbox": 2, "procedures": 30, "projects": 15, "reports": 0, "specs": 77, "tools": 12, "troubleshooting": 5}, {"date": "2026-04-27", "total": 148, "architecture": 0, "inbox": 4, "procedures": 31, "projects": 17, "reports": 0, "specs": 77, "tools": 13, "troubleshooting": 6}, {"date": "2026-04-28", "total": 149, "architecture": 0, "inbox": 4, "procedures": 32, "projects": 17, "reports": 0, "specs": 77, "tools": 13, "troubleshooting": 6}, {"date": "2026-05-07", "total": 153, "architecture": 0, "inbox": 4, "procedures": 34, "projects": 17, "reports": 0, "specs": 77, "tools": 13, "troubleshooting": 8}, {"date": "2026-05-08", "total": 157, "architecture": 0, "inbox": 4, "procedures": 37, "projects": 17, "reports": 0, "specs": 78, "tools": 13, "troubleshooting": 8}, {"date": "2026-05-11", "total": 158, "architecture": 0, "inbox": 5, "procedures": 37, "projects": 17, "reports": 0, "specs": 78, "tools": 13, "troubleshooting": 8}, {"date": "2026-05-12", "total": 172, "architecture": 0, "inbox": 5, "procedures": 40, "projects": 17, "reports": 0, "specs": 79, "tools": 20, "troubleshooting": 11}, {"date": "2026-05-13", "total": 177, "architecture": 0, "inbox": 5, "procedures": 43, "projects": 17, "reports": 0, "specs": 80, "tools": 20, "troubleshooting": 12}, {"date": "2026-05-14", "total": 230, "architecture": 0, "inbox": 5, "procedures": 49, "projects": 24, "reports": 0, "specs": 113, "tools": 22, "troubleshooting": 17}, {"date": "2026-05-15", "total": 232, "architecture": 0, "inbox": 5, "procedures": 50, "projects": 24, "reports": 0, "specs": 113, "tools": 23, "troubleshooting": 17}, {"date": "2026-05-18", "total": 243, "architecture": 0, "inbox": 5, "procedures": 53, "projects": 27, "reports": 0, "specs": 114, "tools": 25, "troubleshooting": 19}, {"date": "2026-05-19", "total": 254, "architecture": 1, "inbox": 5, "procedures": 54, "projects": 29, "reports": 0, "specs": 114, "tools": 32, "troubleshooting": 19}, {"date": "2026-05-20", "total": 256, "architecture": 1, "inbox": 5, "procedures": 55, "projects": 30, "reports": 0, "specs": 114, "tools": 32, "troubleshooting": 19}, {"date": "2026-05-21", "total": 263, "architecture": 1, "inbox": 5, "procedures": 58, "projects": 32, "reports": 0, "specs": 114, "tools": 34, "troubleshooting": 19}, {"date": "2026-05-22", "total": 264, "architecture": 1, "inbox": 6, "procedures": 58, "projects": 32, "reports": 0, "specs": 114, "tools": 34, "troubleshooting": 19}, {"date": "2026-05-24", "total": 266, "architecture": 1, "inbox": 6, "procedures": 59, "projects": 32, "reports": 0, "specs": 115, "tools": 34, "troubleshooting": 19}, {"date": "2026-05-26", "total": 270, "architecture": 1, "inbox": 6, "procedures": 59, "projects": 33, "reports": 0, "specs": 117, "tools": 35, "troubleshooting": 19}, {"date": "2026-05-27", "total": 274, "architecture": 1, "inbox": 6, "procedures": 59, "projects": 35, "reports": 0, "specs": 117, "tools": 36, "troubleshooting": 20}, {"date": "2026-05-28", "total": 281, "architecture": 1, "inbox": 6, "procedures": 62, "projects": 37, "reports": 0, "specs": 119, "tools": 36, "troubleshooting": 20}, {"date": "2026-05-29", "total": 283, "architecture": 1, "inbox": 6, "procedures": 62, "projects": 37, "reports": 0, "specs": 120, "tools": 37, "troubleshooting": 20}, {"date": "2026-06-01", "total": 286, "architecture": 1, "inbox": 6, "procedures": 63, "projects": 37, "reports": 0, "specs": 122, "tools": 37, "troubleshooting": 20}, {"date": "2026-06-02", "total": 291, "architecture": 1, "inbox": 6, "procedures": 65, "projects": 37, "reports": 0, "specs": 122, "tools": 39, "troubleshooting": 21}, {"date": "2026-06-04", "total": 293, "architecture": 1, "inbox": 6, "procedures": 65, "projects": 37, "reports": 0, "specs": 122, "tools": 40, "troubleshooting": 22}, {"date": "2026-06-08", "total": 294, "architecture": 1, "inbox": 6, "procedures": 65, "projects": 37, "reports": 0, "specs": 122, "tools": 40, "troubleshooting": 23}, {"date": "2026-06-09", "total": 296, "architecture": 1, "inbox": 6, "procedures": 66, "projects": 37, "reports": 0, "specs": 122, "tools": 41, "troubleshooting": 23}, {"date": "2026-06-10", "total": 297, "architecture": 1, "inbox": 6, "procedures": 66, "projects": 37, "reports": 0, "specs": 122, "tools": 42, "troubleshooting": 23}, {"date": "2026-06-11", "total": 298, "architecture": 1, "inbox": 6, "procedures": 67, "projects": 37, "reports": 0, "specs": 122, "tools": 42, "troubleshooting": 23}, {"date": "2026-06-22", "total": 300, "architecture": 1, "inbox": 6, "procedures": 68, "projects": 37, "reports": 0, "specs": 122, "tools": 43, "troubleshooting": 23}, {"date": "2026-06-23", "total": 303, "architecture": 1, "inbox": 6, "procedures": 69, "projects": 37, "reports": 0, "specs": 122, "tools": 44, "troubleshooting": 24}, {"date": "2026-06-25", "total": 309, "architecture": 1, "inbox": 6, "procedures": 71, "projects": 37, "reports": 1, "specs": 122, "tools": 47, "troubleshooting": 24}, {"date": "2026-06-27", "total": 310, "architecture": 1, "inbox": 6, "procedures": 72, "projects": 37, "reports": 1, "specs": 122, "tools": 47, "troubleshooting": 24}, {"date": "2026-06-29", "total": 313, "architecture": 1, "inbox": 6, "procedures": 74, "projects": 37, "reports": 1, "specs": 123, "tools": 47, "troubleshooting": 24}, {"date": "2026-06-30", "total": 317, "architecture": 1, "inbox": 6, "procedures": 76, "projects": 37, "reports": 1, "specs": 124, "tools": 48, "troubleshooting": 24}, {"date": "2026-07-02", "total": 322, "architecture": 1, "inbox": 6, "procedures": 78, "projects": 37, "reports": 3, "specs": 125, "tools": 48, "troubleshooting": 24}, {"date": "2026-07-07", "total": 324, "architecture": 1, "inbox": 6, "procedures": 79, "projects": 37, "reports": 3, "specs": 125, "tools": 49, "troubleshooting": 24}, {"date": "2026-07-09", "total": 325, "architecture": 1, "inbox": 6, "procedures": 79, "projects": 37, "reports": 3, "specs": 125, "tools": 50, "troubleshooting": 24}, {"date": "2026-07-10", "total": 331, "architecture": 1, "inbox": 6, "procedures": 81, "projects": 39, "reports": 3, "specs": 126, "tools": 51, "troubleshooting": 24}, {"date": "2026-07-13", "total": 333, "architecture": 1, "inbox": 6, "procedures": 81, "projects": 39, "reports": 3, "specs": 126, "tools": 53, "troubleshooting": 24}, {"date": "2026-07-15", "total": 334, "architecture": 1, "inbox": 6, "procedures": 81, "projects": 39, "reports": 3, "specs": 126, "tools": 54, "troubleshooting": 24}, {"date": "2026-07-17", "total": 337, "architecture": 1, "inbox": 6, "procedures": 81, "projects": 39, "reports": 3, "specs": 126, "tools": 56, "troubleshooting": 25}, {"date": "2026-07-18", "total": 338, "architecture": 1, "inbox": 6, "procedures": 81, "projects": 39, "reports": 3, "specs": 126, "tools": 57, "troubleshooting": 25}, {"date": "2026-07-21", "total": 339, "architecture": 1, "inbox": 6, "procedures": 81, "projects": 39, "reports": 3, "specs": 126, "tools": 57, "troubleshooting": 26}, {"date": "2026-07-22", "total": 343, "architecture": 1, "inbox": 6, "procedures": 81, "projects": 39, "reports": 3, "specs": 126, "tools": 60, "troubleshooting": 27}, {"date": "2026-07-23", "total": 345, "architecture": 1, "inbox": 6, "procedures": 81, "projects": 39, "reports": 3, "specs": 128, "tools": 60, "troubleshooting": 27}, {"date": "2026-07-24", "total": 346, "architecture": 1, "inbox": 6, "procedures": 81, "projects": 39, "reports": 3, "specs": 129, "tools": 60, "troubleshooting": 27}, {"date": "2026-07-27", "total": 348, "architecture": 1, "inbox": 6, "procedures": 82, "projects": 39, "reports": 3, "specs": 130, "tools": 60, "troubleshooting": 27}, {"date": "2026-07-30", "total": 352, "architecture": 1, "inbox": 6, "procedures": 86, "projects": 39, "reports": 3, "specs": 130, "tools": 60, "troubleshooting": 27}], "history": [{"date": "2026-03-16", "tasks": 5}, {"date": "2026-03-17", "tasks": 12}, {"date": "2026-03-18", "tasks": 4}, {"date": "2026-03-19", "tasks": 11}, {"date": "2026-03-23", "tasks": 3}, {"date": "2026-03-24", "tasks": 8}, {"date": "2026-03-25", "tasks": 1}, {"date": "2026-03-26", "tasks": 8}, {"date": "2026-03-27", "tasks": 8}, {"date": "2026-03-29", "tasks": 2}, {"date": "2026-03-30", "tasks": 12}, {"date": "2026-03-31", "tasks": 6}, {"date": "2026-04-01", "tasks": 8}, {"date": "2026-04-02", "tasks": 7}, {"date": "2026-04-03", "tasks": 5}, {"date": "2026-04-06", "tasks": 12}, {"date": "2026-04-07", "tasks": 6}, {"date": "2026-04-08", "tasks": 9}, {"date": "2026-04-09", "tasks": 6}, {"date": "2026-04-10", "tasks": 5}, {"date": "2026-04-13", "tasks": 4}, {"date": "2026-04-14", "tasks": 5}, {"date": "2026-04-15", "tasks": 4}, {"date": "2026-04-16", "tasks": 4}, {"date": "2026-04-17", "tasks": 12}, {"date": "2026-04-19", "tasks": 1}, {"date": "2026-04-20", "tasks": 8}, {"date": "2026-04-21", "tasks": 5}, {"date": "2026-04-22", "tasks": 5}, {"date": "2026-04-23", "tasks": 1}, {"date": "2026-04-24", "tasks": 4}, {"date": "2026-04-27", "tasks": 6}, {"date": "2026-04-28", "tasks": 4}, {"date": "2026-05-01", "tasks": 3}, {"date": "2026-05-02", "tasks": 2}, {"date": "2026-05-07", "tasks": 8}, {"date": "2026-05-08", "tasks": 9}, {"date": "2026-05-11", "tasks": 3}, {"date": "2026-05-12", "tasks": 7}, {"date": "2026-05-13", "tasks": 7}, {"date": "2026-05-14", "tasks": 5}, {"date": "2026-05-15", "tasks": 2}, {"date": "2026-05-18", "tasks": 4}, {"date": "2026-05-19", "tasks": 10}, {"date": "2026-05-20", "tasks": 21}, {"date": "2026-05-21", "tasks": 2}, {"date": "2026-05-22", "tasks": 6}, {"date": "2026-05-23", "tasks": 1}, {"date": "2026-05-25", "tasks": 5}, {"date": "2026-05-26", "tasks": 5}, {"date": "2026-05-27", "tasks": 18}, {"date": "2026-05-28", "tasks": 15}, {"date": "2026-05-29", "tasks": 4}, {"date": "2026-06-01", "tasks": 8}, {"date": "2026-06-02", "tasks": 6}, {"date": "2026-06-04", "tasks": 6}, {"date": "2026-06-05", "tasks": 7}, {"date": "2026-06-08", "tasks": 5}, {"date": "2026-06-09", "tasks": 6}, {"date": "2026-06-10", "tasks": 10}, {"date": "2026-06-11", "tasks": 4}, {"date": "2026-06-12", "tasks": 8}, {"date": "2026-06-22", "tasks": 10}, {"date": "2026-06-23", "tasks": 4}, {"date": "2026-06-24", "tasks": 5}, {"date": "2026-06-25", "tasks": 3}, {"date": "2026-06-26", "tasks": 2}, {"date": "2026-06-29", "tasks": 1}, {"date": "2026-06-30", "tasks": 4}, {"date": "2026-07-01", "tasks": 8}, {"date": "2026-07-02", "tasks": 10}, {"date": "2026-07-03", "tasks": 1}, {"date": "2026-07-05", "tasks": 1}, {"date": "2026-07-06", "tasks": 6}, {"date": "2026-07-07", "tasks": 8}, {"date": "2026-07-08", "tasks": 3}, {"date": "2026-07-09", "tasks": 4}, {"date": "2026-07-10", "tasks": 3}, {"date": "2026-07-13", "tasks": 6}, {"date": "2026-07-14", "tasks": 3}, {"date": "2026-07-15", "tasks": 3}, {"date": "2026-07-16", "tasks": 9}, {"date": "2026-07-17", "tasks": 4}, {"date": "2026-07-21", "tasks": 2}, {"date": "2026-07-22", "tasks": 5}, {"date": "2026-07-23", "tasks": 1}, {"date": "2026-07-27", "tasks": 1}, {"date": "2026-07-30", "tasks": 9}, {"date": "2026-07-31", "tasks": 1}]}</script>
+<script>
+// ===== FALLBACK SAMPLE DATA =====
+const SAMPLE_DATA = {
+  "updated_at": "2026-05-20T22:43:17",
+  "level": 16,
+  "title": "Journeyman",
+  "total_xp": 41090,
+  "xp_in_level": 3288,
+  "xp_to_next": 6400,
+  "streak_current": 11,
+  "streak_max": 35,
+  "today_xp": 400,
+  "workload": {
+    "source_file": "2026-05-22",
+    "days": [
+      {"date": "2026-05-22", "weekday": "金", "is_today": true, "task_count": 7},
+      {"date": "2026-05-25", "weekday": "月", "is_today": false, "task_count": 4},
+      {"date": "2026-05-26", "weekday": "火", "is_today": false, "task_count": 2},
+      {"date": "2026-05-27", "weekday": "水", "is_today": false, "task_count": 8},
+      {"date": "2026-05-28", "weekday": "木", "is_today": false, "task_count": 5},
+      {"date": "2026-05-29", "weekday": "金", "is_today": false, "task_count": 1},
+      {"date": "2026-06-01", "weekday": "月", "is_today": false, "task_count": 0},
+      {"date": "2026-06-02", "weekday": "火", "is_today": false, "task_count": 3},
+      {"date": "2026-06-03", "weekday": "水", "is_today": false, "task_count": 0},
+      {"date": "2026-06-04", "weekday": "木", "is_today": false, "task_count": 0},
+      {"date": "2026-06-05", "weekday": "金", "is_today": false, "task_count": 0},
+      {"date": "2026-06-08", "weekday": "月", "is_today": false, "task_count": 0},
+      {"date": "2026-06-09", "weekday": "火", "is_today": false, "task_count": 0},
+      {"date": "2026-06-10", "weekday": "水", "is_today": false, "task_count": 0}
+    ],
+    "overdue_count": 1,
+    "undated_count": 5,
+    "waiting": [],
+    "waiting_count": 2,
+    "completed_today_count": 3,
+    "summary": {
+      "today_count": 7,
+      "week_remaining": 26,
+      "avg_daily": 2.1,
+      "busiest_date": "2026-05-27",
+      "busiest_count": 8
+    }
+  },
+  "achievements_data": {
+    "daily": [
+      {
+        "date": "2026-05-22",
+        "weekday": "金",
+        "total": 3,
+        "by_project": {"FSI": 2, "PEP2": 1},
+        "by_goal": {"G1": 2, "G5": 1},
+        "tasks": [
+          {"name": "SPMAT Ident / GSP [G1:専門性]", "project": "FSI", "goals": ["G1"], "completed_date": "2026-05-22"},
+          {"name": "H103 Adjust Import [G1:専門性]", "project": "FSI", "goals": ["G1"], "completed_date": "2026-05-22"},
+          {"name": "English Session [G5:コミュ]", "project": "PEP2", "goals": ["G5"], "completed_date": "2026-05-22"}
+        ]
+      }
+    ],
+    "summary": {
+      "total_completed": 266,
+      "total_days": 45,
+      "avg_daily": 5.9,
+      "best_day": {"date": "2026-05-10", "count": 10},
+      "by_project": {"FSI": 140, "PEP2": 80, "IW": 30, "OTHER": 16},
+      "by_goal": {"G1": 180, "G5": 40, "G4": 20, "G2": 10, "G6": 5, "G3": 2, "G7": 5, "G8": 4}
+    }
+  },
+  "stats": {
+    "total_tasks": 266,
+    "total_knowledge": 301,
+    "knowledge_categories": { "specs": 126, "procedures": 70, "tools": 47, "projects": 33, "troubleshooting": 19, "inbox": 5, "architecture": 1, "_archive": 847 },
+    "total_trace": 1,
+    "trace_max_depth": 4,
+    "total_feedback": 37,
+    "total_sessions": 52,
+    "english_sessions": 5,
+    "comm_sessions": 11
+  },
+  "skills": {
+    "G1_technical": { "name": "Technical Expertise", "xp": 25530, "actions": 29, "star": 3, "sub": { "spmat": { "name": "SPMAT Operations", "xp": 1400, "actions": 27, "star": 3 }, "tbe_bm": { "name": "TBE/BM Sheet", "xp": 3350, "actions": 61, "star": 5 }, "vendor": { "name": "Vendor Management", "xp": 650, "actions": 13, "star": 2 }, "datasheet": { "name": "Datasheet", "xp": 50, "actions": 1, "star": 1 }, "req": { "name": "REQ Processing", "xp": 1000, "actions": 17, "star": 3 } } },
+    "G2_problem_solving": { "name": "Problem Solving", "xp": 1000, "actions": 15, "star": 3 },
+    "G3_info_gathering": { "name": "Information Gathering", "xp": 2500, "actions": 47, "star": 4 },
+    "G4_org_value": { "name": "Organization Value", "xp": 950, "actions": 18, "star": 3 },
+    "G5_communication": { "name": "Communication", "xp": 0, "actions": 0, "star": 0, "sub": { "english": { "name": "English", "xp": 1950, "actions": 35, "star": 4 }, "team": { "name": "Team Coordination", "xp": 1200, "actions": 23, "star": 3 }, "comm": { "name": "Communication Practice", "xp": 3390, "actions": 57, "star": 5 } } },
+    "G6_productivity": { "name": "Productivity", "xp": 550, "actions": 11, "star": 2 },
+    "G7_asset": { "name": "Asset Building", "xp": 350, "actions": 7, "star": 2 },
+    "G8_health": { "name": "Health", "xp": 300, "actions": 6, "star": 2 }
+  },
+  "achievements": [
+    { "id": "first_blood", "name": "First Blood", "desc": "Complete your first task", "tier": 1, "unlocked": true },
+    { "id": "pipeline_clear", "tier": 2, "unlocked": false, "name": "Pipeline Clear", "desc": "Complete all TODOs in a single day" },
+    { "id": "knowledge_keeper_10", "name": "Knowledge Keeper", "desc": "Register 10 knowledge entries", "tier": 1, "unlocked": true },
+    { "id": "streak_7", "name": "Week Warrior", "desc": "7 consecutive work days", "tier": 1, "unlocked": true },
+    { "id": "triple_session", "name": "???", "desc": "???", "tier": 3, "unlocked": true }
+  ],
+  "pipeline_flow": {"spmat":101,"tc_tbe":36,"eng":34,"comm":19,"other":76},
+  "task_history_by_cat": [
+    {"date":"2026-03-16","total":5,"spmat":2,"tc_tbe":1,"eng":1,"comm":0,"other":1},
+    {"date":"2026-04-01","total":40,"spmat":17,"tc_tbe":7,"eng":4,"comm":3,"other":9},
+    {"date":"2026-04-15","total":100,"spmat":42,"tc_tbe":13,"eng":10,"comm":7,"other":28},
+    {"date":"2026-05-01","total":170,"spmat":65,"tc_tbe":24,"eng":20,"comm":12,"other":49},
+    {"date":"2026-05-10","total":220,"spmat":81,"tc_tbe":30,"eng":27,"comm":15,"other":67},
+    {"date":"2026-05-20","total":266,"spmat":101,"tc_tbe":36,"eng":34,"comm":19,"other":76}
+  ],
+  "knowledge_history": [
+    {"date":"2026-03-16","total":2,"specs":1,"projects":1},
+    {"date":"2026-04-01","total":30,"specs":12,"procedures":8,"projects":4,"tools":3,"troubleshooting":3},
+    {"date":"2026-04-15","total":80,"specs":35,"procedures":20,"projects":10,"tools":8,"troubleshooting":7},
+    {"date":"2026-05-01","total":160,"specs":70,"procedures":40,"projects":20,"tools":18,"troubleshooting":12},
+    {"date":"2026-05-10","total":230,"specs":100,"procedures":55,"projects":28,"tools":30,"troubleshooting":17},
+    {"date":"2026-05-15","total":270,"specs":115,"procedures":65,"projects":30,"tools":40,"troubleshooting":18,"inbox":2},
+    {"date":"2026-05-20","total":301,"specs":126,"procedures":70,"projects":33,"tools":47,"troubleshooting":19,"inbox":5,"architecture":1}
+  ],
+  "history": [
+    { "date": "2026-03-16", "xp": 250, "tasks": 5 },
+    { "date": "2026-03-17", "xp": 320, "tasks": 6 },
+    { "date": "2026-03-18", "xp": 180, "tasks": 4 },
+    { "date": "2026-03-19", "xp": 400, "tasks": 8 },
+    { "date": "2026-03-20", "xp": 150, "tasks": 3 },
+    { "date": "2026-03-23", "xp": 500, "tasks": 9 },
+    { "date": "2026-03-24", "xp": 350, "tasks": 7 },
+    { "date": "2026-04-01", "xp": 280, "tasks": 5 },
+    { "date": "2026-04-10", "xp": 600, "tasks": 11 },
+    { "date": "2026-04-15", "xp": 450, "tasks": 8 },
+    { "date": "2026-04-20", "xp": 200, "tasks": 4 },
+    { "date": "2026-04-25", "xp": 380, "tasks": 7 },
+    { "date": "2026-05-01", "xp": 420, "tasks": 8 },
+    { "date": "2026-05-05", "xp": 300, "tasks": 6 },
+    { "date": "2026-05-10", "xp": 550, "tasks": 10 },
+    { "date": "2026-05-15", "xp": 480, "tasks": 9 },
+    { "date": "2026-05-18", "xp": 350, "tasks": 7 },
+    { "date": "2026-05-19", "xp": 280, "tasks": 5 },
+    { "date": "2026-05-20", "xp": 400, "tasks": 7 }
+  ]
+};
+
+let profileData = null;
+
+// ===== DATA LOADING =====
+async function loadData() {
+  // A public dashboard must always revalidate its current data after a reload.
+  // The embedded data below is retained only for file:// viewing and outages.
+  if (location.protocol !== 'file:') {
+    try {
+      const resp = await fetch('../data/profile.json?refresh=' + Date.now(), { cache: 'no-store' });
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      profileData = await resp.json();
+      renderDashboard();
+      return;
+    } catch (e) {
+      console.warn('Fresh profile fetch failed, trying embedded data:', e.message);
+    }
+  }
+
+  // Try embedded data (injected by extractor.py) for local file viewing.
+  const embedded = document.getElementById('embedded-data');
+  if (embedded && embedded.textContent.trim() !== '__PROFILE_DATA__') {
+    try {
+      profileData = JSON.parse(embedded.textContent);
+      renderDashboard();
+      return;
+    } catch (e) {
+      console.warn('Embedded data parse failed:', e.message);
+    }
+  }
+  // Final fallback if embedded data was unavailable.
+  try {
+    const resp = await fetch('../data/profile.json?refresh=' + Date.now(), { cache: 'no-store' });
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    profileData = await resp.json();
+    renderDashboard();
+  } catch (e) {
+    console.warn('Fetch failed, trying fallback:', e.message);
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('error-state').style.display = 'block';
+  }
+}
+
+function loadFallbackData() {
+  profileData = SAMPLE_DATA;
+  document.getElementById('error-state').style.display = 'none';
+  renderDashboard();
+}
+
+// ===== HELPERS =====
+function formatNum(n) { return n.toLocaleString(); }
+
+function chartAvailable() {
+  return typeof Chart !== 'undefined';
+}
+
+function showCanvasFallback(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+
+  const container = canvas.parentElement;
+  canvas.classList.add('hidden');
+
+  if (!container || container.querySelector(`[data-chart-fallback="${canvasId}"]`)) return;
+
+  const fallback = document.createElement('div');
+  fallback.dataset.chartFallback = canvasId;
+  fallback.style.cssText = 'display:flex;align-items:center;justify-content:center;height:100%;color:#64748B;font-size:0.85rem;text-align:center;padding:16px;';
+  fallback.textContent = 'グラフ用ライブラリを読み込めないため、一覧表示のみ表示中';
+  container.appendChild(fallback);
+}
+
+function starStr(count, max) {
+  max = max || 5;
+  return '<span class="stars">' + '★'.repeat(count) + '</span>' +
+         '<span class="stars-empty">' + '★'.repeat(max - count) + '</span>';
+}
+
+function starColorClass(star) {
+  if (star >= 5) return 'star-5';
+  if (star >= 4) return 'star-4';
+  if (star >= 3) return 'star-3';
+  if (star >= 1) return 'star-2';
+  return 'star-0';
+}
+
+function nodeColor(star) {
+  if (star >= 5) return '#A78BFA';
+  if (star >= 4) return '#FBBF24';
+  if (star >= 3) return '#9CA3AF';
+  if (star >= 1) return '#B45309';
+  return '#475569';
+}
+
+function tierLabel(tier) {
+  if (tier === 3) return { label: 'GOLD', color: '#FBBF24' };
+  if (tier === 2) return { label: 'SILVER', color: '#9CA3AF' };
+  return { label: 'BRONZE', color: '#B45309' };
+}
+
+const KNOWLEDGE_ICONS = {
+  specs: '📋', procedures: '⚙️', tools: '🔧',
+  projects: '📁', troubleshooting: '🔍', inbox: '📥',
+  architecture: '🏗️', _archive: '🗄️'
+};
+
+const ACHIEVEMENT_ICONS = {
+  first_blood: '⚔️',
+  pipeline_clear: '✅',
+  knowledge_keeper_10: '📚',
+  streak_7: '🔥',
+  triple_session: '🏆'
+};
+
+// ===== RENDER =====
+function renderDashboard() {
+  const d = profileData;
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+
+  renderGoalProgress(d);
+  renderTaskGrowth(d);
+  renderKnowledgeGrowth(d);
+  renderTimeline(d);
+  renderStats(d);
+  
+  // Also pre-render workload view if it's the active view
+  if (!document.getElementById('workload-view').classList.contains('hidden')) {
+    renderWorkloadView(d);
+  }
+  if (!document.getElementById('le-document-view').classList.contains('hidden') && typeof renderLeDocumentView === 'function') {
+    renderLeDocumentView(d);
+  }
+
+  // This dashboard is a TODO manager first, so it always opens on today's plan.
+  switchView('workload');
+}
+
+// ----- VIEW SWITCHING -----
+function switchView(view) {
+  const pView = document.getElementById('pipeline-view');
+  const wView = document.getElementById('workload-view');
+  const leView = document.getElementById('le-document-view');
+  const btnP = document.getElementById('btn-view-pipeline');
+  const btnW = document.getElementById('btn-view-workload');
+  const btnLe = document.getElementById('btn-view-le-document');
+
+  const setButton = (button, active) => {
+    button.style.background = active ? 'var(--accent-orange)' : 'transparent';
+    button.style.color = active ? 'white' : 'var(--text-secondary)';
+  };
+
+  if (view === 'pipeline') {
+    pView.classList.remove('hidden');
+    wView.classList.add('hidden');
+    leView.classList.add('hidden');
+    setButton(btnP, true);
+    setButton(btnW, false);
+    setButton(btnLe, false);
+    document.body.style.background = 'var(--bg-primary)';
+    history.replaceState(null, '', '#info');
+  } else if (view === 'workload') {
+    pView.classList.add('hidden');
+    wView.classList.remove('hidden');
+    leView.classList.add('hidden');
+    setButton(btnP, false);
+    setButton(btnW, true);
+    setButton(btnLe, false);
+    document.body.style.background = '#f9fafb';
+    history.replaceState(null, '', '#workload');
+    
+    if (profileData) {
+      renderWorkloadView(profileData);
+    }
+  } else if (view === 'le-document') {
+    pView.classList.add('hidden');
+    wView.classList.add('hidden');
+    leView.classList.remove('hidden');
+    setButton(btnP, false);
+    setButton(btnW, false);
+    setButton(btnLe, true);
+    document.body.style.background = '#f9fafb';
+    history.replaceState(null, '', '#le-document');
+
+    if (profileData && typeof renderLeDocumentView === 'function') {
+      renderLeDocumentView(profileData);
+    }
+  }
+}
+
+// ----- WORKLOAD VIEWER LOGIC -----
+let wlChart = null;
+let workloadViewData = null;
+const WL_PROJECT_COLORS = {
+    'PEP2': { bg: 'rgba(59, 130, 246, 0.7)', border: 'rgb(59, 130, 246)' },
+    'FSI':  { bg: 'rgba(34, 197, 94, 0.7)',  border: 'rgb(34, 197, 94)' },
+    'IW':   { bg: 'rgba(156, 163, 175, 0.7)', border: 'rgb(156, 163, 175)' },
+    'OTHER':{ bg: 'rgba(234, 179, 8, 0.7)',  border: 'rgb(234, 179, 8)' },
+};
+function renderWorkloadView(d) {
+    renderWorkloadMain(d);
+}
+
+function renderWorkloadMain(d) {
+    const wl = d.workload;
+    if (!wl) return;
+    workloadViewData = wl;
+
+    // Summary cards
+    document.getElementById('wl-card-today').textContent = wl.summary.today_count;
+    document.getElementById('wl-card-week').textContent = wl.summary.week_remaining;
+    document.getElementById('wl-card-overdue').textContent = wl.overdue_count;
+    document.getElementById('wl-card-avg').textContent = wl.summary.avg_daily;
+
+    // Highlight overdue card
+    const overdueCard = document.getElementById('wl-overdue-card');
+    if (wl.overdue_count > 0) {
+        overdueCard.classList.add('bg-red-50', 'border-red-200');
+    } else {
+        overdueCard.classList.remove('bg-red-50', 'border-red-200');
+    }
+
+    renderWeekSchedule(wl);
+    renderWorkloadChart(wl.days);
+    renderWorkloadDayList(wl.days.filter(day => !day.is_today), wl.overdue); 
+    renderWorkloadExtraSections(wl.undated, wl.waiting, wl.completed_today_count, wl.daily_actuals);
+}
+
+function renderWeekSchedule(wl) {
+    const container = document.getElementById('wl-today-plan');
+    if (!container) return;
+    const schedules = Array.isArray(wl.week_schedules) ? wl.week_schedules.filter(day => day.is_workday !== false) : [];
+    if (!schedules.length) {
+        container.innerHTML = '<div class="bg-white rounded-lg border border-gray-100 p-5 text-gray-400">平日の予定データなし</div>';
+        return;
+    }
+
+    const dayStart = 9 * 60;
+    const dayEnd = 18 * 60;
+    const weeklyHourHeight = 64;
+    const toMinutes = value => {
+        const match = String(value || '').match(/^(\d{2}):(\d{2})$/);
+        return match ? Number(match[1]) * 60 + Number(match[2]) : 0;
+    };
+    const layoutEvents = events => {
+        const normalized = events
+            .map(event => ({ ...event, startMinutes: toMinutes(event.start), endMinutes: toMinutes(event.end) }))
+            .filter(event => event.endMinutes > dayStart && event.startMinutes < dayEnd)
+            .sort((a, b) => a.startMinutes - b.startMinutes || a.endMinutes - b.endMinutes);
+        const entries = normalized.reduce((merged, event) => {
+            const previous = merged[merged.length - 1];
+            const isContinuousSameTask = previous
+                && previous.name === event.name
+                && previous.project === event.project
+                && previous.kind === event.kind
+                && previous.endMinutes === event.startMinutes;
+            if (isContinuousSameTask) {
+                previous.endMinutes = event.endMinutes;
+                previous.end = event.end;
+            } else {
+                merged.push(event);
+            }
+            return merged;
+        }, []);
+        const groups = [];
+        let group = [];
+        let groupEnd = -1;
+        const flush = () => {
+            if (!group.length) return;
+            const laneEnds = [];
+            group.forEach(event => {
+                let lane = laneEnds.findIndex(end => end <= event.startMinutes);
+                if (lane < 0) {
+                    lane = laneEnds.length;
+                    laneEnds.push(event.endMinutes);
+                } else {
+                    laneEnds[lane] = event.endMinutes;
+                }
+                event.lane = lane;
+            });
+            group.forEach(event => { event.laneCount = laneEnds.length; });
+            groups.push(...group);
+            group = [];
+            groupEnd = -1;
+        };
+        entries.forEach(event => {
+            if (group.length && event.startMinutes >= groupEnd) flush();
+            group.push(event);
+            groupEnd = Math.max(groupEnd, event.endMinutes);
+        });
+        flush();
+        return groups;
+    };
+    const iwHours = schedules.reduce((sum, day) => sum + (day.iw_focus_minutes || 0), 0) / 60;
+    const renderCalendar = (days, detailed) => {
+        const minutesPerRow = detailed ? 30 : 60;
+        const slotHeight = detailed ? 48 : weeklyHourHeight;
+        const hourHeight = detailed ? 96 : weeklyHourHeight;
+        const timelineHeight = ((dayEnd - dayStart) / 60) * hourHeight;
+        const labels = Array.from({ length: (dayEnd - dayStart) / minutesPerRow }, (_, index) => {
+            const value = dayStart + index * minutesPerRow;
+            return `${String(Math.floor(value / 60)).padStart(2, '0')}:${String(value % 60).padStart(2, '0')}`;
+        });
+        const headers = days.map((day, index) => `
+            <div class="week-calendar-day ${detailed || index === 0 ? 'today' : ''}">
+                <div class="text-lg font-black ${detailed || index === 0 ? 'text-blue-700' : 'text-gray-800'}">${day.date.slice(5).replace('-', '/')}</div>
+                <div class="text-xs font-bold text-gray-500">${day.weekday}曜日${detailed ? ' ・ 今日' : ''}</div>
+            </div>`).join('');
+        const timeColumn = `<div>${labels.map(label => `<div class="week-calendar-time" style="--slot-height:${slotHeight}px">${label}</div>`).join('')}</div>`;
+        const dayColumns = days.map(day => {
+            const events = layoutEvents(day.events || []).map(event => {
+                const start = Math.max(dayStart, event.startMinutes);
+                const end = Math.min(dayEnd, event.endMinutes);
+                const top = ((start - dayStart) / 60) * hourHeight;
+                const height = Math.max(24, ((end - start) / 60) * hourHeight - 4);
+                const width = 100 / (event.laneCount || 1);
+                const left = width * (event.lane || 0);
+                const kindLabel = event.kind === 'meeting' ? '会議' : event.kind === 'overdue' ? 'タスク' : event.kind === 'iw_focus' ? 'IW作業' : 'タスク';
+                return `<div class="week-calendar-event ${event.kind}" style="top:${top + 2}px;height:${height}px;left:calc(${left}% + 3px);width:calc(${width}% - 6px);" title="${event.name}">
+                    <span class="event-time">${event.start}-${event.end} ${kindLabel}</span>${stripGoalTag(event.name)}</div>`;
+            }).join('');
+            return `<div class="week-calendar-timeline" style="--slot-height:${slotHeight}px;height:${timelineHeight}px">${events}</div>`;
+        }).join('');
+        return `<div class="week-calendar-scroll"><div class="week-calendar ${detailed ? 'today-calendar' : ''}" style="grid-template-columns:54px repeat(${days.length}, minmax(${detailed ? 0 : 150}px, 1fr));">
+            <div class="week-calendar-corner text-xs font-bold text-gray-400 text-right pr-2 pt-3">JST</div>
+            ${headers}
+            ${timeColumn}
+            ${dayColumns}
+        </div></div>`;
+    };
+    const todaySchedule = schedules[0];
+    const futureSchedules = schedules.slice(1);
+
+    container.innerHTML = `
+        <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-5 mb-5">
+            <div class="flex flex-wrap items-baseline justify-between gap-3 mb-4">
+                <div>
+                    <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">TODAY TIME BLOCK</div>
+                    <h2 class="text-xl font-black text-gray-900">今日の時間割</h2>
+                </div>
+                <div class="text-xs text-gray-500">30分刻み / Outlook会議 + 日次TODO + IW作業</div>
+            </div>
+            ${renderCalendar([todaySchedule], true)}
+        </section>
+        <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-5">
+            <div class="flex flex-wrap items-baseline justify-between gap-3 mb-4">
+                <div>
+                    <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">FUTURE TIME BLOCK</div>
+                    <h2 class="text-xl font-black text-gray-900">明日以降の時間割</h2>
+                </div>
+                <div class="text-xs text-gray-500">平日${futureSchedules.length}日 / 空き枠のIW作業: ${iwHours.toFixed(0)}時間</div>
+            </div>
+            ${renderCalendar(futureSchedules, false)}
+        </section>`;
+}
+
+function renderWorkloadChart(days) {
+    if (!chartAvailable()) {
+        showCanvasFallback('wl-workloadChart');
+        return;
+    }
+
+    const ctx = document.getElementById('wl-workloadChart').getContext('2d');
+    const labels = days.map(d => `${d.date.slice(5)} (${d.weekday})`);
+    const counts = days.map(d => d.task_count);
+    
+    const getC = (c) => c >= 7 ? 'rgba(239, 68, 68, 0.8)' : c >= 4 ? 'rgba(249, 115, 22, 0.8)' : 'rgba(34, 197, 94, 0.8)';
+    const getB = (c) => c >= 7 ? 'rgb(239, 68, 68)' : c >= 4 ? 'rgb(249, 115, 22)' : 'rgb(34, 197, 94)';
+
+    if (wlChart) wlChart.destroy();
+    wlChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels,
+            datasets: [{
+                label: 'タスク数',
+                data: counts,
+                backgroundColor: counts.map(getC),
+                borderColor: counts.map(getB),
+                borderWidth: 1,
+                borderRadius: 4,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { beginAtZero: true, max: Math.max(10, ...counts), ticks: { stepSize: 1 } }
+            }
+        }
+    });
+}
+
+function stripGoalTag(name) {
+    return name.replace(/\s*\[G\d+[:\uff1a][^\]]*\]/g, '').trim();
+}
+
+function wlProjectBadge(project) {
+    const cls = {
+        'PEP2': 'project-PEP2',
+        'FSI': 'project-FSI',
+        'IW': 'project-IW',
+    }[project] || 'project-OTHER';
+    return `<span class="text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-tight ${cls}">${project || 'OTHER'}</span>`;
+}
+
+function wlGoalTags(goals) {
+    if (!goals || !goals.length) return '';
+    return goals.map(g => `<span class="goal-tag">${g}</span>`).join(' ');
+}
+
+function renderWorkloadDayList(days, overdue) {
+    const container = document.getElementById('wl-day-list');
+    let html = '';
+
+    // Overdue section
+    if (overdue && overdue.length > 0) {
+        html += `
+        <div class="bg-red-50 border border-red-200 rounded-2xl overflow-hidden shadow-sm">
+            <button onclick="toggleWorkloadSection(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-red-100/50 transition">
+                <span class="font-bold text-red-700 flex items-center">
+                    ⚠️ 超過 <span class="ml-3 px-2.5 py-0.5 bg-red-600 text-white text-[11px] font-black rounded-full shadow-sm">${overdue.length}件</span>
+                </span>
+                <span class="text-red-300 arrow text-xs transition-transform duration-300">▶</span>
+            </button>
+            <div class="hidden px-5 pb-4 space-y-2 border-t border-red-100 pt-3">
+                ${overdue.map(t => `
+                    <div class="flex items-center gap-3 text-sm py-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+                        <span class="flex-1 font-medium text-red-800">${stripGoalTag(t.name)}</span>
+                        ${wlProjectBadge(t.project)}
+                    </div>
+                `).join('')}
+            </div>
+        </div>`;
+    }
+
+    for (const day of days.filter(d => !d.is_today)) {
+        const isToday = day.is_today;
+        const borderClass = isToday ? 'border-blue-300 bg-blue-50/50' : 'border-gray-100 bg-white';
+        const countColor = day.task_count >= 7 ? 'bg-red-600' :
+                           day.task_count >= 4 ? 'bg-orange-500' :
+                           day.task_count >= 1 ? 'bg-green-500' : 'bg-gray-400';
+        const todayBadge = isToday ? '<span class="text-[10px] bg-blue-600 text-white px-1.5 py-0.5 rounded-md font-bold mr-2">TODAY</span>' : '';
+        const dateLabel = `${day.date.slice(5)}（${day.weekday}）`;
+
+        html += `
+        <div class="border ${borderClass} rounded-2xl overflow-hidden shadow-sm transition-all hover:shadow-md">
+            <button onclick="toggleWorkloadSection(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-gray-50/50 transition">
+                <span class="font-bold text-gray-800 flex items-center">
+                    ${todayBadge} ${dateLabel}
+                    <span class="ml-3 px-2.5 py-0.5 ${countColor} text-white text-[11px] font-black rounded-full shadow-sm">${day.task_count}件</span>
+                </span>
+                <span class="text-gray-300 arrow text-xs transition-transform duration-300">▶</span>
+            </button>
+            <div class="hidden px-5 pb-4 space-y-2 border-t border-gray-50 pt-3">
+                ${day.tasks.length > 0 ? day.tasks.map(t => `
+                    <div class="flex items-center gap-3 text-sm py-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full ${countColor}"></span>
+                        <span class="flex-1 font-medium text-gray-700">${stripGoalTag(t.name)}</span>
+                        ${t.kind === 'meeting' ? '<span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-gray-200 text-gray-600">会議</span>' : ''}
+                        ${wlProjectBadge(t.project)}
+                    </div>
+                `).join('') : '<div class="text-xs text-gray-400 italic py-1">予定なし</div>'}
+            </div>
+        </div>`;
+    }
+
+    container.innerHTML = html;
+}
+
+function renderWorkloadExtraSections(undated, waiting, completedCount, dailyActuals = []) {
+    const container = document.getElementById('wl-extra-sections');
+    let html = '';
+
+    if (dailyActuals && dailyActuals.length > 0) {
+        html += `
+        <div class="bg-blue-50 border border-blue-200 rounded-2xl overflow-hidden shadow-sm">
+            <div class="px-5 py-4 border-b border-blue-100">
+                <span class="font-bold text-blue-800">今日の実績 <span class="ml-2 text-xs font-black bg-blue-200 px-2 py-0.5 rounded-full">${dailyActuals.length}件</span></span>
+            </div>
+            <div class="px-5 py-3 space-y-2">
+                ${dailyActuals.map(actual => `
+                    <div class="flex items-center gap-3 text-sm py-1.5">
+                        <span class="text-blue-600">✓</span>
+                        <span class="flex-1 font-medium text-blue-950">${stripGoalTag(actual.name)}</span>
+                        ${wlProjectBadge(actual.project)}
+                    </div>
+                `).join('')}
+            </div>
+        </div>`;
+    }
+
+    if (undated && undated.length > 0) {
+        html += `
+        <div class="bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+            <button onclick="toggleWorkloadSection(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-gray-100/50 transition">
+                <span class="font-bold text-gray-600">期限なし <span class="ml-2 text-xs font-black bg-gray-200 px-2 py-0.5 rounded-full">${undated.length}件</span></span>
+                <span class="text-gray-300 arrow text-xs transition-transform duration-300">▶</span>
+            </button>
+            <div class="hidden px-5 pb-4 space-y-2 border-t border-gray-100 pt-3">
+                ${undated.map(t => `
+                    <div class="flex items-center gap-3 text-sm py-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+                        <span class="flex-1 font-medium text-gray-700">${stripGoalTag(t.name)}</span>
+                        ${wlProjectBadge(t.project)}
+                    </div>
+                `).join('')}
+            </div>
+        </div>`;
+    }
+
+    if (waiting && waiting.length > 0) {
+        html += `
+        <div class="bg-amber-50 border border-amber-100 rounded-2xl overflow-hidden shadow-sm">
+            <button onclick="toggleWorkloadSection(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-amber-100/50 transition">
+                <span class="font-bold text-amber-700">Waiting <span class="ml-2 text-xs font-black bg-amber-200 px-2 py-0.5 rounded-full">${waiting.length}件</span></span>
+                <span class="text-amber-300 arrow text-xs">▶</span>
+            </button>
+            <div class="hidden px-5 pb-4 space-y-2 border-t border-amber-100 pt-3">
+                ${waiting.map(t => `
+                    <div class="flex items-start gap-3 text-sm py-1.5">
+                        <span class="text-amber-500 mt-1">⏳</span>
+                        <div class="flex-1">
+                            <div class="font-bold text-amber-900">${t.name}</div>
+                            <div class="text-[11px] text-amber-600 font-bold mt-0.5">待ち: ${t.waiting_for} ${t.deadline ? `(期限: ${t.deadline})` : ''}</div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>`;
+    }
+
+    if (completedCount > 0) {
+        html += `
+        <div class="bg-green-50 border border-green-100 rounded-2xl overflow-hidden shadow-sm">
+            <div class="w-full flex items-center justify-between px-5 py-4">
+                <span class="font-bold text-green-700">今日の完了 <span class="ml-2 text-xs font-black bg-green-200 px-2 py-0.5 rounded-full">${completedCount}件</span></span>
+            </div>
+        </div>`;
+    }
+
+    container.innerHTML = html;
+}
+
+function toggleWorkloadSection(btn) {
+    const content = btn.nextElementSibling;
+    const arrow = btn.querySelector('.arrow');
+    const isHidden = content.classList.contains('hidden');
+    
+    if (isHidden) {
+        content.classList.remove('hidden');
+        arrow.textContent = '▼';
+        arrow.style.transform = 'rotate(0deg)';
+    } else {
+        content.classList.add('hidden');
+        arrow.textContent = '▶';
+    }
+}
+
+// ----- 1.5 MISSION TARGETS -----
+function renderGoalProgress(d) {
+  const panel = document.getElementById('mission-targets');
+  const grid = document.getElementById('goals-grid');
+  if (!panel || !grid || !d.goal_progress) {
+    if (panel) panel.style.display = 'none';
+    return;
+  }
+  panel.style.display = 'block';
+  
+  const gp = d.goal_progress;
+  const title = panel.querySelector('.panel-title');
+  if (title) title.textContent = `// MISSION TARGETS 期間 ${gp.period}`;
+
+  grid.style.gridTemplateColumns = '1fr';
+  grid.style.gap = '16px';
+
+  let html = `
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px;">
+  `;
+
+  gp.pillars.forEach(p => {
+    const color = p.on_track ? 'var(--accent-emerald)' : 'var(--accent-orange)';
+    const icon = p.on_track ? '🟢' : '🟠';
+    
+    html += `
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <span style="font-size:0.75rem; font-weight:600; color:var(--text-secondary); text-transform:uppercase; letter-spacing:1px;">${p.label}</span>
+          <span class="font-mono" style="font-size:0.85rem; font-weight:700;">${p.current}/${p.target_monthly} <span style="font-size:0.7rem; color:var(--text-muted);">(${Math.floor(p.progress_pct)}%)</span> ${icon}</span>
+        </div>
+        <div style="height:12px; background:var(--bg-tertiary); border-radius:6px; overflow:hidden; position:relative;">
+          <div style="width:${Math.min(100, p.progress_pct)}%; height:100%; background:${color}; border-radius:6px; transition:width 1s ease-out;"></div>
+        </div>
+      </div>
+    `;
+  });
+
+  html += `</div>`;
+
+  // Weekly Pace and Status
+  html += `
+    <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--bg-tertiary); display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <div class="font-mono" style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Weekly Pace</div>
+        <div style="display: flex; gap: 20px;">
+          ${gp.pillars[0].weekly.map((val, idx) => `
+            <div>
+              <span class="font-mono" style="font-size: 0.65rem; color: var(--text-muted);">W${idx+1}:</span>
+              <span class="font-mono" style="font-size: 0.8rem; font-weight: 700; color: ${val > 0 ? 'var(--text-primary)' : 'var(--text-muted)'}">${val || '??'}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      <div style="text-align: right;">
+        <div class="font-mono" style="font-size: 0.9rem; font-weight: 700; color: var(--accent-cyan);">Week ${gp.week_current}/${gp.weeks_total}</div>
+        <div class="font-mono" style="font-size: 0.65rem; color: var(--text-muted);">稼働：${gp.days_elapsed} / ${gp.days_total} 日</div>
+      </div>
+    </div>
+  `;
+
+  // Season Goals + 熟達論
+  if (gp.season) {
+    html += `
+      <div style="margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div style="padding: 12px; background: rgba(30, 41, 59, 0.5); border-radius: 8px; border: 1px dashed var(--bg-tertiary);">
+          <div class="font-mono" style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">今期 Season 目標</div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            ${gp.season.goals.map(g => `
+              <div style="font-size: 0.75rem; color: var(--text-secondary); display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--accent-orange);">•</span> ${g}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div style="padding: 12px; background: rgba(30, 41, 59, 0.5); border-radius: 8px; border: 1px dashed var(--bg-tertiary);">
+          <div class="font-mono" style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">熟達論（為末大）</div>
+          <div style="display: flex; align-items: center; gap: 4px; margin-bottom: 6px;">
+            ${['遊ぶ','型','観','心','空'].map((s, i) => {
+              const active = i <= 1;
+              const current = i === 1;
+              const color = current ? 'var(--accent-orange)' : active ? 'var(--accent-emerald)' : 'var(--text-muted)';
+              const bg = current ? 'rgba(249,115,22,0.15)' : 'transparent';
+              const border = current ? '1px solid var(--accent-orange)' : '1px solid transparent';
+              const arrow = i < 4 ? '<span style="color:var(--text-muted);font-size:0.6rem;">→</span>' : '';
+              return '<span class="font-mono" style="font-size:0.7rem;font-weight:'+(current?'700':'400')+';color:'+color+';padding:2px 6px;border-radius:4px;background:'+bg+';border:'+border+';">'+s+'</span>'+arrow;
+            }).join('')}
+          </div>
+          <div style="font-size: 0.7rem; color: var(--text-secondary);">現在地: <span style="color:var(--accent-orange);font-weight:600;">型→観</span> 移行期</div>
+          <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 2px;">AI = 型の効率化 + 観への時間確保</div>
+        </div>
+      </div>
+    `;
+  }
+
+  grid.innerHTML = html;
+}
+
+// ----- 熟達論（為末大）5段階 -----
+// 遊ぶ → 型 → 観 → 心 → 空
+// 現在地: 型〜観の移行期（2026-05時点）
+// 型=SPMAT/BM/H103手順の確立・スクリプト化済み
+// 観=パターン認識の萌芽（Class名不一致検出・上流原因追跡）
+// AI活用は「型の効率化」と「観への時間確保」を両立する戦略
+
+// ----- 1. SUB INFO -----
+function renderStatusBar(d) {
+  const unlockedCount = d.achievements.filter(a => a.unlocked).length;
+  const totalCount = d.achievements.length;
+  const xpNext = d.total_xp + d.xp_to_next - d.xp_in_level;
+
+  document.getElementById('sub-info').innerHTML = `
+    <span>Lv.${d.level} ${d.title}</span>
+    <span>|</span>
+    <span>XP: ${formatNum(d.total_xp)} / ${formatNum(xpNext)}</span>
+    <span>|</span>
+    <span>🔥 ${d.streak_current} streak</span>
+    <span>|</span>
+    <span>🏅 ${unlockedCount}/${totalCount}</span>
+    <span>|</span>
+    <span>Sessions: ${d.stats.total_sessions}</span>
+  `;
+}
+
+// ----- 2. SKILL TREE (game-style tech tree) -----
+function renderSkillTree(d) {
+  const container = document.getElementById('skill-tree-container');
+  const skills = d.skills;
+
+  const tierColors = ['#475569','#92400E','#B45309','#9CA3AF','#FBBF24','#A78BFA'];
+  const tierGlow = ['',' box-shadow:0 0 6px rgba(146,64,14,0.3)',' box-shadow:0 0 8px rgba(180,83,9,0.3)',' box-shadow:0 0 10px rgba(156,163,175,0.4)',' box-shadow:0 0 12px rgba(251,191,36,0.4)',' box-shadow:0 0 16px rgba(167,139,250,0.5)'];
+  const tierBg = ['#1a1a2e','#2d1b00','#3d2600','#2a2a30','#3d3000','#2d1f4e'];
+
+  function skillCard(name, star, actions, xp, isMain) {
+    const col = tierColors[Math.min(star,5)];
+    const bg = tierBg[Math.min(star,5)];
+    const glow = tierGlow[Math.min(star,5)];
+    const sz = isMain ? '' : 'font-size:0.7rem;';
+    const pad = isMain ? 'padding:12px 16px;' : 'padding:8px 12px;';
+    const w = isMain ? 'min-width:130px;' : 'min-width:100px;';
+    const starDisp = '<span style="color:'+col+';font-size:0.75rem;">' + '★'.repeat(star) + '<span style="opacity:0.3;">' + '☆'.repeat(5-star) + '</span></span>';
+    const pctToNext = star < 5 ? Math.min(100, (actions / [1,5,15,30,50][Math.min(star,4)]) * 100) : 100;
+    return `<div style="${w}${pad}background:${bg};border:1.5px solid ${col};border-radius:10px;text-align:center;${glow};transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+      <div style="font-weight:700;${sz}margin-bottom:4px;">${name}</div>
+      <div>${starDisp}</div>
+      <div class="font-mono" style="font-size:0.7rem;color:${col};margin-top:4px;">${formatNum(xp)} XP</div>
+      <div style="margin-top:4px;height:4px;background:#0F172A;border-radius:2px;overflow:hidden;">
+        <div style="width:${pctToNext}%;height:100%;background:${col};border-radius:2px;"></div>
+      </div>
+      <div class="font-mono" style="font-size:0.6rem;color:#64748B;margin-top:2px;">${actions} actions</div>
+    </div>`;
+  }
+
+  function subCards(parentKey) {
+    const s = skills[parentKey];
+    if (!s || !s.sub) return '';
+    return Object.entries(s.sub).map(([k,v]) => skillCard(v.name, v.star, v.actions, v.xp, false)).join('');
+  }
+
+  const sections = [
+    { title:'⚔️ TECHNICAL', color:'#F97316', skills:[
+      {key:'G1_technical', hasSub:true},
+      {key:'G2_problem_solving', hasSub:false},
+    ]},
+    { title:'🔍 PROCESS', color:'#06B6D4', skills:[
+      {key:'G3_info_gathering', hasSub:false},
+      {key:'G6_productivity', hasSub:false},
+    ]},
+    { title:'🤝 PEOPLE', color:'#10B981', skills:[
+      {key:'G4_org_value', hasSub:false},
+      {key:'G5_communication', hasSub:true},
+    ]},
+    { title:'🏠 PERSONAL', color:'#A78BFA', skills:[
+      {key:'G7_asset', hasSub:false},
+      {key:'G8_health', hasSub:false},
+    ]},
+  ];
+
+  let html = '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">';
+  sections.forEach(sec => {
+    html += `<div style="border-left:3px solid ${sec.color};padding-left:12px;">`;
+    html += `<div class="font-mono" style="font-size:0.75rem;font-weight:700;color:${sec.color};margin-bottom:10px;letter-spacing:1px;">${sec.title}</div>`;
+    sec.skills.forEach(sk => {
+      const s = skills[sk.key];
+      if (!s) return;
+      html += skillCard(s.name, s.star, s.actions, s.xp, true);
+      if (sk.hasSub && s.sub) {
+        html += '<div style="margin:6px 0 6px 12px;border-left:1px solid #334155;padding-left:8px;display:flex;flex-direction:column;gap:6px;">';
+        html += subCards(sk.key);
+        html += '</div>';
+      }
+      html += '<div style="height:8px;"></div>';
+    });
+    html += '</div>';
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+// ----- 2b. KNOWLEDGE GROWTH (cumulative stacked area) -----
+function renderKnowledgeGrowth(d) {
+  const kh = d.knowledge_history || [];
+  if (kh.length === 0) {
+    document.getElementById('knowledgeGrowthChart').parentElement.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-muted);font-family:JetBrains Mono,monospace;font-size:0.8rem;">No knowledge history data</div>';
+    return;
+  }
+  if (!chartAvailable()) {
+    showCanvasFallback('knowledgeGrowthChart');
+    return;
+  }
+  const labels = kh.map(h => { const dt = new Date(h.date); return (dt.getMonth()+1)+'/'+dt.getDate(); });
+  const cats = Object.keys(kh[kh.length-1]).filter(k => k !== 'date' && k !== 'total').sort((a,b) => (kh[kh.length-1][b]||0) - (kh[kh.length-1][a]||0));
+  const colors = ['#F97316','#06B6D4','#10B981','#A855F7','#FBBF24','#EF4444','#64748B'];
+
+  const datasets = cats.map((cat, i) => ({
+    label: cat,
+    data: kh.map(h => h[cat] || 0),
+    backgroundColor: colors[i % colors.length] + '40',
+    borderColor: colors[i % colors.length],
+    borderWidth: 1.5,
+    fill: true,
+    tension: 0.3,
+    pointRadius: 0
+  }));
+
+  datasets.push({
+    label: '推計問題数',
+    data: kh.map(h => h.total),
+    borderColor: '#F1F5F9',
+    borderWidth: 2,
+    fill: false,
+    tension: 0.3,
+    pointRadius: 1,
+    pointBackgroundColor: '#F1F5F9'
+  });
+
+  const ctx = document.getElementById('knowledgeGrowthChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { labels:{color:'#94A3B8',font:{family:'JetBrains Mono',size:9},boxWidth:10}, position:'bottom' },
+        tooltip: { mode: 'index', intersect: false }
+      },
+      scales: {
+        x: { grid:{display:false}, ticks:{color:'#64748B',font:{family:'JetBrains Mono',size:8},maxTicksLimit:12} },
+        y: { stacked:true, grid:{color:'rgba(51,65,85,0.3)'}, ticks:{color:'#06B6D4',font:{family:'JetBrains Mono',size:9}} }
+      },
+      interaction: { mode: 'nearest', axis: 'x', intersect: false }
+    }
+  });
+}
+
+// ----- 2c. TASK THROUGHPUT (cumulative stacked by category) -----
+function renderTaskGrowth(d) {
+  const th = d.task_history_by_cat || [];
+  if (th.length === 0) {
+    document.getElementById('taskGrowthChart').parentElement.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-muted);font-family:JetBrains Mono,monospace;font-size:0.8rem;">No task history data</div>';
+    return;
+  }
+  if (!chartAvailable()) {
+    showCanvasFallback('taskGrowthChart');
+    return;
+  }
+  const labels = th.map(h => { const dt = new Date(h.date); return (dt.getMonth()+1)+'/'+dt.getDate(); });
+  const catDef = [
+    {key:'spmat',label:'SPMAT',color:'#F97316'},
+    {key:'tc_tbe',label:'TC/TBE',color:'#06B6D4'},
+    {key:'eng',label:'English',color:'#FBBF24'},
+    {key:'comm',label:'Comm',color:'#A855F7'},
+    {key:'other',label:'Other',color:'#64748B'},
+  ];
+  const datasets = catDef.map(c => ({
+    label: c.label,
+    data: th.map(h => h[c.key] || 0),
+    backgroundColor: c.color + '50',
+    borderColor: c.color,
+    borderWidth: 1.5,
+    fill: true,
+    tension: 0.3,
+    pointRadius: 0
+  }));
+  const ctx = document.getElementById('taskGrowthChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { labels:{color:'#94A3B8',font:{family:'JetBrains Mono',size:8},boxWidth:8}, position:'bottom' },
+        tooltip: { mode: 'index', intersect: false }
+      },
+      scales: {
+        x: { grid:{display:false}, ticks:{color:'#64748B',font:{family:'JetBrains Mono',size:8},maxTicksLimit:10} },
+        y: { stacked:true, grid:{color:'rgba(51,65,85,0.3)'}, ticks:{color:'#F97316',font:{family:'JetBrains Mono',size:9}} }
+      },
+      interaction: { mode: 'nearest', axis: 'x', intersect: false }
+    }
+  });
+}
+
+// ----- 3a. DAILY COMPLETED TASKS -----
+function renderTimeline(d) {
+  const history = d.history || [];
+  const cutoff = new Date(); cutoff.setDate(cutoff.getDate() - 45);
+  const filtered = history.filter(h => new Date(h.date) >= cutoff);
+  const labels = filtered.map(h => { const dt = new Date(h.date); return (dt.getMonth()+1)+'/'+dt.getDate(); });
+  const taskData = filtered.map(h => h.tasks);
+
+  if (!chartAvailable()) {
+    showCanvasFallback('timelineChart');
+    return;
+  }
+
+  const ctx = document.getElementById('timelineChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Completed Tasks',
+        data: taskData,
+        backgroundColor: taskData.map(v => v >= 8 ? '#10B98199' : v >= 4 ? '#06B6D466' : '#06B6D433'),
+        borderColor: '#06B6D4', borderWidth: 1, borderRadius: 3
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend:{display:false} },
+      scales: {
+        x: { grid:{display:false}, ticks:{color:'#64748B',font:{family:'JetBrains Mono',size:8},maxRotation:45} },
+        y: { grid:{color:'rgba(51,65,85,0.3)'}, ticks:{color:'#06B6D4',font:{family:'JetBrains Mono',size:9}, precision:0} }
+      }
+    }
+  });
+}
+
+// ----- 3b. STATS PANEL -----
+function renderStats(d) {
+  const s = d.stats;
+  const panel = document.getElementById('stats-panel');
+  const items = [
+    {label:'Tasks Done', val:s.total_tasks, icon:'✅'},
+    {label:'Knowledge', val:s.total_knowledge, icon:'📚'},
+    {label:'Sessions', val:s.total_sessions, icon:'💬'},
+    {label:'English', val:s.english_sessions, icon:'🇬🇧'},
+    {label:'Comm', val:s.comm_sessions, icon:'🗣️'},
+    {label:'Feedback', val:s.total_feedback, icon:'💡'},
+    {label:'Trace', val:s.total_trace, icon:'🔍'},
+  ];
+  panel.innerHTML = items.map(it => `
+    <div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #1E293B;">
+      <span style="font-size:0.9rem;width:24px;text-align:center;">${it.icon}</span>
+      <span style="flex:1;font-size:0.8rem;color:var(--text-secondary);">${it.label}</span>
+      <span class="font-mono" style="font-size:0.9rem;font-weight:700;color:var(--text-primary);">${it.val}</span>
+    </div>
+  `).join('');
+}
+
+// ----- 4. ACHIEVEMENT WALL -----
+function renderAchievements(d) {
+  const wall = document.getElementById('achievement-wall');
+  let html = '';
+
+  d.achievements.forEach(a => {
+    const t = tierLabel(a.tier);
+    const icon = ACHIEVEMENT_ICONS[a.id] || '🏅';
+    const isHidden = !a.unlocked && a.name === '???';
+
+    if (a.unlocked) {
+      html += `
+        <div class="achievement-card unlocked tier-${a.tier}">
+          <div style="font-size:2rem;margin-bottom:4px;">${icon}</div>
+          <div style="font-size:0.8rem;font-weight:700;margin-bottom:3px;">${a.name}</div>
+          <div style="font-size:0.65rem;color:var(--text-secondary);margin-bottom:6px;">${a.desc}</div>
+          <div class="tier-badge" style="display:inline-block;padding:2px 10px;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:0.6rem;font-weight:700;color:#0F172A;letter-spacing:1px;">${t.label}</div>
+        </div>
+      `;
+    } else {
+      html += `
+        <div class="achievement-card locked">
+          <div style="font-size:2rem;margin-bottom:4px;filter:grayscale(1);">${isHidden ? '🔒' : icon}</div>
+          <div style="font-size:0.8rem;font-weight:700;margin-bottom:3px;color:var(--text-muted);">${isHidden ? '???' : a.name}</div>
+          <div style="font-size:0.65rem;color:var(--text-muted);margin-bottom:6px;">${isHidden ? '???' : a.desc}</div>
+          <div class="font-mono" style="font-size:0.6rem;color:var(--text-muted);border:1px solid #334155;padding:2px 8px;border-radius:10px;">LOCKED</div>
+        </div>
+      `;
+    }
+  });
+
+  wall.innerHTML = html;
+}
+
+// ----- 5. FACTORY VIEW (SPMAT Workflow) -----
+function stars(n) { return '★'.repeat(n) + '☆'.repeat(5-n); }
+
+function renderFactory(d) {
+  const factory = document.getElementById('factory-view');
+  const sub = (key, subkey) => d.skills[key]?.sub?.[subkey] || {actions:0,star:0,xp:0};
+  const pf = d.pipeline_flow || {spmat:0,tc_tbe:0,eng:0,comm:0,other:0};
+
+  const BW = 85, BH = 48, gap = 13;
+  const col = i => 30 + i * (BW + gap);
+  const mainY = 35;
+  const totalH = 340;
+  const SW = 108, sgap = 16;
+  const sCol = i => 50 + i * (SW + sgap);
+
+  const spmat  = sub('G1_technical','spmat');
+  const req    = sub('G1_technical','req');
+  const tbe    = sub('G1_technical','tbe_bm');
+  const vendor = sub('G1_technical','vendor');
+
+  const steps = [
+    {id:'3.1',  label:'Job Req',     jp:'ジョブ要求確認',  color:'#64748B', active:false},
+    {id:'3.2',  label:'Design Spec', jp:'設計仕様書作成',  color:'#8B5CF6', active:spmat.actions>0},
+    {id:'3.3',  label:'SPMAT',       jp:'SPMAT連携',      color:'#F97316', active:pf.spmat>0,    tp:pf.spmat,         star:spmat.star},
+    {id:'3.4',  label:'REQ',         jp:'REQ作成・発行',   color:'#EAB308', active:req.actions>0, tp:req.actions,      star:req.star},
+    {id:'3.5',  label:'TC / TBE',    jp:'見積評価・発注',  color:'#06B6D4', active:pf.tc_tbe>0,  tp:pf.tc_tbe,        star:tbe.star},
+    {id:'3.6',  label:'APO / VP',    jp:'ベンダー図書確認', color:'#3B82F6', active:vendor.actions>0, tp:vendor.actions, star:vendor.star},
+    {id:'3.7',  label:'VQS / VPE',   jp:'ベンダー評価',    color:'#6366F1', active:false},
+    {id:'3.8',  label:'FWI',         jp:'申送り事項',      color:'#64748B', active:false},
+  ];
+
+  let svg = `<svg class="factory-svg" viewBox="0 0 860 ${totalH}">`;
+  svg += `<defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1E293B" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="860" height="${totalH}" fill="url(#grid)" opacity="0.3"/>`;
+
+  svg += `<text x="30" y="22" fill="#94A3B8" font-size="10" font-weight="600" letter-spacing="1">PPDG-1126 配管材料業務 ワークフロー</text>`;
+
+  // Connectors (render first, behind boxes)
+  for (let i = 0; i < steps.length - 1; i++) {
+    const x1 = col(i) + BW, x2 = col(i+1);
+    const cy = mainY + BH / 2;
+    const both = steps[i].active && steps[i+1].active;
+    const cc = both ? steps[i+1].color : '#334155';
+    svg += `<line x1="${x1}" y1="${cy}" x2="${x2}" y2="${cy}" stroke="${cc}" stroke-width="1.5" ${both?'class="flow-active" opacity="0.7"':'opacity="0.35"'}/>`;
+    svg += `<polygon points="${x2},${cy} ${x2-5},${cy-3} ${x2-5},${cy+3}" fill="${cc}" opacity="${both?0.7:0.35}"/>`;
+  }
+
+  // Step boxes
+  steps.forEach((s, i) => {
+    const sx = col(i);
+    const op = s.active ? 1 : 0.45;
+    const fill = s.active ? s.color + '15' : '#1E293B';
+    const sw = s.active ? 2 : 1;
+    svg += `<g class="station-box" opacity="${op}">`;
+    svg += `<rect x="${sx}" y="${mainY}" width="${BW}" height="${BH}" rx="6" fill="${fill}" stroke="${s.color}" stroke-width="${sw}"/>`;
+    if (s.active) svg += `<rect class="station-glow" x="${sx}" y="${mainY}" width="${BW}" height="${BH}" rx="6" fill="${s.color}" opacity="0.06"/>`;
+    svg += `<text x="${sx+4}" y="${mainY-4}" fill="${s.color}" font-size="8" font-weight="700">§${s.id}</text>`;
+    svg += `<text x="${sx+BW/2}" y="${mainY+18}" text-anchor="middle" fill="${s.active?'#F1F5F9':'#94A3B8'}" font-size="10" font-weight="600">${s.label}</text>`;
+    svg += `<text x="${sx+BW/2}" y="${mainY+31}" text-anchor="middle" fill="${s.active?s.color:'#64748B'}" font-size="7.5">${s.jp}</text>`;
+    if (s.star != null && s.star > 0) svg += `<text x="${sx+BW/2}" y="${mainY+43}" text-anchor="middle" fill="${s.color}" font-size="6" opacity="0.7">${stars(s.star)}</text>`;
+    if (s.tp != null && s.tp > 0) {
+      const bx = sx + BW - 20, by = mainY - 8;
+      svg += `<rect x="${bx}" y="${by}" width="22" height="13" rx="6" fill="${s.color}" opacity="0.85"/>`;
+      svg += `<text x="${bx+11}" y="${by+9.5}" text-anchor="middle" fill="#0F172A" font-size="7.5" font-weight="700">${s.tp}</text>`;
+    }
+    svg += `</g>`;
+  });
+
+  // ══════ SECTION 2: SPMAT Team Level-2 Detail ══════
+  const detailTop = mainY + BH + 18;
+  const spA = pf.spmat > 0, rqA = req.actions > 0;
+  const oc = '#F97316', rc = '#EAB308';
+  const sd = d.spmat_detail || {};
+  const sc = id => sd[id] || {monthly:0,pending:0};
+
+  svg += `<rect x="20" y="${detailTop}" width="820" height="168" rx="8" fill="none" stroke="${oc}" stroke-width="1" stroke-dasharray="6 4" opacity="0.25"/>`;
+  svg += `<text x="35" y="${detailTop+14}" fill="${oc}" font-size="9" font-weight="700" letter-spacing="1">SPMAT TEAM WORKFLOW (Level-2)</text>`;
+
+  // ── STEP-3 SPMAT連携 ──
+  const SH2 = 44;
+  const s3y = detailTop + 30;
+  svg += `<text x="35" y="${s3y-3}" fill="${oc}" font-size="7.5" font-weight="600" opacity="0.6">STEP-3 SPMAT連携</text>`;
+  const s3n = [
+    {id:'3-1', l1:'Set SPW Data',   l2:'Error Check'},
+    {id:'3-2', l1:'Set SPMAT Data', l2:'Error Check'},
+    {id:'3-3', l1:'S3D Data Prep',  l2:'Catalogue'},
+  ];
+  for (let i = 0; i < s3n.length - 1; i++) {
+    const x1 = sCol(i)+SW, x2 = sCol(i+1), cy = s3y+SH2/2;
+    svg += `<line x1="${x1}" y1="${cy}" x2="${x2}" y2="${cy}" stroke="${oc}" stroke-width="1.2" ${spA?'class="flow-active" opacity="0.6"':'opacity="0.25"'}/>`;
+    svg += `<polygon points="${x2},${cy} ${x2-4},${cy-2.5} ${x2-4},${cy+2.5}" fill="${oc}" opacity="${spA?0.6:0.25}"/>`;
+  }
+  s3n.forEach((n, i) => {
+    const nx = sCol(i), c = sc(n.id);
+    svg += `<g class="station-box" opacity="${spA?0.9:0.4}">`;
+    svg += `<rect x="${nx}" y="${s3y}" width="${SW}" height="${SH2}" rx="5" fill="${spA?oc+'12':'#1E293B'}" stroke="${oc}" stroke-width="1"/>`;
+    svg += `<text x="${nx+4}" y="${s3y-3}" fill="${oc}" font-size="7" font-weight="700">${n.id}</text>`;
+    svg += `<text x="${nx+SW/2}" y="${s3y+14}" text-anchor="middle" fill="${spA?'#F1F5F9':'#94A3B8'}" font-size="8.5" font-weight="600">${n.l1}</text>`;
+    svg += `<text x="${nx+SW/2}" y="${s3y+26}" text-anchor="middle" fill="${oc}" font-size="7" opacity="0.6">${n.l2}</text>`;
+    svg += `<text x="${nx+SW/2}" y="${s3y+39}" text-anchor="middle" fill="#94A3B8" font-size="7">`;
+    svg += `<tspan fill="#10B981">${c.monthly}</tspan><tspan fill="#64748B"> 完了</tspan>`;
+    if (c.pending > 0) svg += `<tspan fill="#64748B"> / </tspan><tspan fill="#EF4444">${c.pending}</tspan><tspan fill="#64748B"> 未</tspan>`;
+    svg += `</text>`;
+    svg += `</g>`;
+  });
+  [0,1].forEach(i => svg += `<text x="${sCol(i)+SW-8}" y="${s3y-6}" text-anchor="end" fill="#EF4444" font-size="7" opacity="0.7">↺NG</text>`);
+
+  // Branch: 3-7 SEKISAN, 3-8 iCON P-BQ
+  const brX = sCol(2)+SW+30, brW = 100, brH = 28;
+  const br7y = s3y-2, br8y = s3y+SH2-10;
+  svg += `<line x1="${sCol(2)+SW}" y1="${s3y+SH2*0.3}" x2="${brX}" y2="${br7y+brH/2}" stroke="${oc}" stroke-width="1" opacity="0.3"/>`;
+  svg += `<line x1="${sCol(2)+SW}" y1="${s3y+SH2*0.7}" x2="${brX}" y2="${br8y+brH/2}" stroke="${oc}" stroke-width="1" opacity="0.3"/>`;
+  [{id:'3-7',l:'SEKISAN',y:br7y},{id:'3-8',l:'iCON P-BQ',y:br8y}].forEach(b => {
+    const c = sc(b.id);
+    svg += `<g class="station-box" opacity="0.4">`;
+    svg += `<rect x="${brX}" y="${b.y}" width="${brW}" height="${brH}" rx="4" fill="#1E293B" stroke="${oc}" stroke-width="0.8" stroke-dasharray="3 2"/>`;
+    svg += `<text x="${brX+3}" y="${b.y-2}" fill="${oc}" font-size="6.5" font-weight="600">${b.id}</text>`;
+    svg += `<text x="${brX+brW/2}" y="${b.y+12}" text-anchor="middle" fill="#94A3B8" font-size="8">${b.l}</text>`;
+    svg += `<text x="${brX+brW/2}" y="${b.y+23}" text-anchor="middle" fill="#94A3B8" font-size="6.5">`;
+    svg += `<tspan fill="#10B981">${c.monthly}</tspan><tspan fill="#64748B"> 完了</tspan>`;
+    if (c.pending > 0) svg += `<tspan fill="#64748B"> / </tspan><tspan fill="#EF4444">${c.pending}</tspan><tspan fill="#64748B"> 未</tspan>`;
+    svg += `</text>`;
+    svg += `</g>`;
+  });
+
+  // ── Handoff: S3D ADMIN → LE → BOM ──
+  const hoY1 = s3y+SH2+6, hoY2 = hoY1+28, hoX = sCol(1)+SW/2;
+  svg += `<line x1="${hoX}" y1="${hoY1}" x2="${hoX}" y2="${hoY2}" stroke="#475569" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>`;
+  svg += `<polygon points="${hoX},${hoY2} ${hoX-3},${hoY2-5} ${hoX+3},${hoY2-5}" fill="#475569" opacity="0.5"/>`;
+  svg += `<text x="${hoX+8}" y="${hoY1+16}" fill="#64748B" font-size="7" font-style="italic">S3D ADMIN → LE → BOMデータ</text>`;
+
+  // ── STEP-4 REQ作成 ──
+  const s4y = hoY2+8;
+  svg += `<text x="35" y="${s4y-3}" fill="${rc}" font-size="7.5" font-weight="600" opacity="0.6">STEP-4 REQ作成・発行</text>`;
+  const s4n = [
+    {id:'4-7',  l1:'BOM Import',  l2:'繰返しチェック'},
+    {id:'4-8',  l1:'Report作成',   l2:'Status / Line BM'},
+    {id:'4-10', l1:'BMシート作成', l2:'BM Sheet'},
+  ];
+  for (let i = 0; i < s4n.length - 1; i++) {
+    const x1 = sCol(i)+SW, x2 = sCol(i+1), cy = s4y+SH2/2;
+    svg += `<line x1="${x1}" y1="${cy}" x2="${x2}" y2="${cy}" stroke="${rc}" stroke-width="1.2" ${rqA?'class="flow-active" opacity="0.6"':'opacity="0.25"'}/>`;
+    svg += `<polygon points="${x2},${cy} ${x2-4},${cy-2.5} ${x2-4},${cy+2.5}" fill="${rc}" opacity="${rqA?0.6:0.25}"/>`;
+  }
+  svg += `<text x="${sCol(0)+SW-8}" y="${s4y-6}" text-anchor="end" fill="#EF4444" font-size="7" opacity="0.7">↺NG</text>`;
+  s4n.forEach((n, i) => {
+    const nx = sCol(i), c = sc(n.id);
+    svg += `<g class="station-box" opacity="${rqA?0.9:0.4}">`;
+    svg += `<rect x="${nx}" y="${s4y}" width="${SW}" height="${SH2}" rx="5" fill="${rqA?rc+'12':'#1E293B'}" stroke="${rc}" stroke-width="1"/>`;
+    svg += `<text x="${nx+4}" y="${s4y-3}" fill="${rc}" font-size="7" font-weight="700">${n.id}</text>`;
+    svg += `<text x="${nx+SW/2}" y="${s4y+14}" text-anchor="middle" fill="${rqA?'#F1F5F9':'#94A3B8'}" font-size="8.5" font-weight="600">${n.l1}</text>`;
+    svg += `<text x="${nx+SW/2}" y="${s4y+26}" text-anchor="middle" fill="${rc}" font-size="7" opacity="0.6">${n.l2}</text>`;
+    svg += `<text x="${nx+SW/2}" y="${s4y+39}" text-anchor="middle" fill="#94A3B8" font-size="7">`;
+    svg += `<tspan fill="#10B981">${c.monthly}</tspan><tspan fill="#64748B"> 完了</tspan>`;
+    if (c.pending > 0) svg += `<tspan fill="#64748B"> / </tspan><tspan fill="#EF4444">${c.pending}</tspan><tspan fill="#64748B"> 未</tspan>`;
+    svg += `</text>`;
+    svg += `</g>`;
+  });
+  svg += `<text x="${sCol(2)+SW+5}" y="${s4y+SH2/2+3}" fill="#64748B" font-size="7" font-style="italic">→ §3.5 TC/TBE</text>`;
+
+  // ══════ Knowledge Fuel ══════
+  const fuelY = s4y + SH2 + 20;
+  svg += `<line x1="30" y1="${fuelY}" x2="810" y2="${fuelY}" stroke="#10B981" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.3"/>`;
+  svg += `<g class="station-box">
+    <rect x="330" y="${fuelY-16}" width="140" height="32" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="400" y="${fuelY-1}" text-anchor="middle" fill="#10B981" font-size="9" font-weight="600">⛽ Knowledge Fuel</text>
+    <text x="400" y="${fuelY+12}" text-anchor="middle" fill="#F1F5F9" font-size="11" font-weight="700">${d.stats.total_knowledge}</text>
+  </g>`;
+
+  svg += `</svg>`;
+  factory.innerHTML = svg;
+}
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+  loadData();
+});
+</script>
+</body>
+</html>
