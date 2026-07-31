@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31T15:33:19.626311",
+  "updated_at": "2026-07-31T15:38:24.154757",
   "workload": {
     "source_file": "2026-07-31",
     "days": [
@@ -351,6 +351,16 @@
     "waiting_count": 0,
     "daily_actuals": [],
     "completed_today_count": 2,
+    "completed_today_tasks": [
+      {
+        "name": "AXHB501D BMシート修正完了（バルブ発注数量50個→130個。出し直し案件と判明し絶対値130へ手動置換で対応。BM作成・久富翔平さんへ共有済み）[G1:専門性]",
+        "project": "FSI"
+      },
+      {
+        "name": "WMI Batch_20260731 AFC SPMat取込・BOM copy・取込画面スナップショット工事部共有 完了（依頼元: 宮崎朋洋さん）[G1:専門性][G5:コミュニケーション]",
+        "project": "FSI"
+      }
+    ],
     "today_schedule": {
       "date": "2026-07-31",
       "weekday": "金",
