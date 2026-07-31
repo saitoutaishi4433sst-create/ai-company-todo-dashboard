@@ -1,21 +1,16 @@
 {
-  "updated_at": "2026-07-31T14:57:32.171237",
+  "updated_at": "2026-07-31T14:58:41.080050",
   "workload": {
     "source_file": "2026-07-31",
     "days": [
       {
         "date": "2026-07-31",
         "weekday": "金",
-        "task_count": 7,
+        "task_count": 6,
         "meeting_count": 4,
         "tasks": [
           {
             "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]",
-            "project": "FSI",
-            "kind": "task"
-          },
-          {
-            "name": "AXHB501D BMシート修正（バルブ発注数量50個→130個変更。添付: FSI_AXHB501D(3)_292642_R1.pdf。依頼元: 久富翔平さん 07/31 9:59受領）[G1:専門性]",
             "project": "FSI",
             "kind": "task"
           },
@@ -355,7 +350,7 @@
     "waiting": [],
     "waiting_count": 0,
     "daily_actuals": [],
-    "completed_today_count": 1,
+    "completed_today_count": 2,
     "today_schedule": {
       "date": "2026-07-31",
       "weekday": "金",
@@ -425,20 +420,14 @@
         {
           "start": "16:55",
           "end": "17:55",
-          "name": "AXHB501D BMシート修正（バルブ発注数量50個→130個変更。添付: FSI_AXHB501D(3)_292642_R1.pdf。依頼元: 久富翔平さん 07/31 9:59受領）[G1:専門性]",
+          "name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]",
           "project": "FSI",
           "kind": "task",
           "auto_scheduled": true
         }
       ],
-      "unscheduled_tasks": [
-        {
-          "name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]",
-          "project": "FSI",
-          "duration_minutes": 60
-        }
-      ],
-      "task_count": 5,
+      "unscheduled_tasks": [],
+      "task_count": 4,
       "iw_focus_minutes": 0,
       "meeting_count": 4
     },
@@ -512,20 +501,14 @@
           {
             "start": "16:55",
             "end": "17:55",
-            "name": "AXHB501D BMシート修正（バルブ発注数量50個→130個変更。添付: FSI_AXHB501D(3)_292642_R1.pdf。依頼元: 久富翔平さん 07/31 9:59受領）[G1:専門性]",
+            "name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]",
             "project": "FSI",
             "kind": "task",
             "auto_scheduled": true
           }
         ],
-        "unscheduled_tasks": [
-          {
-            "name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]",
-            "project": "FSI",
-            "duration_minutes": 60
-          }
-        ],
-        "task_count": 5,
+        "unscheduled_tasks": [],
+        "task_count": 4,
         "iw_focus_minutes": 0,
         "meeting_count": 4
       },
@@ -865,11 +848,11 @@
       }
     ],
     "summary": {
-      "today_count": 7,
-      "week_remaining": 17,
+      "today_count": 6,
+      "week_remaining": 16,
       "avg_daily": 2.1,
       "busiest_date": "2026-07-31",
-      "busiest_count": 7
+      "busiest_count": 6
     }
   },
   "goal_progress": {
@@ -882,15 +865,15 @@
       {
         "id": "g1",
         "label": "G1 専門性向上",
-        "current": 49,
+        "current": 50,
         "target_monthly": 80,
         "target_weekly": 20,
-        "progress_pct": 61.3,
+        "progress_pct": 62.5,
         "weekly": [
           18,
           11,
           10,
-          10
+          11
         ],
         "on_track": false
       },
@@ -912,15 +895,15 @@
       {
         "id": "total",
         "label": "総タスク完了数",
-        "current": 88,
+        "current": 89,
         "target_monthly": 120,
         "target_weekly": 30,
-        "progress_pct": 73.3,
+        "progress_pct": 74.2,
         "weekly": [
           34,
           19,
           18,
-          17
+          18
         ],
         "on_track": false
       }
@@ -1023,7 +1006,7 @@
     "generated_for_date": "2026-07-31"
   },
   "stats": {
-    "total_tasks": 515,
+    "total_tasks": 516,
     "total_knowledge": 352,
     "knowledge_categories": {
       "architecture": 1,
@@ -1838,8 +1821,8 @@
     },
     {
       "date": "2026-07-31",
-      "total": 515,
-      "spmat": 239,
+      "total": 516,
+      "spmat": 240,
       "tc_tbe": 44,
       "eng": 58,
       "comm": 36,
@@ -2863,7 +2846,7 @@
     },
     {
       "date": "2026-07-31",
-      "tasks": 1
+      "tasks": 2
     }
   ]
 }
