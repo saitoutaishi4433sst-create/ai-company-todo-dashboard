@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31T14:39:20.451374",
+  "updated_at": "2026-07-31T14:40:49.781040",
   "workload": {
     "source_file": "2026-07-31",
     "days": [
@@ -334,13 +334,9 @@
       {
         "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
         "project": "FSI"
-      },
-      {
-        "name": "LexiRaid: 射程幾何とタワーアイコン一致・無人実行ジョブ稼働中（claude-foundry-20260730-110652-647985、テスト/デプロイ完了待ち）[G6:生産性]",
-        "project": "AI Company"
       }
     ],
-    "overdue_count": 3,
+    "overdue_count": 2,
     "undated": [
       {
         "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
@@ -421,15 +417,15 @@
         {
           "start": "15:55",
           "end": "16:55",
-          "name": "LexiRaid: 射程幾何とタワーアイコン一致・無人実行ジョブ稼働中（claude-foundry-20260730-110652-647985、テスト/デプロイ完了待ち）[G6:生産性]",
-          "project": "AI Company",
-          "kind": "overdue",
+          "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]",
+          "project": "FSI",
+          "kind": "task",
           "auto_scheduled": true
         },
         {
           "start": "16:55",
           "end": "17:55",
-          "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]",
+          "name": "AXHB501D BMシート修正（バルブ発注数量50個→130個変更。添付: FSI_AXHB501D(3)_292642_R1.pdf。依頼元: 久富翔平さん 07/31 9:59受領）[G1:専門性]",
           "project": "FSI",
           "kind": "task",
           "auto_scheduled": true
@@ -437,17 +433,12 @@
       ],
       "unscheduled_tasks": [
         {
-          "name": "AXHB501D BMシート修正（バルブ発注数量50個→130個変更。添付: FSI_AXHB501D(3)_292642_R1.pdf。依頼元: 久富翔平さん 07/31 9:59受領）[G1:専門性]",
-          "project": "FSI",
-          "duration_minutes": 60
-        },
-        {
           "name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]",
           "project": "FSI",
           "duration_minutes": 60
         }
       ],
-      "task_count": 6,
+      "task_count": 5,
       "iw_focus_minutes": 0,
       "meeting_count": 4
     },
@@ -513,15 +504,15 @@
           {
             "start": "15:55",
             "end": "16:55",
-            "name": "LexiRaid: 射程幾何とタワーアイコン一致・無人実行ジョブ稼働中（claude-foundry-20260730-110652-647985、テスト/デプロイ完了待ち）[G6:生産性]",
-            "project": "AI Company",
-            "kind": "overdue",
+            "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]",
+            "project": "FSI",
+            "kind": "task",
             "auto_scheduled": true
           },
           {
             "start": "16:55",
             "end": "17:55",
-            "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]",
+            "name": "AXHB501D BMシート修正（バルブ発注数量50個→130個変更。添付: FSI_AXHB501D(3)_292642_R1.pdf。依頼元: 久富翔平さん 07/31 9:59受領）[G1:専門性]",
             "project": "FSI",
             "kind": "task",
             "auto_scheduled": true
@@ -529,17 +520,12 @@
         ],
         "unscheduled_tasks": [
           {
-            "name": "AXHB501D BMシート修正（バルブ発注数量50個→130個変更。添付: FSI_AXHB501D(3)_292642_R1.pdf。依頼元: 久富翔平さん 07/31 9:59受領）[G1:専門性]",
-            "project": "FSI",
-            "duration_minutes": 60
-          },
-          {
             "name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]",
             "project": "FSI",
             "duration_minutes": 60
           }
         ],
-        "task_count": 6,
+        "task_count": 5,
         "iw_focus_minutes": 0,
         "meeting_count": 4
       },
