@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31T14:58:41.080050",
+  "updated_at": "2026-07-31T15:03:38.176852",
   "workload": {
     "source_file": "2026-07-31",
     "days": [
@@ -1021,7 +1021,7 @@
     },
     "total_trace": 2,
     "trace_max_depth": 5,
-    "total_feedback": 50,
+    "total_feedback": 51,
     "total_sessions": 102,
     "english_sessions": 5,
     "comm_sessions": 17
@@ -2456,10 +2456,10 @@
     },
     {
       "date": "2026-07-27",
-      "total": 347,
+      "total": 346,
       "architecture": 1,
       "inbox": 6,
-      "procedures": 82,
+      "procedures": 81,
       "projects": 39,
       "reports": 3,
       "specs": 130,
@@ -2468,10 +2468,10 @@
     },
     {
       "date": "2026-07-30",
-      "total": 351,
+      "total": 350,
       "architecture": 1,
       "inbox": 6,
-      "procedures": 86,
+      "procedures": 85,
       "projects": 39,
       "reports": 3,
       "specs": 130,
