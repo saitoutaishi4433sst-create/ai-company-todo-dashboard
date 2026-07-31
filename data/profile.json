@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31T15:38:24.154757",
+  "updated_at": "2026-07-31T15:49:38.059902",
   "workload": {
     "source_file": "2026-07-31",
     "days": [
@@ -2430,62 +2430,62 @@
     },
     {
       "date": "2026-07-22",
-      "total": 342,
+      "total": 341,
       "architecture": 1,
       "inbox": 6,
       "procedures": 81,
       "projects": 39,
       "reports": 3,
       "specs": 126,
-      "tools": 59,
+      "tools": 58,
       "troubleshooting": 27
     },
     {
       "date": "2026-07-23",
-      "total": 344,
+      "total": 343,
       "architecture": 1,
       "inbox": 6,
       "procedures": 81,
       "projects": 39,
       "reports": 3,
       "specs": 128,
-      "tools": 59,
+      "tools": 58,
       "troubleshooting": 27
     },
     {
       "date": "2026-07-24",
-      "total": 345,
+      "total": 344,
       "architecture": 1,
       "inbox": 6,
       "procedures": 81,
       "projects": 39,
       "reports": 3,
       "specs": 129,
-      "tools": 59,
+      "tools": 58,
       "troubleshooting": 27
     },
     {
       "date": "2026-07-27",
-      "total": 346,
+      "total": 345,
       "architecture": 1,
       "inbox": 6,
       "procedures": 81,
       "projects": 39,
       "reports": 3,
       "specs": 130,
-      "tools": 59,
+      "tools": 58,
       "troubleshooting": 27
     },
     {
       "date": "2026-07-30",
-      "total": 350,
+      "total": 349,
       "architecture": 1,
       "inbox": 6,
       "procedures": 85,
       "projects": 39,
       "reports": 3,
       "specs": 130,
-      "tools": 59,
+      "tools": 58,
       "troubleshooting": 27
     },
     {
