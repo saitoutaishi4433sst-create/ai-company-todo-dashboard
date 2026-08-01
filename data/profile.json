@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-01T23:03:01.460415",
+  "updated_at": "2026-08-01T23:03:04.730697",
   "workload": {
     "source_file": "2026-08-01",
     "days": [
@@ -29,16 +29,9 @@
       {
         "date": "2026-08-04",
         "weekday": "火",
-        "task_count": 2,
-        "meeting_count": 2,
+        "task_count": 1,
+        "meeting_count": 1,
         "tasks": [
-          {
-            "start": "11:00",
-            "end": "11:50",
-            "name": "PEP2: PIP REQ, TBE & VP status update",
-            "project": "FSI",
-            "kind": "meeting"
-          },
           {
             "start": "17:15",
             "end": "17:25",
@@ -52,9 +45,16 @@
       {
         "date": "2026-08-05",
         "weekday": "水",
-        "task_count": 4,
-        "meeting_count": 4,
+        "task_count": 5,
+        "meeting_count": 5,
         "tasks": [
+          {
+            "start": "10:30",
+            "end": "11:30",
+            "name": "[Changed to 5-Aug, Wed 10:30]PEP2: PIP REQ, TBE & VP status update",
+            "project": "FSI",
+            "kind": "meeting"
+          },
           {
             "start": "14:00",
             "end": "14:55",
@@ -540,10 +540,11 @@
           },
           {
             "start": "11:00",
-            "end": "11:50",
-            "name": "PEP2: PIP REQ, TBE & VP status update",
-            "project": "FSI",
-            "kind": "meeting"
+            "end": "12:00",
+            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
           },
           {
             "start": "13:00",
@@ -587,8 +588,8 @@
         ],
         "unscheduled_tasks": [],
         "task_count": 0,
-        "iw_focus_minutes": 360,
-        "meeting_count": 2
+        "iw_focus_minutes": 420,
+        "meeting_count": 1
       },
       {
         "date": "2026-08-05",
@@ -613,20 +614,11 @@
             "auto_scheduled": true
           },
           {
-            "start": "10:00",
-            "end": "11:00",
-            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
-            "auto_scheduled": true
-          },
-          {
-            "start": "11:00",
-            "end": "12:00",
-            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
-            "auto_scheduled": true
+            "start": "10:30",
+            "end": "11:30",
+            "name": "[Changed to 5-Aug, Wed 10:30]PEP2: PIP REQ, TBE & VP status update",
+            "project": "FSI",
+            "kind": "meeting"
           },
           {
             "start": "13:00",
@@ -675,8 +667,8 @@
         ],
         "unscheduled_tasks": [],
         "task_count": 0,
-        "iw_focus_minutes": 300,
-        "meeting_count": 4
+        "iw_focus_minutes": 180,
+        "meeting_count": 5
       },
       {
         "date": "2026-08-06",
@@ -846,7 +838,7 @@
       "week_remaining": 14,
       "avg_daily": 1.9,
       "busiest_date": "2026-08-05",
-      "busiest_count": 4
+      "busiest_count": 5
     }
   },
   "goal_progress": {
