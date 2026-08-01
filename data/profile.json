@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-01T22:52:53.221527",
+  "updated_at": "2026-08-01T22:54:16.720945",
   "workload": {
     "source_file": "2026-08-01",
     "days": [
@@ -889,12 +889,12 @@
       {
         "id": "total",
         "label": "総タスク完了数",
-        "current": 0,
+        "current": 2,
         "target_monthly": 120,
         "target_weekly": 30,
-        "progress_pct": 0.0,
+        "progress_pct": 1.7,
         "weekly": [
-          0,
+          2,
           0,
           0,
           0
@@ -1000,7 +1000,7 @@
     "generated_for_date": "2026-08-01"
   },
   "stats": {
-    "total_tasks": 516,
+    "total_tasks": 518,
     "total_knowledge": 352,
     "knowledge_categories": {
       "architecture": 1,
@@ -1821,6 +1821,15 @@
       "eng": 58,
       "comm": 36,
       "other": 138
+    },
+    {
+      "date": "2026-08-01",
+      "total": 518,
+      "spmat": 240,
+      "tc_tbe": 44,
+      "eng": 58,
+      "comm": 36,
+      "other": 140
     }
   ],
   "knowledge_history": [
@@ -2840,6 +2849,10 @@
     },
     {
       "date": "2026-07-31",
+      "tasks": 2
+    },
+    {
+      "date": "2026-08-01",
       "tasks": 2
     }
   ]
