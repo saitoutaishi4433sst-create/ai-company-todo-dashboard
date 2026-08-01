@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-01T22:46:55.373612",
+  "updated_at": "2026-08-01T22:47:39.255341",
   "workload": {
     "source_file": "2026-08-01",
     "days": [
@@ -248,9 +248,32 @@
       {
         "date": "2026-08-14",
         "weekday": "金",
-        "is_today": false,
-        "task_count": 0,
-        "tasks": []
+        "task_count": 3,
+        "meeting_count": 3,
+        "tasks": [
+          {
+            "start": "11:30",
+            "end": "12:00",
+            "name": "weekly report",
+            "project": "-",
+            "kind": "meeting"
+          },
+          {
+            "start": "14:00",
+            "end": "15:00",
+            "name": "SUPER USER TRAINING",
+            "project": "-",
+            "kind": "meeting"
+          },
+          {
+            "start": "17:15",
+            "end": "17:25",
+            "name": "SPMAT Dairy meeting 17:15-",
+            "project": "FSI",
+            "kind": "meeting"
+          }
+        ],
+        "is_today": false
       },
       {
         "date": "2026-08-17",
@@ -281,8 +304,25 @@
         "tasks": []
       }
     ],
-    "overdue": [],
-    "overdue_count": 0,
+    "overdue": [
+      {
+        "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]",
+        "project": "FSI"
+      },
+      {
+        "name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]",
+        "project": "FSI"
+      },
+      {
+        "name": "2ST14: Flange 25A・40AをSPMAT登録（S.50.06 Spec Filter追加・Ident Build。REQ発行状況を事前確認）[G1:専門性]",
+        "project": "FSI"
+      },
+      {
+        "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
+        "project": "FSI"
+      }
+    ],
+    "overdue_count": 4,
     "undated": [
       {
         "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
@@ -804,7 +844,7 @@
     "summary": {
       "today_count": 0,
       "week_remaining": 14,
-      "avg_daily": 1.6,
+      "avg_daily": 1.9,
       "busiest_date": "2026-08-05",
       "busiest_count": 4
     }
