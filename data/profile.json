@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-08-01T23:23:49.810066",
+  "updated_at": "2026-08-02T08:52:42.392352",
   "workload": {
-    "source_file": "2026-08-01",
+    "source_file": "2026-08-02",
     "days": [
       {
         "date": "2026-08-03",
@@ -320,9 +320,13 @@
       {
         "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
         "project": "FSI"
+      },
+      {
+        "name": "Special Bolt & Nut登録（添付\"SBS\"シート＝【For 3D Catalog】FSI_Piping specialty list.xlsxのA列=2でソートした22アイテムを登録。A列検討中のReducing Flange・メタルフレキ2件は岡本さんより月曜回答待ち。依頼元: 岡本奈々さん 07/31 18:07受領、CC:宮崎朋洋さん・山口陽平さん）[G1:専門性]",
+        "project": "FSI"
       }
     ],
-    "overdue_count": 4,
+    "overdue_count": 5,
     "undated": [
       {
         "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
@@ -989,7 +993,7 @@
     "last_recorded_date": "2026-07-24",
     "today_target_pages": 51,
     "gap_pages": -20,
-    "generated_for_date": "2026-08-01"
+    "generated_for_date": "2026-08-02"
   },
   "stats": {
     "total_tasks": 518,
