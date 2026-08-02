@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-08-02T12:06:12.868870",
+  "updated_at": "2026-08-03T08:28:10.636425",
   "workload": {
-    "source_file": "2026-08-02",
+    "source_file": "2026-08-03",
     "days": [
       {
         "date": "2026-08-03",
@@ -24,7 +24,7 @@
             "kind": "meeting"
           }
         ],
-        "is_today": false
+        "is_today": true
       },
       {
         "date": "2026-08-04",
@@ -304,29 +304,8 @@
         "tasks": []
       }
     ],
-    "overdue": [
-      {
-        "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]",
-        "project": "FSI"
-      },
-      {
-        "name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]",
-        "project": "FSI"
-      },
-      {
-        "name": "2ST14: Flange 25A・40AをSPMAT登録（S.50.06 Spec Filter追加・Ident Build。REQ発行状況を事前確認）[G1:専門性]",
-        "project": "FSI"
-      },
-      {
-        "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
-        "project": "FSI"
-      },
-      {
-        "name": "Special Bolt & Nut登録（添付\"SBS\"シート＝【For 3D Catalog】FSI_Piping specialty list.xlsxのA列=2でソートした22アイテムを登録。A列検討中のReducing Flange・メタルフレキ2件は岡本さんより月曜回答待ち。依頼元: 岡本奈々さん 07/31 18:07受領、CC:宮崎朋洋さん・山口陽平さん）[G1:専門性]",
-        "project": "FSI"
-      }
-    ],
-    "overdue_count": 5,
+    "overdue": [],
+    "overdue_count": 0,
     "undated": [
       {
         "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
@@ -351,7 +330,7 @@
       "date": "2026-08-03",
       "weekday": "月",
       "is_workday": true,
-      "source_file": "2026-08-03.md",
+      "source_file": "2026-08-03_Today.md",
       "calendar_source": "daily_todo",
       "work_hours": {
         "start": "09:00",
@@ -434,7 +413,7 @@
         "date": "2026-08-03",
         "weekday": "月",
         "is_workday": true,
-        "source_file": "2026-08-03.md",
+        "source_file": "2026-08-03_Today.md",
         "calendar_source": "daily_todo",
         "work_hours": {
           "start": "09:00",
@@ -838,7 +817,7 @@
       }
     ],
     "summary": {
-      "today_count": 0,
+      "today_count": 2,
       "week_remaining": 14,
       "avg_daily": 1.9,
       "busiest_date": "2026-08-05",
@@ -847,7 +826,7 @@
   },
   "goal_progress": {
     "period": "2026-08",
-    "days_elapsed": 0,
+    "days_elapsed": 1,
     "days_total": 21,
     "week_current": 1,
     "weeks_total": 4,
@@ -865,7 +844,7 @@
           0,
           0
         ],
-        "on_track": true
+        "on_track": false
       },
       {
         "id": "g5",
@@ -880,7 +859,7 @@
           0,
           0
         ],
-        "on_track": true
+        "on_track": false
       },
       {
         "id": "total",
@@ -895,7 +874,7 @@
           0,
           0
         ],
-        "on_track": true
+        "on_track": false
       }
     ],
     "season": {
@@ -987,13 +966,17 @@
       {
         "date": "2026-08-14",
         "target_pages": 151
+      },
+      {
+        "date": "2026-08-17",
+        "target_pages": 161
       }
     ],
     "current_pages": 31,
     "last_recorded_date": "2026-07-24",
-    "today_target_pages": 51,
-    "gap_pages": -20,
-    "generated_for_date": "2026-08-02"
+    "today_target_pages": 61,
+    "gap_pages": -30,
+    "generated_for_date": "2026-08-03"
   },
   "stats": {
     "total_tasks": 518,
