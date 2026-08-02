@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03T08:55:14.336645",
+  "updated_at": "2026-08-03T08:58:36.732725",
   "workload": {
     "source_file": "2026-08-03",
     "days": [
@@ -1001,7 +1001,7 @@
   },
   "stats": {
     "total_tasks": 518,
-    "total_knowledge": 352,
+    "total_knowledge": 353,
     "knowledge_categories": {
       "architecture": 1,
       "inbox": 6,
@@ -1010,7 +1010,7 @@
       "reports": 3,
       "specs": 130,
       "tools": 60,
-      "troubleshooting": 27,
+      "troubleshooting": 28,
       "_archive": 853
     },
     "total_trace": 2,
@@ -2015,7 +2015,7 @@
     },
     {
       "date": "2026-05-14",
-      "total": 230,
+      "total": 229,
       "architecture": 0,
       "inbox": 5,
       "procedures": 49,
@@ -2023,11 +2023,11 @@
       "reports": 0,
       "specs": 113,
       "tools": 22,
-      "troubleshooting": 17
+      "troubleshooting": 16
     },
     {
       "date": "2026-05-15",
-      "total": 232,
+      "total": 231,
       "architecture": 0,
       "inbox": 5,
       "procedures": 50,
@@ -2035,142 +2035,154 @@
       "reports": 0,
       "specs": 113,
       "tools": 23,
-      "troubleshooting": 17
+      "troubleshooting": 16
     },
     {
       "date": "2026-05-18",
-      "total": 243,
+      "total": 241,
       "architecture": 0,
       "inbox": 5,
       "procedures": 53,
       "projects": 27,
       "reports": 0,
       "specs": 114,
-      "tools": 25,
-      "troubleshooting": 19
+      "tools": 24,
+      "troubleshooting": 18
     },
     {
       "date": "2026-05-19",
-      "total": 254,
+      "total": 252,
       "architecture": 1,
       "inbox": 5,
       "procedures": 54,
       "projects": 29,
       "reports": 0,
       "specs": 114,
-      "tools": 32,
-      "troubleshooting": 19
+      "tools": 31,
+      "troubleshooting": 18
     },
     {
       "date": "2026-05-20",
-      "total": 256,
+      "total": 254,
       "architecture": 1,
       "inbox": 5,
       "procedures": 55,
       "projects": 30,
       "reports": 0,
       "specs": 114,
-      "tools": 32,
-      "troubleshooting": 19
+      "tools": 31,
+      "troubleshooting": 18
     },
     {
       "date": "2026-05-21",
-      "total": 263,
+      "total": 261,
       "architecture": 1,
       "inbox": 5,
       "procedures": 58,
       "projects": 32,
       "reports": 0,
       "specs": 114,
-      "tools": 34,
-      "troubleshooting": 19
+      "tools": 33,
+      "troubleshooting": 18
     },
     {
       "date": "2026-05-22",
-      "total": 264,
+      "total": 262,
       "architecture": 1,
       "inbox": 6,
       "procedures": 58,
       "projects": 32,
       "reports": 0,
       "specs": 114,
-      "tools": 34,
-      "troubleshooting": 19
+      "tools": 33,
+      "troubleshooting": 18
     },
     {
       "date": "2026-05-24",
-      "total": 266,
+      "total": 264,
       "architecture": 1,
       "inbox": 6,
       "procedures": 59,
       "projects": 32,
       "reports": 0,
       "specs": 115,
-      "tools": 34,
-      "troubleshooting": 19
+      "tools": 33,
+      "troubleshooting": 18
     },
     {
       "date": "2026-05-26",
-      "total": 270,
+      "total": 268,
       "architecture": 1,
       "inbox": 6,
       "procedures": 59,
       "projects": 33,
       "reports": 0,
       "specs": 117,
-      "tools": 35,
-      "troubleshooting": 19
+      "tools": 34,
+      "troubleshooting": 18
     },
     {
       "date": "2026-05-27",
-      "total": 274,
+      "total": 272,
       "architecture": 1,
       "inbox": 6,
       "procedures": 59,
       "projects": 35,
       "reports": 0,
       "specs": 117,
-      "tools": 36,
-      "troubleshooting": 20
+      "tools": 35,
+      "troubleshooting": 19
     },
     {
       "date": "2026-05-28",
-      "total": 281,
+      "total": 279,
       "architecture": 1,
       "inbox": 6,
       "procedures": 62,
       "projects": 37,
       "reports": 0,
       "specs": 119,
-      "tools": 36,
-      "troubleshooting": 20
+      "tools": 35,
+      "troubleshooting": 19
     },
     {
       "date": "2026-05-29",
-      "total": 283,
+      "total": 281,
       "architecture": 1,
       "inbox": 6,
       "procedures": 62,
       "projects": 37,
       "reports": 0,
       "specs": 120,
-      "tools": 37,
-      "troubleshooting": 20
+      "tools": 36,
+      "troubleshooting": 19
     },
     {
       "date": "2026-06-01",
-      "total": 286,
+      "total": 284,
       "architecture": 1,
       "inbox": 6,
       "procedures": 63,
       "projects": 37,
       "reports": 0,
       "specs": 122,
-      "tools": 37,
-      "troubleshooting": 20
+      "tools": 36,
+      "troubleshooting": 19
     },
     {
       "date": "2026-06-02",
+      "total": 289,
+      "architecture": 1,
+      "inbox": 6,
+      "procedures": 65,
+      "projects": 37,
+      "reports": 0,
+      "specs": 122,
+      "tools": 38,
+      "troubleshooting": 20
+    },
+    {
+      "date": "2026-06-04",
       "total": 291,
       "architecture": 1,
       "inbox": 6,
@@ -2182,11 +2194,23 @@
       "troubleshooting": 21
     },
     {
-      "date": "2026-06-04",
-      "total": 293,
+      "date": "2026-06-08",
+      "total": 292,
       "architecture": 1,
       "inbox": 6,
       "procedures": 65,
+      "projects": 37,
+      "reports": 0,
+      "specs": 122,
+      "tools": 39,
+      "troubleshooting": 22
+    },
+    {
+      "date": "2026-06-09",
+      "total": 294,
+      "architecture": 1,
+      "inbox": 6,
+      "procedures": 66,
       "projects": 37,
       "reports": 0,
       "specs": 122,
@@ -2194,20 +2218,8 @@
       "troubleshooting": 22
     },
     {
-      "date": "2026-06-08",
-      "total": 294,
-      "architecture": 1,
-      "inbox": 6,
-      "procedures": 65,
-      "projects": 37,
-      "reports": 0,
-      "specs": 122,
-      "tools": 40,
-      "troubleshooting": 23
-    },
-    {
-      "date": "2026-06-09",
-      "total": 296,
+      "date": "2026-06-10",
+      "total": 295,
       "architecture": 1,
       "inbox": 6,
       "procedures": 66,
@@ -2215,38 +2227,38 @@
       "reports": 0,
       "specs": 122,
       "tools": 41,
-      "troubleshooting": 23
-    },
-    {
-      "date": "2026-06-10",
-      "total": 297,
-      "architecture": 1,
-      "inbox": 6,
-      "procedures": 66,
-      "projects": 37,
-      "reports": 0,
-      "specs": 122,
-      "tools": 42,
-      "troubleshooting": 23
+      "troubleshooting": 22
     },
     {
       "date": "2026-06-11",
-      "total": 298,
+      "total": 296,
       "architecture": 1,
       "inbox": 6,
       "procedures": 67,
       "projects": 37,
       "reports": 0,
       "specs": 122,
-      "tools": 42,
-      "troubleshooting": 23
+      "tools": 41,
+      "troubleshooting": 22
     },
     {
       "date": "2026-06-22",
-      "total": 300,
+      "total": 298,
       "architecture": 1,
       "inbox": 6,
       "procedures": 68,
+      "projects": 37,
+      "reports": 0,
+      "specs": 122,
+      "tools": 42,
+      "troubleshooting": 22
+    },
+    {
+      "date": "2026-06-23",
+      "total": 301,
+      "architecture": 1,
+      "inbox": 6,
+      "procedures": 69,
       "projects": 37,
       "reports": 0,
       "specs": 122,
@@ -2254,80 +2266,80 @@
       "troubleshooting": 23
     },
     {
-      "date": "2026-06-23",
-      "total": 303,
-      "architecture": 1,
-      "inbox": 6,
-      "procedures": 69,
-      "projects": 37,
-      "reports": 0,
-      "specs": 122,
-      "tools": 44,
-      "troubleshooting": 24
-    },
-    {
       "date": "2026-06-25",
-      "total": 309,
+      "total": 307,
       "architecture": 1,
       "inbox": 6,
       "procedures": 71,
       "projects": 37,
       "reports": 1,
       "specs": 122,
-      "tools": 47,
-      "troubleshooting": 24
+      "tools": 46,
+      "troubleshooting": 23
     },
     {
       "date": "2026-06-27",
-      "total": 310,
+      "total": 308,
       "architecture": 1,
       "inbox": 6,
       "procedures": 72,
       "projects": 37,
       "reports": 1,
       "specs": 122,
-      "tools": 47,
-      "troubleshooting": 24
+      "tools": 46,
+      "troubleshooting": 23
     },
     {
       "date": "2026-06-29",
-      "total": 313,
+      "total": 311,
       "architecture": 1,
       "inbox": 6,
       "procedures": 74,
       "projects": 37,
       "reports": 1,
       "specs": 123,
-      "tools": 47,
-      "troubleshooting": 24
+      "tools": 46,
+      "troubleshooting": 23
     },
     {
       "date": "2026-06-30",
-      "total": 317,
+      "total": 315,
       "architecture": 1,
       "inbox": 6,
       "procedures": 76,
       "projects": 37,
       "reports": 1,
       "specs": 124,
-      "tools": 48,
-      "troubleshooting": 24
+      "tools": 47,
+      "troubleshooting": 23
     },
     {
       "date": "2026-07-02",
-      "total": 322,
+      "total": 320,
       "architecture": 1,
       "inbox": 6,
       "procedures": 78,
       "projects": 37,
       "reports": 3,
       "specs": 125,
-      "tools": 48,
-      "troubleshooting": 24
+      "tools": 47,
+      "troubleshooting": 23
     },
     {
       "date": "2026-07-07",
-      "total": 324,
+      "total": 322,
+      "architecture": 1,
+      "inbox": 6,
+      "procedures": 79,
+      "projects": 37,
+      "reports": 3,
+      "specs": 125,
+      "tools": 48,
+      "troubleshooting": 23
+    },
+    {
+      "date": "2026-07-09",
+      "total": 323,
       "architecture": 1,
       "inbox": 6,
       "procedures": 79,
@@ -2335,22 +2347,22 @@
       "reports": 3,
       "specs": 125,
       "tools": 49,
-      "troubleshooting": 24
-    },
-    {
-      "date": "2026-07-09",
-      "total": 325,
-      "architecture": 1,
-      "inbox": 6,
-      "procedures": 79,
-      "projects": 37,
-      "reports": 3,
-      "specs": 125,
-      "tools": 50,
-      "troubleshooting": 24
+      "troubleshooting": 23
     },
     {
       "date": "2026-07-10",
+      "total": 329,
+      "architecture": 1,
+      "inbox": 6,
+      "procedures": 81,
+      "projects": 39,
+      "reports": 3,
+      "specs": 126,
+      "tools": 50,
+      "troubleshooting": 23
+    },
+    {
+      "date": "2026-07-13",
       "total": 331,
       "architecture": 1,
       "inbox": 6,
@@ -2358,12 +2370,12 @@
       "projects": 39,
       "reports": 3,
       "specs": 126,
-      "tools": 51,
-      "troubleshooting": 24
+      "tools": 52,
+      "troubleshooting": 23
     },
     {
-      "date": "2026-07-13",
-      "total": 333,
+      "date": "2026-07-15",
+      "total": 332,
       "architecture": 1,
       "inbox": 6,
       "procedures": 81,
@@ -2371,10 +2383,10 @@
       "reports": 3,
       "specs": 126,
       "tools": 53,
-      "troubleshooting": 24
+      "troubleshooting": 23
     },
     {
-      "date": "2026-07-15",
+      "date": "2026-07-17",
       "total": 334,
       "architecture": 1,
       "inbox": 6,
@@ -2386,7 +2398,19 @@
       "troubleshooting": 24
     },
     {
-      "date": "2026-07-17",
+      "date": "2026-07-18",
+      "total": 335,
+      "architecture": 1,
+      "inbox": 6,
+      "procedures": 81,
+      "projects": 39,
+      "reports": 3,
+      "specs": 126,
+      "tools": 55,
+      "troubleshooting": 24
+    },
+    {
+      "date": "2026-07-21",
       "total": 336,
       "architecture": 1,
       "inbox": 6,
@@ -2398,92 +2422,80 @@
       "troubleshooting": 25
     },
     {
-      "date": "2026-07-18",
-      "total": 337,
+      "date": "2026-07-22",
+      "total": 339,
       "architecture": 1,
       "inbox": 6,
       "procedures": 81,
       "projects": 39,
       "reports": 3,
       "specs": 126,
-      "tools": 56,
-      "troubleshooting": 25
-    },
-    {
-      "date": "2026-07-21",
-      "total": 338,
-      "architecture": 1,
-      "inbox": 6,
-      "procedures": 81,
-      "projects": 39,
-      "reports": 3,
-      "specs": 126,
-      "tools": 56,
+      "tools": 57,
       "troubleshooting": 26
     },
     {
-      "date": "2026-07-22",
+      "date": "2026-07-23",
       "total": 341,
       "architecture": 1,
       "inbox": 6,
       "procedures": 81,
       "projects": 39,
       "reports": 3,
-      "specs": 126,
-      "tools": 58,
-      "troubleshooting": 27
-    },
-    {
-      "date": "2026-07-23",
-      "total": 343,
-      "architecture": 1,
-      "inbox": 6,
-      "procedures": 81,
-      "projects": 39,
-      "reports": 3,
       "specs": 128,
-      "tools": 58,
-      "troubleshooting": 27
+      "tools": 57,
+      "troubleshooting": 26
     },
     {
       "date": "2026-07-24",
-      "total": 344,
+      "total": 342,
       "architecture": 1,
       "inbox": 6,
       "procedures": 81,
       "projects": 39,
       "reports": 3,
       "specs": 129,
-      "tools": 58,
-      "troubleshooting": 27
+      "tools": 57,
+      "troubleshooting": 26
     },
     {
       "date": "2026-07-27",
-      "total": 345,
+      "total": 343,
       "architecture": 1,
       "inbox": 6,
       "procedures": 81,
       "projects": 39,
       "reports": 3,
       "specs": 130,
-      "tools": 58,
-      "troubleshooting": 27
+      "tools": 57,
+      "troubleshooting": 26
     },
     {
       "date": "2026-07-30",
-      "total": 349,
+      "total": 347,
       "architecture": 1,
       "inbox": 6,
       "procedures": 85,
       "projects": 39,
       "reports": 3,
       "specs": 130,
-      "tools": 58,
-      "troubleshooting": 27
+      "tools": 57,
+      "troubleshooting": 26
     },
     {
       "date": "2026-07-31",
-      "total": 352,
+      "total": 350,
+      "architecture": 1,
+      "inbox": 6,
+      "procedures": 86,
+      "projects": 39,
+      "reports": 3,
+      "specs": 130,
+      "tools": 59,
+      "troubleshooting": 26
+    },
+    {
+      "date": "2026-08-03",
+      "total": 353,
       "architecture": 1,
       "inbox": 6,
       "procedures": 86,
@@ -2491,7 +2503,7 @@
       "reports": 3,
       "specs": 130,
       "tools": 60,
-      "troubleshooting": 27
+      "troubleshooting": 28
     }
   ],
   "history": [
