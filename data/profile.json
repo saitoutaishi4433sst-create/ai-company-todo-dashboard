@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03T08:28:18.355647",
+  "updated_at": "2026-08-03T08:28:41.885133",
   "workload": {
     "source_file": "2026-08-03",
     "days": [
@@ -304,8 +304,29 @@
         "tasks": []
       }
     ],
-    "overdue": [],
-    "overdue_count": 0,
+    "overdue": [
+      {
+        "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]",
+        "project": "FSI"
+      },
+      {
+        "name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]",
+        "project": "FSI"
+      },
+      {
+        "name": "2ST14: Flange 25A・40AをSPMAT登録（S.50.06 Spec Filter追加・Ident Build。REQ発行状況を事前確認）[G1:専門性]",
+        "project": "FSI"
+      },
+      {
+        "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
+        "project": "FSI"
+      },
+      {
+        "name": "Special Bolt & Nut登録（添付\"SBS\"シート＝【For 3D Catalog】FSI_Piping specialty list.xlsxのA列=2でソートした22アイテムを登録。A列検討中のReducing Flange・メタルフレキ2件は岡本さんより月曜回答待ち。依頼元: 岡本奈々さん 07/31 18:07受領、CC:宮崎朋洋さん・山口陽平さん）[G1:専門性]",
+        "project": "FSI"
+      }
+    ],
+    "overdue_count": 5,
     "undated": [
       {
         "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
@@ -343,9 +364,9 @@
         {
           "start": "09:00",
           "end": "10:00",
-          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-          "project": "IW",
-          "kind": "iw_focus",
+          "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]",
+          "project": "FSI",
+          "kind": "overdue",
           "auto_scheduled": true
         },
         {
@@ -358,33 +379,33 @@
         {
           "start": "10:55",
           "end": "11:55",
-          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-          "project": "IW",
-          "kind": "iw_focus",
+          "name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]",
+          "project": "FSI",
+          "kind": "overdue",
           "auto_scheduled": true
         },
         {
           "start": "13:00",
           "end": "14:00",
-          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-          "project": "IW",
-          "kind": "iw_focus",
+          "name": "2ST14: Flange 25A・40AをSPMAT登録（S.50.06 Spec Filter追加・Ident Build。REQ発行状況を事前確認）[G1:専門性]",
+          "project": "FSI",
+          "kind": "overdue",
           "auto_scheduled": true
         },
         {
           "start": "14:00",
           "end": "15:00",
-          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-          "project": "IW",
-          "kind": "iw_focus",
+          "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
+          "project": "FSI",
+          "kind": "overdue",
           "auto_scheduled": true
         },
         {
           "start": "15:00",
           "end": "16:00",
-          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-          "project": "IW",
-          "kind": "iw_focus",
+          "name": "Special Bolt & Nut登録（添付\"SBS\"シート＝【For 3D Catalog】FSI_Piping specialty list.xlsxのA列=2でソートした22アイテムを登録。A列検討中のReducing Flange・メタルフレキ2件は岡本さんより月曜回答待ち。依頼元: 岡本奈々さん 07/31 18:07受領、CC:宮崎朋洋さん・山口陽平さん）[G1:専門性]",
+          "project": "FSI",
+          "kind": "overdue",
           "auto_scheduled": true
         },
         {
@@ -404,8 +425,8 @@
         }
       ],
       "unscheduled_tasks": [],
-      "task_count": 0,
-      "iw_focus_minutes": 360,
+      "task_count": 5,
+      "iw_focus_minutes": 60,
       "meeting_count": 2
     },
     "week_schedules": [
@@ -426,9 +447,9 @@
           {
             "start": "09:00",
             "end": "10:00",
-            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
+            "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]",
+            "project": "FSI",
+            "kind": "overdue",
             "auto_scheduled": true
           },
           {
@@ -441,33 +462,33 @@
           {
             "start": "10:55",
             "end": "11:55",
-            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
+            "name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]",
+            "project": "FSI",
+            "kind": "overdue",
             "auto_scheduled": true
           },
           {
             "start": "13:00",
             "end": "14:00",
-            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
+            "name": "2ST14: Flange 25A・40AをSPMAT登録（S.50.06 Spec Filter追加・Ident Build。REQ発行状況を事前確認）[G1:専門性]",
+            "project": "FSI",
+            "kind": "overdue",
             "auto_scheduled": true
           },
           {
             "start": "14:00",
             "end": "15:00",
-            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
+            "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
+            "project": "FSI",
+            "kind": "overdue",
             "auto_scheduled": true
           },
           {
             "start": "15:00",
             "end": "16:00",
-            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
+            "name": "Special Bolt & Nut登録（添付\"SBS\"シート＝【For 3D Catalog】FSI_Piping specialty list.xlsxのA列=2でソートした22アイテムを登録。A列検討中のReducing Flange・メタルフレキ2件は岡本さんより月曜回答待ち。依頼元: 岡本奈々さん 07/31 18:07受領、CC:宮崎朋洋さん・山口陽平さん）[G1:専門性]",
+            "project": "FSI",
+            "kind": "overdue",
             "auto_scheduled": true
           },
           {
@@ -487,8 +508,8 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 0,
-        "iw_focus_minutes": 360,
+        "task_count": 5,
+        "iw_focus_minutes": 60,
         "meeting_count": 2
       },
       {
