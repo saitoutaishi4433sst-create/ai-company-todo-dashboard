@@ -1,21 +1,14 @@
 {
-  "updated_at": "2026-08-03T16:39:01.934256",
+  "updated_at": "2026-08-03T16:43:45.060679",
   "workload": {
     "source_file": "2026-08-03",
     "days": [
       {
         "date": "2026-08-03",
         "weekday": "月",
-        "task_count": 2,
-        "meeting_count": 2,
+        "task_count": 1,
+        "meeting_count": 1,
         "tasks": [
-          {
-            "start": "10:30",
-            "end": "10:55",
-            "name": "SPMAT weekly toolbox meeting",
-            "project": "FSI",
-            "kind": "meeting"
-          },
           {
             "start": "17:15",
             "end": "17:25",
@@ -304,17 +297,8 @@
         "tasks": []
       }
     ],
-    "overdue": [
-      {
-        "name": "Special Bolt & Nut登録（添付\"SBS\"シート＝【For 3D Catalog】FSI_Piping specialty list.xlsxのA列=2でソートした22アイテムを登録。A列検討中のReducing Flange・メタルフレキ2件は岡本さんより月曜回答待ち。依頼元: 岡本奈々さん 07/31 18:07受領、CC:宮崎朋洋さん・山口陽平さん）[G1:専門性]",
-        "project": "FSI"
-      },
-      {
-        "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
-        "project": "FSI"
-      }
-    ],
-    "overdue_count": 2,
+    "overdue": [],
+    "overdue_count": 0,
     "undated": [
       {
         "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
@@ -333,7 +317,7 @@
     "waiting": [],
     "waiting_count": 0,
     "daily_actuals": [],
-    "completed_today_count": 4,
+    "completed_today_count": 5,
     "completed_today_tasks": [
       {
         "name": "MAIL CHECK完了 [G3:情報収集]",
@@ -349,6 +333,10 @@
       },
       {
         "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付完了（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]",
+        "project": "FSI"
+      },
+      {
+        "name": "Special Bolt & Nut登録完了（添付\"SBS\"シート＝【For 3D Catalog】FSI_Piping specialty list.xlsxのA列=2でソートした22アイテム。依頼元: 岡本奈々さん、CC:宮崎朋洋さん・山口陽平さん）[G1:専門性]",
         "project": "FSI"
       }
     ],
@@ -369,24 +357,25 @@
         {
           "start": "09:00",
           "end": "10:00",
-          "name": "Special Bolt & Nut登録（添付\"SBS\"シート＝【For 3D Catalog】FSI_Piping specialty list.xlsxのA列=2でソートした22アイテムを登録。A列検討中のReducing Flange・メタルフレキ2件は岡本さんより月曜回答待ち。依頼元: 岡本奈々さん 07/31 18:07受領、CC:宮崎朋洋さん・山口陽平さん）[G1:専門性]",
-          "project": "FSI",
-          "kind": "overdue",
+          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+          "project": "IW",
+          "kind": "iw_focus",
           "auto_scheduled": true
         },
         {
-          "start": "10:30",
-          "end": "10:55",
-          "name": "SPMAT weekly toolbox meeting",
-          "project": "FSI",
-          "kind": "meeting"
+          "start": "10:00",
+          "end": "11:00",
+          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+          "project": "IW",
+          "kind": "iw_focus",
+          "auto_scheduled": true
         },
         {
-          "start": "10:55",
-          "end": "11:55",
-          "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
-          "project": "FSI",
-          "kind": "overdue",
+          "start": "11:00",
+          "end": "12:00",
+          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+          "project": "IW",
+          "kind": "iw_focus",
           "auto_scheduled": true
         },
         {
@@ -430,9 +419,9 @@
         }
       ],
       "unscheduled_tasks": [],
-      "task_count": 2,
-      "iw_focus_minutes": 240,
-      "meeting_count": 2
+      "task_count": 0,
+      "iw_focus_minutes": 420,
+      "meeting_count": 1
     },
     "week_schedules": [
       {
@@ -452,24 +441,25 @@
           {
             "start": "09:00",
             "end": "10:00",
-            "name": "Special Bolt & Nut登録（添付\"SBS\"シート＝【For 3D Catalog】FSI_Piping specialty list.xlsxのA列=2でソートした22アイテムを登録。A列検討中のReducing Flange・メタルフレキ2件は岡本さんより月曜回答待ち。依頼元: 岡本奈々さん 07/31 18:07受領、CC:宮崎朋洋さん・山口陽平さん）[G1:専門性]",
-            "project": "FSI",
-            "kind": "overdue",
+            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
             "auto_scheduled": true
           },
           {
-            "start": "10:30",
-            "end": "10:55",
-            "name": "SPMAT weekly toolbox meeting",
-            "project": "FSI",
-            "kind": "meeting"
+            "start": "10:00",
+            "end": "11:00",
+            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
           },
           {
-            "start": "10:55",
-            "end": "11:55",
-            "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
-            "project": "FSI",
-            "kind": "overdue",
+            "start": "11:00",
+            "end": "12:00",
+            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
             "auto_scheduled": true
           },
           {
@@ -513,9 +503,9 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 2,
-        "iw_focus_minutes": 240,
-        "meeting_count": 2
+        "task_count": 0,
+        "iw_focus_minutes": 420,
+        "meeting_count": 1
       },
       {
         "date": "2026-08-04",
@@ -843,9 +833,9 @@
       }
     ],
     "summary": {
-      "today_count": 2,
-      "week_remaining": 14,
-      "avg_daily": 1.9,
+      "today_count": 1,
+      "week_remaining": 13,
+      "avg_daily": 1.8,
       "busiest_date": "2026-08-05",
       "busiest_count": 5
     }
@@ -860,17 +850,17 @@
       {
         "id": "g1",
         "label": "G1 専門性向上",
-        "current": 3,
+        "current": 4,
         "target_monthly": 80,
         "target_weekly": 20,
-        "progress_pct": 3.8,
+        "progress_pct": 5.0,
         "weekly": [
-          3,
+          4,
           0,
           0,
           0
         ],
-        "on_track": false
+        "on_track": true
       },
       {
         "id": "g5",
@@ -890,12 +880,12 @@
       {
         "id": "total",
         "label": "総タスク完了数",
-        "current": 6,
+        "current": 7,
         "target_monthly": 120,
         "target_weekly": 30,
-        "progress_pct": 5.0,
+        "progress_pct": 5.8,
         "weekly": [
-          6,
+          7,
           0,
           0,
           0
@@ -1005,7 +995,7 @@
     "generated_for_date": "2026-08-03"
   },
   "stats": {
-    "total_tasks": 526,
+    "total_tasks": 527,
     "total_knowledge": 353,
     "knowledge_categories": {
       "architecture": 1,
@@ -1829,8 +1819,8 @@
     },
     {
       "date": "2026-08-03",
-      "total": 526,
-      "spmat": 246,
+      "total": 527,
+      "spmat": 247,
       "tc_tbe": 44,
       "eng": 58,
       "comm": 36,
@@ -2870,7 +2860,7 @@
     },
     {
       "date": "2026-08-03",
-      "tasks": 4
+      "tasks": 5
     }
   ]
 }
