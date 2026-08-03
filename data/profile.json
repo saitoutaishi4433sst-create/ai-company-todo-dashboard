@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03T13:52:57.677416",
+  "updated_at": "2026-08-03T13:54:46.728110",
   "workload": {
     "source_file": "2026-08-03",
     "days": [
@@ -345,8 +345,17 @@
     "waiting": [],
     "waiting_count": 0,
     "daily_actuals": [],
-    "completed_today_count": 0,
-    "completed_today_tasks": [],
+    "completed_today_count": 2,
+    "completed_today_tasks": [
+      {
+        "name": "AXHI023B BM SHEET更新完了（H01エリアのニチアスDeviation対応・ボールバルブ面間変更に伴うスプール長さ調整。MANUAL CHECK完了・共有済み、依頼元: 五来直樹さん）[G1:専門性]",
+        "project": "FSI"
+      },
+      {
+        "name": "AXHI023D BM SHEET更新完了（H01エリアのニチアスDeviation対応・ボールバルブ面間変更に伴うスプール長さ調整。MANUAL CHECK完了・共有済み、依頼元: 五来直樹さん）[G1:専門性]",
+        "project": "FSI"
+      }
+    ],
     "today_schedule": {
       "date": "2026-08-03",
       "weekday": "月",
