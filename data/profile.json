@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03T17:17:42.227860",
+  "updated_at": "2026-08-03T17:36:21.137609",
   "workload": {
     "source_file": "2026-08-03",
     "days": [
@@ -89,14 +89,21 @@
       {
         "date": "2026-08-06",
         "weekday": "木",
-        "task_count": 2,
-        "meeting_count": 2,
+        "task_count": 3,
+        "meeting_count": 3,
         "tasks": [
           {
             "start": "15:30",
             "end": "16:00",
             "name": "[IW: JIS/JPI重量登録] Weekly進捗レビュー",
             "project": "IW",
+            "kind": "meeting"
+          },
+          {
+            "start": "16:00",
+            "end": "16:55",
+            "name": "[E-801] Material Team: 1hr Roundtable Work Shop [32st]:PPDG-1126-J_配管材料業務 標準手順書 ⑤⑥2回目",
+            "project": "-",
             "kind": "meeting"
           },
           {
@@ -742,11 +749,10 @@
           },
           {
             "start": "16:00",
-            "end": "17:00",
-            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
-            "auto_scheduled": true
+            "end": "16:55",
+            "name": "[E-801] Material Team: 1hr Roundtable Work Shop [32st]:PPDG-1126-J_配管材料業務 標準手順書 ⑤⑥2回目",
+            "project": "-",
+            "kind": "meeting"
           },
           {
             "start": "17:15",
@@ -758,8 +764,8 @@
         ],
         "unscheduled_tasks": [],
         "task_count": 0,
-        "iw_focus_minutes": 360,
-        "meeting_count": 2
+        "iw_focus_minutes": 300,
+        "meeting_count": 3
       },
       {
         "date": "2026-08-07",
@@ -844,7 +850,7 @@
     ],
     "summary": {
       "today_count": 2,
-      "week_remaining": 14,
+      "week_remaining": 15,
       "avg_daily": 1.9,
       "busiest_date": "2026-08-05",
       "busiest_count": 5
