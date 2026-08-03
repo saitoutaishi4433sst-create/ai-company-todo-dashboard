@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03T14:18:36.411461",
+  "updated_at": "2026-08-03T14:20:37.681587",
   "workload": {
     "source_file": "2026-08-03",
     "days": [
@@ -306,14 +306,6 @@
     ],
     "overdue": [
       {
-        "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]",
-        "project": "FSI"
-      },
-      {
-        "name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]",
-        "project": "FSI"
-      },
-      {
         "name": "2ST14: Flange 25A・40AをSPMAT登録（S.50.06 Spec Filter追加・Ident Build。REQ発行状況を事前確認）[G1:専門性]",
         "project": "FSI"
       },
@@ -326,7 +318,7 @@
         "project": "FSI"
       }
     ],
-    "overdue_count": 5,
+    "overdue_count": 3,
     "undated": [
       {
         "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
@@ -345,7 +337,7 @@
     "waiting": [],
     "waiting_count": 0,
     "daily_actuals": [],
-    "completed_today_count": 2,
+    "completed_today_count": 3,
     "completed_today_tasks": [
       {
         "name": "AXHI023B BM SHEET更新完了（H01エリアのニチアスDeviation対応・ボールバルブ面間変更に伴うスプール長さ調整。MANUAL CHECK完了・共有済み、依頼元: 五来直樹さん）[G1:専門性]",
@@ -353,6 +345,10 @@
       },
       {
         "name": "AXHI023D BM SHEET更新完了（H01エリアのニチアスDeviation対応・ボールバルブ面間変更に伴うスプール長さ調整。MANUAL CHECK完了・共有済み、依頼元: 五来直樹さん）[G1:専門性]",
+        "project": "FSI"
+      },
+      {
+        "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付完了（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]",
         "project": "FSI"
       }
     ],
@@ -373,7 +369,7 @@
         {
           "start": "09:00",
           "end": "10:00",
-          "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]",
+          "name": "2ST14: Flange 25A・40AをSPMAT登録（S.50.06 Spec Filter追加・Ident Build。REQ発行状況を事前確認）[G1:専門性]",
           "project": "FSI",
           "kind": "overdue",
           "auto_scheduled": true
@@ -388,7 +384,7 @@
         {
           "start": "10:55",
           "end": "11:55",
-          "name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]",
+          "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
           "project": "FSI",
           "kind": "overdue",
           "auto_scheduled": true
@@ -396,7 +392,7 @@
         {
           "start": "13:00",
           "end": "14:00",
-          "name": "2ST14: Flange 25A・40AをSPMAT登録（S.50.06 Spec Filter追加・Ident Build。REQ発行状況を事前確認）[G1:専門性]",
+          "name": "Special Bolt & Nut登録（添付\"SBS\"シート＝【For 3D Catalog】FSI_Piping specialty list.xlsxのA列=2でソートした22アイテムを登録。A列検討中のReducing Flange・メタルフレキ2件は岡本さんより月曜回答待ち。依頼元: 岡本奈々さん 07/31 18:07受領、CC:宮崎朋洋さん・山口陽平さん）[G1:専門性]",
           "project": "FSI",
           "kind": "overdue",
           "auto_scheduled": true
@@ -404,17 +400,17 @@
         {
           "start": "14:00",
           "end": "15:00",
-          "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
-          "project": "FSI",
-          "kind": "overdue",
+          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+          "project": "IW",
+          "kind": "iw_focus",
           "auto_scheduled": true
         },
         {
           "start": "15:00",
           "end": "16:00",
-          "name": "Special Bolt & Nut登録（添付\"SBS\"シート＝【For 3D Catalog】FSI_Piping specialty list.xlsxのA列=2でソートした22アイテムを登録。A列検討中のReducing Flange・メタルフレキ2件は岡本さんより月曜回答待ち。依頼元: 岡本奈々さん 07/31 18:07受領、CC:宮崎朋洋さん・山口陽平さん）[G1:専門性]",
-          "project": "FSI",
-          "kind": "overdue",
+          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+          "project": "IW",
+          "kind": "iw_focus",
           "auto_scheduled": true
         },
         {
@@ -434,8 +430,8 @@
         }
       ],
       "unscheduled_tasks": [],
-      "task_count": 5,
-      "iw_focus_minutes": 60,
+      "task_count": 3,
+      "iw_focus_minutes": 180,
       "meeting_count": 2
     },
     "week_schedules": [
@@ -456,7 +452,7 @@
           {
             "start": "09:00",
             "end": "10:00",
-            "name": "2ST14: 25A・40A FLANGEの3D DATAを出力し、ADMIへ送付（ISOME対象エリア・次回更新まで1週間以上空くため）[G1:専門性]",
+            "name": "2ST14: Flange 25A・40AをSPMAT登録（S.50.06 Spec Filter追加・Ident Build。REQ発行状況を事前確認）[G1:専門性]",
             "project": "FSI",
             "kind": "overdue",
             "auto_scheduled": true
@@ -471,7 +467,7 @@
           {
             "start": "10:55",
             "end": "11:55",
-            "name": "SPMAT Ident登録（PFAラインニング配管。Ident登録用20260731_H01.xlsxのA列をYES/YES BUT DELETEでソートし、YES BUT DELETE分はSPMATから削除。依頼元: 五来直樹さん 07/31 9:46受領）[G1:専門性]",
+            "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
             "project": "FSI",
             "kind": "overdue",
             "auto_scheduled": true
@@ -479,7 +475,7 @@
           {
             "start": "13:00",
             "end": "14:00",
-            "name": "2ST14: Flange 25A・40AをSPMAT登録（S.50.06 Spec Filter追加・Ident Build。REQ発行状況を事前確認）[G1:専門性]",
+            "name": "Special Bolt & Nut登録（添付\"SBS\"シート＝【For 3D Catalog】FSI_Piping specialty list.xlsxのA列=2でソートした22アイテムを登録。A列検討中のReducing Flange・メタルフレキ2件は岡本さんより月曜回答待ち。依頼元: 岡本奈々さん 07/31 18:07受領、CC:宮崎朋洋さん・山口陽平さん）[G1:専門性]",
             "project": "FSI",
             "kind": "overdue",
             "auto_scheduled": true
@@ -487,17 +483,17 @@
           {
             "start": "14:00",
             "end": "15:00",
-            "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
-            "project": "FSI",
-            "kind": "overdue",
+            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
             "auto_scheduled": true
           },
           {
             "start": "15:00",
             "end": "16:00",
-            "name": "Special Bolt & Nut登録（添付\"SBS\"シート＝【For 3D Catalog】FSI_Piping specialty list.xlsxのA列=2でソートした22アイテムを登録。A列検討中のReducing Flange・メタルフレキ2件は岡本さんより月曜回答待ち。依頼元: 岡本奈々さん 07/31 18:07受領、CC:宮崎朋洋さん・山口陽平さん）[G1:専門性]",
-            "project": "FSI",
-            "kind": "overdue",
+            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
             "auto_scheduled": true
           },
           {
@@ -517,8 +513,8 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 5,
-        "iw_focus_minutes": 60,
+        "task_count": 3,
+        "iw_focus_minutes": 180,
         "meeting_count": 2
       },
       {
@@ -864,12 +860,12 @@
       {
         "id": "g1",
         "label": "G1 専門性向上",
-        "current": 2,
+        "current": 3,
         "target_monthly": 80,
         "target_weekly": 20,
-        "progress_pct": 2.5,
+        "progress_pct": 3.8,
         "weekly": [
-          2,
+          3,
           0,
           0,
           0
@@ -894,17 +890,17 @@
       {
         "id": "total",
         "label": "総タスク完了数",
-        "current": 4,
+        "current": 5,
         "target_monthly": 120,
         "target_weekly": 30,
-        "progress_pct": 3.3,
+        "progress_pct": 4.2,
         "weekly": [
-          4,
+          5,
           0,
           0,
           0
         ],
-        "on_track": false
+        "on_track": true
       }
     ],
     "season": {
@@ -1009,7 +1005,7 @@
     "generated_for_date": "2026-08-03"
   },
   "stats": {
-    "total_tasks": 520,
+    "total_tasks": 522,
     "total_knowledge": 353,
     "knowledge_categories": {
       "architecture": 1,
@@ -1815,8 +1811,8 @@
     },
     {
       "date": "2026-07-31",
-      "total": 516,
-      "spmat": 240,
+      "total": 517,
+      "spmat": 241,
       "tc_tbe": 44,
       "eng": 58,
       "comm": 36,
@@ -1824,8 +1820,8 @@
     },
     {
       "date": "2026-08-01",
-      "total": 518,
-      "spmat": 240,
+      "total": 519,
+      "spmat": 241,
       "tc_tbe": 44,
       "eng": 58,
       "comm": 36,
@@ -1833,12 +1829,12 @@
     },
     {
       "date": "2026-08-03",
-      "total": 520,
-      "spmat": 242,
+      "total": 522,
+      "spmat": 243,
       "tc_tbe": 44,
       "eng": 58,
       "comm": 36,
-      "other": 140
+      "other": 141
     }
   ],
   "knowledge_history": [
@@ -2866,7 +2862,7 @@
     },
     {
       "date": "2026-07-31",
-      "tasks": 2
+      "tasks": 3
     },
     {
       "date": "2026-08-01",
@@ -2874,7 +2870,7 @@
     },
     {
       "date": "2026-08-03",
-      "tasks": 2
+      "tasks": 3
     }
   ]
 }
