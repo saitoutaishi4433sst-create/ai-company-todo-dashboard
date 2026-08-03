@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03T12:05:41.278546",
+  "updated_at": "2026-08-03T12:09:11.041295",
   "workload": {
     "source_file": "2026-08-03",
     "days": [
@@ -855,12 +855,12 @@
       {
         "id": "g1",
         "label": "G1 専門性向上",
-        "current": 0,
+        "current": 1,
         "target_monthly": 80,
         "target_weekly": 20,
-        "progress_pct": 0.0,
+        "progress_pct": 1.2,
         "weekly": [
-          0,
+          1,
           0,
           0,
           0
@@ -885,12 +885,12 @@
       {
         "id": "total",
         "label": "総タスク完了数",
-        "current": 2,
+        "current": 3,
         "target_monthly": 120,
         "target_weekly": 30,
-        "progress_pct": 1.7,
+        "progress_pct": 2.5,
         "weekly": [
-          2,
+          3,
           0,
           0,
           0
@@ -1000,7 +1000,7 @@
     "generated_for_date": "2026-08-03"
   },
   "stats": {
-    "total_tasks": 518,
+    "total_tasks": 519,
     "total_knowledge": 353,
     "knowledge_categories": {
       "architecture": 1,
@@ -1021,15 +1021,6 @@
     "comm_sessions": 17
   },
   "task_history_by_cat": [
-    {
-      "date": "2026-03-16",
-      "total": 5,
-      "spmat": 2,
-      "tc_tbe": 0,
-      "eng": 0,
-      "comm": 0,
-      "other": 3
-    },
     {
       "date": "2026-03-17",
       "total": 17,
@@ -1830,6 +1821,15 @@
       "eng": 58,
       "comm": 36,
       "other": 140
+    },
+    {
+      "date": "2026-08-03",
+      "total": 519,
+      "spmat": 241,
+      "tc_tbe": 44,
+      "eng": 58,
+      "comm": 36,
+      "other": 140
     }
   ],
   "knowledge_history": [
@@ -2508,10 +2508,6 @@
   ],
   "history": [
     {
-      "date": "2026-03-16",
-      "tasks": 5
-    },
-    {
       "date": "2026-03-17",
       "tasks": 12
     },
@@ -2866,6 +2862,10 @@
     {
       "date": "2026-08-01",
       "tasks": 2
+    },
+    {
+      "date": "2026-08-03",
+      "tasks": 1
     }
   ]
 }
