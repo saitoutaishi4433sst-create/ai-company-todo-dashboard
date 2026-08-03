@@ -1,14 +1,21 @@
 {
-  "updated_at": "2026-08-03T16:43:45.060679",
+  "updated_at": "2026-08-03T17:17:36.559679",
   "workload": {
     "source_file": "2026-08-03",
     "days": [
       {
         "date": "2026-08-03",
         "weekday": "月",
-        "task_count": 1,
-        "meeting_count": 1,
+        "task_count": 2,
+        "meeting_count": 2,
         "tasks": [
+          {
+            "start": "10:30",
+            "end": "10:55",
+            "name": "SPMAT weekly toolbox meeting",
+            "project": "FSI",
+            "kind": "meeting"
+          },
           {
             "start": "17:15",
             "end": "17:25",
@@ -297,8 +304,13 @@
         "tasks": []
       }
     ],
-    "overdue": [],
-    "overdue_count": 0,
+    "overdue": [
+      {
+        "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
+        "project": "FSI"
+      }
+    ],
+    "overdue_count": 1,
     "undated": [
       {
         "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
@@ -357,22 +369,21 @@
         {
           "start": "09:00",
           "end": "10:00",
-          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-          "project": "IW",
-          "kind": "iw_focus",
+          "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
+          "project": "FSI",
+          "kind": "overdue",
           "auto_scheduled": true
         },
         {
-          "start": "10:00",
-          "end": "11:00",
-          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-          "project": "IW",
-          "kind": "iw_focus",
-          "auto_scheduled": true
+          "start": "10:30",
+          "end": "10:55",
+          "name": "SPMAT weekly toolbox meeting",
+          "project": "FSI",
+          "kind": "meeting"
         },
         {
-          "start": "11:00",
-          "end": "12:00",
+          "start": "10:55",
+          "end": "11:55",
           "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
           "project": "IW",
           "kind": "iw_focus",
@@ -419,9 +430,9 @@
         }
       ],
       "unscheduled_tasks": [],
-      "task_count": 0,
-      "iw_focus_minutes": 420,
-      "meeting_count": 1
+      "task_count": 1,
+      "iw_focus_minutes": 300,
+      "meeting_count": 2
     },
     "week_schedules": [
       {
@@ -441,22 +452,21 @@
           {
             "start": "09:00",
             "end": "10:00",
-            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
+            "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
+            "project": "FSI",
+            "kind": "overdue",
             "auto_scheduled": true
           },
           {
-            "start": "10:00",
-            "end": "11:00",
-            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
-            "auto_scheduled": true
+            "start": "10:30",
+            "end": "10:55",
+            "name": "SPMAT weekly toolbox meeting",
+            "project": "FSI",
+            "kind": "meeting"
           },
           {
-            "start": "11:00",
-            "end": "12:00",
+            "start": "10:55",
+            "end": "11:55",
             "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
             "project": "IW",
             "kind": "iw_focus",
@@ -503,9 +513,9 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 0,
-        "iw_focus_minutes": 420,
-        "meeting_count": 1
+        "task_count": 1,
+        "iw_focus_minutes": 300,
+        "meeting_count": 2
       },
       {
         "date": "2026-08-04",
@@ -833,9 +843,9 @@
       }
     ],
     "summary": {
-      "today_count": 1,
-      "week_remaining": 13,
-      "avg_daily": 1.8,
+      "today_count": 2,
+      "week_remaining": 14,
+      "avg_daily": 1.9,
       "busiest_date": "2026-08-05",
       "busiest_count": 5
     }
