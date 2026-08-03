@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03T14:24:42.990486",
+  "updated_at": "2026-08-03T14:28:31.070571",
   "workload": {
     "source_file": "2026-08-03",
     "days": [
@@ -1001,7 +1001,7 @@
     "generated_for_date": "2026-08-03"
   },
   "stats": {
-    "total_tasks": 523,
+    "total_tasks": 525,
     "total_knowledge": 353,
     "knowledge_categories": {
       "architecture": 1,
@@ -1807,8 +1807,8 @@
     },
     {
       "date": "2026-07-31",
-      "total": 518,
-      "spmat": 242,
+      "total": 520,
+      "spmat": 244,
       "tc_tbe": 44,
       "eng": 58,
       "comm": 36,
@@ -1816,8 +1816,8 @@
     },
     {
       "date": "2026-08-01",
-      "total": 520,
-      "spmat": 242,
+      "total": 522,
+      "spmat": 244,
       "tc_tbe": 44,
       "eng": 58,
       "comm": 36,
@@ -1825,8 +1825,8 @@
     },
     {
       "date": "2026-08-03",
-      "total": 523,
-      "spmat": 244,
+      "total": 525,
+      "spmat": 246,
       "tc_tbe": 44,
       "eng": 58,
       "comm": 36,
@@ -2858,7 +2858,7 @@
     },
     {
       "date": "2026-07-31",
-      "tasks": 4
+      "tasks": 6
     },
     {
       "date": "2026-08-01",
