@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03T14:38:25.947052",
+  "updated_at": "2026-08-03T14:39:15.834468",
   "workload": {
     "source_file": "2026-08-03",
     "days": [
@@ -333,8 +333,12 @@
     "waiting": [],
     "waiting_count": 0,
     "daily_actuals": [],
-    "completed_today_count": 3,
+    "completed_today_count": 4,
     "completed_today_tasks": [
+      {
+        "name": "MAIL CHECK完了 [G3:情報収集]",
+        "project": "-"
+      },
       {
         "name": "AXHI023B BM SHEET更新完了（H01エリアのニチアスDeviation対応・ボールバルブ面間変更に伴うスプール長さ調整。MANUAL CHECK完了・共有済み、依頼元: 五来直樹さん）[G1:専門性]",
         "project": "FSI"
@@ -886,12 +890,12 @@
       {
         "id": "total",
         "label": "総タスク完了数",
-        "current": 5,
+        "current": 6,
         "target_monthly": 120,
         "target_weekly": 30,
-        "progress_pct": 4.2,
+        "progress_pct": 5.0,
         "weekly": [
-          5,
+          6,
           0,
           0,
           0
@@ -1001,7 +1005,7 @@
     "generated_for_date": "2026-08-03"
   },
   "stats": {
-    "total_tasks": 525,
+    "total_tasks": 526,
     "total_knowledge": 353,
     "knowledge_categories": {
       "architecture": 1,
@@ -1825,12 +1829,12 @@
     },
     {
       "date": "2026-08-03",
-      "total": 525,
+      "total": 526,
       "spmat": 246,
       "tc_tbe": 44,
       "eng": 58,
       "comm": 36,
-      "other": 141
+      "other": 142
     }
   ],
   "knowledge_history": [
@@ -2866,7 +2870,7 @@
     },
     {
       "date": "2026-08-03",
-      "tasks": 3
+      "tasks": 4
     }
   ]
 }
