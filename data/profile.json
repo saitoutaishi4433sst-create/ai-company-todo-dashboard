@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-04T14:54:29.598225",
+  "updated_at": "2026-08-04T16:18:10.993200",
   "workload": {
     "source_file": "2026-08-04",
     "days": [
@@ -22,9 +22,14 @@
       {
         "date": "2026-08-05",
         "weekday": "水",
-        "task_count": 5,
+        "task_count": 6,
         "meeting_count": 5,
         "tasks": [
+          {
+            "name": "[AXHI023E] PFAライニング配管7E Batch BM SHEET発行対応（H03。SPMat登録→MTO取込→Status report→BM sheet作成。依頼元:芹澤さん8/4 15:36受領、購買提出8/5期限）[G1:専門性]",
+            "project": "FSI",
+            "kind": "task"
+          },
           {
             "start": "10:30",
             "end": "11:30",
@@ -522,9 +527,9 @@
           {
             "start": "09:00",
             "end": "10:00",
-            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
+            "name": "[AXHI023E] PFAライニング配管7E Batch BM SHEET発行対応（H03。SPMat登録→MTO取込→Status report→BM sheet作成。依頼元:芹澤さん8/4 15:36受領、購買提出8/5期限）[G1:専門性]",
+            "project": "FSI",
+            "kind": "task",
             "auto_scheduled": true
           },
           {
@@ -580,8 +585,8 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 0,
-        "iw_focus_minutes": 180,
+        "task_count": 1,
+        "iw_focus_minutes": 120,
         "meeting_count": 5
       },
       {
@@ -830,10 +835,10 @@
     ],
     "summary": {
       "today_count": 1,
-      "week_remaining": 15,
-      "avg_daily": 1.9,
+      "week_remaining": 16,
+      "avg_daily": 2.0,
       "busiest_date": "2026-08-05",
-      "busiest_count": 5
+      "busiest_count": 6
     }
   },
   "goal_progress": {
