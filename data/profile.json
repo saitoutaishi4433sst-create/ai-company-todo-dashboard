@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-05T09:42:38.016642",
+  "updated_at": "2026-08-05T16:13:48.117607",
   "workload": {
     "source_file": "2026-08-05",
     "days": [
@@ -186,8 +186,8 @@
       {
         "date": "2026-08-13",
         "weekday": "木",
-        "task_count": 3,
-        "meeting_count": 3,
+        "task_count": 4,
+        "meeting_count": 4,
         "tasks": [
           {
             "start": "12:10",
@@ -208,6 +208,13 @@
             "end": "17:25",
             "name": "SPMAT Dairy meeting 17:15-",
             "project": "FSI",
+            "kind": "meeting"
+          },
+          {
+            "start": "18:45",
+            "end": "20:00",
+            "name": "【水泳部:Swimming Club】8月定例練習会",
+            "project": "-",
             "kind": "meeting"
           }
         ],
@@ -828,7 +835,7 @@
     "summary": {
       "today_count": 5,
       "week_remaining": 16,
-      "avg_daily": 2.0,
+      "avg_daily": 2.1,
       "busiest_date": "2026-08-05",
       "busiest_count": 5
     }
