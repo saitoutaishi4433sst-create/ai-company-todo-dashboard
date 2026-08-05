@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-05T09:27:08.653431",
+  "updated_at": "2026-08-05T09:28:14.445562",
   "workload": {
     "source_file": "2026-08-05",
     "days": [
@@ -274,9 +274,25 @@
       {
         "date": "2026-08-18",
         "weekday": "火",
-        "is_today": false,
-        "task_count": 0,
-        "tasks": []
+        "task_count": 2,
+        "meeting_count": 2,
+        "tasks": [
+          {
+            "start": "11:00",
+            "end": "11:50",
+            "name": "PEP2: PIP REQ, TBE & VP status update",
+            "project": "FSI",
+            "kind": "meeting"
+          },
+          {
+            "start": "17:15",
+            "end": "17:25",
+            "name": "SPMAT Dairy meeting 17:15-",
+            "project": "FSI",
+            "kind": "meeting"
+          }
+        ],
+        "is_today": false
       },
       {
         "date": "2026-08-19",
@@ -822,7 +838,7 @@
     "summary": {
       "today_count": 6,
       "week_remaining": 17,
-      "avg_daily": 1.9,
+      "avg_daily": 2.1,
       "busiest_date": "2026-08-05",
       "busiest_count": 6
     }
