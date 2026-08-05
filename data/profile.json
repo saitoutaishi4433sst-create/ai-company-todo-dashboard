@@ -1,16 +1,21 @@
 {
-  "updated_at": "2026-08-05T17:59:06.645121",
+  "updated_at": "2026-08-05T18:11:48.161695",
   "workload": {
     "source_file": "2026-08-05",
     "days": [
       {
         "date": "2026-08-05",
         "weekday": "水",
-        "task_count": 6,
+        "task_count": 7,
         "meeting_count": 5,
         "tasks": [
           {
             "name": "Rev.4C SPMATデータリリース対応（30.Rev.4C(SPW generated only)参照、更新内容はH103 material request list_FSI.xlsx Rev.4C分参照。完了後R列に完了日記入。依頼元:岡本奈々さん8/5 16:51受領）[G1:専門性]",
+            "project": "FSI",
+            "kind": "task"
+          },
+          {
+            "name": "[AXHI023E] PFAライニング配管7E Batch BM SHEET発行対応（H03。SPMat登録→MTO取込→Status report→BM sheet作成。依頼元:芹澤さん8/4 15:36受領、購買提出8/5期限。8/4「完了」報告はオーナー訂正により再オープン、未完了範囲は確認中）[G1:専門性]",
             "project": "FSI",
             "kind": "task"
           },
@@ -384,9 +389,9 @@
         {
           "start": "13:00",
           "end": "14:00",
-          "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-          "project": "IW",
-          "kind": "iw_focus",
+          "name": "[AXHI023E] PFAライニング配管7E Batch BM SHEET発行対応（H03。SPMat登録→MTO取込→Status report→BM sheet作成。依頼元:芹澤さん8/4 15:36受領、購買提出8/5期限。8/4「完了」報告はオーナー訂正により再オープン、未完了範囲は確認中）[G1:専門性]",
+          "project": "FSI",
+          "kind": "task",
           "auto_scheduled": true
         },
         {
@@ -427,8 +432,8 @@
         }
       ],
       "unscheduled_tasks": [],
-      "task_count": 1,
-      "iw_focus_minutes": 120,
+      "task_count": 2,
+      "iw_focus_minutes": 60,
       "meeting_count": 5
     },
     "week_schedules": [
@@ -464,9 +469,9 @@
           {
             "start": "13:00",
             "end": "14:00",
-            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
+            "name": "[AXHI023E] PFAライニング配管7E Batch BM SHEET発行対応（H03。SPMat登録→MTO取込→Status report→BM sheet作成。依頼元:芹澤さん8/4 15:36受領、購買提出8/5期限。8/4「完了」報告はオーナー訂正により再オープン、未完了範囲は確認中）[G1:専門性]",
+            "project": "FSI",
+            "kind": "task",
             "auto_scheduled": true
           },
           {
@@ -507,8 +512,8 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 1,
-        "iw_focus_minutes": 120,
+        "task_count": 2,
+        "iw_focus_minutes": 60,
         "meeting_count": 5
       },
       {
@@ -838,11 +843,11 @@
       }
     ],
     "summary": {
-      "today_count": 6,
-      "week_remaining": 17,
-      "avg_daily": 2.1,
+      "today_count": 7,
+      "week_remaining": 18,
+      "avg_daily": 2.2,
       "busiest_date": "2026-08-05",
-      "busiest_count": 6
+      "busiest_count": 7
     }
   },
   "goal_progress": {
@@ -855,12 +860,12 @@
       {
         "id": "g1",
         "label": "G1 専門性向上",
-        "current": 5,
+        "current": 4,
         "target_monthly": 80,
         "target_weekly": 20,
-        "progress_pct": 6.2,
+        "progress_pct": 5.0,
         "weekly": [
-          5,
+          4,
           0,
           0,
           0
@@ -885,12 +890,12 @@
       {
         "id": "total",
         "label": "総タスク完了数",
-        "current": 8,
+        "current": 7,
         "target_monthly": 120,
         "target_weekly": 30,
-        "progress_pct": 6.7,
+        "progress_pct": 5.8,
         "weekly": [
-          8,
+          7,
           0,
           0,
           0
@@ -1012,7 +1017,7 @@
     "generated_for_date": "2026-08-05"
   },
   "stats": {
-    "total_tasks": 528,
+    "total_tasks": 527,
     "total_knowledge": 354,
     "knowledge_categories": {
       "architecture": 1,
@@ -1033,6 +1038,15 @@
     "comm_sessions": 17
   },
   "task_history_by_cat": [
+    {
+      "date": "2026-03-17",
+      "total": 17,
+      "spmat": 8,
+      "tc_tbe": 1,
+      "eng": 1,
+      "comm": 0,
+      "other": 7
+    },
     {
       "date": "2026-03-18",
       "total": 21,
@@ -1833,15 +1847,6 @@
       "eng": 58,
       "comm": 36,
       "other": 142
-    },
-    {
-      "date": "2026-08-04",
-      "total": 528,
-      "spmat": 248,
-      "tc_tbe": 44,
-      "eng": 58,
-      "comm": 36,
-      "other": 142
     }
   ],
   "knowledge_history": [
@@ -2520,6 +2525,10 @@
   ],
   "history": [
     {
+      "date": "2026-03-17",
+      "tasks": 12
+    },
+    {
       "date": "2026-03-18",
       "tasks": 4
     },
@@ -2874,10 +2883,6 @@
     {
       "date": "2026-08-03",
       "tasks": 5
-    },
-    {
-      "date": "2026-08-04",
-      "tasks": 1
     }
   ]
 }
