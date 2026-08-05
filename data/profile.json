@@ -1,19 +1,14 @@
 {
-  "updated_at": "2026-08-05T09:42:16.914783",
+  "updated_at": "2026-08-05T09:42:38.016642",
   "workload": {
     "source_file": "2026-08-05",
     "days": [
       {
         "date": "2026-08-05",
         "weekday": "水",
-        "task_count": 6,
+        "task_count": 5,
         "meeting_count": 5,
         "tasks": [
-          {
-            "name": "[AXHI023E] PFAライニング配管7E Batch BM SHEET発行対応（H03。SPMat登録→MTO取込→Status report→BM sheet作成。依頼元:芹澤さん8/4 15:36受領、購買提出8/5期限）[G1:専門性]",
-            "project": "FSI",
-            "kind": "task"
-          },
           {
             "start": "10:30",
             "end": "11:30",
@@ -362,9 +357,9 @@
         {
           "start": "09:00",
           "end": "10:00",
-          "name": "[AXHI023E] PFAライニング配管7E Batch BM SHEET発行対応（H03。SPMat登録→MTO取込→Status report→BM sheet作成。依頼元:芹澤さん8/4 15:36受領、購買提出8/5期限）[G1:専門性]",
-          "project": "FSI",
-          "kind": "task",
+          "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+          "project": "IW",
+          "kind": "iw_focus",
           "auto_scheduled": true
         },
         {
@@ -420,8 +415,8 @@
         }
       ],
       "unscheduled_tasks": [],
-      "task_count": 1,
-      "iw_focus_minutes": 120,
+      "task_count": 0,
+      "iw_focus_minutes": 180,
       "meeting_count": 5
     },
     "week_schedules": [
@@ -442,9 +437,9 @@
           {
             "start": "09:00",
             "end": "10:00",
-            "name": "[AXHI023E] PFAライニング配管7E Batch BM SHEET発行対応（H03。SPMat登録→MTO取込→Status report→BM sheet作成。依頼元:芹澤さん8/4 15:36受領、購買提出8/5期限）[G1:専門性]",
-            "project": "FSI",
-            "kind": "task",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
             "auto_scheduled": true
           },
           {
@@ -500,8 +495,8 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 1,
-        "iw_focus_minutes": 120,
+        "task_count": 0,
+        "iw_focus_minutes": 180,
         "meeting_count": 5
       },
       {
@@ -831,11 +826,11 @@
       }
     ],
     "summary": {
-      "today_count": 6,
-      "week_remaining": 17,
-      "avg_daily": 2.1,
+      "today_count": 5,
+      "week_remaining": 16,
+      "avg_daily": 2.0,
       "busiest_date": "2026-08-05",
-      "busiest_count": 6
+      "busiest_count": 5
     }
   },
   "goal_progress": {
@@ -848,12 +843,12 @@
       {
         "id": "g1",
         "label": "G1 専門性向上",
-        "current": 4,
+        "current": 5,
         "target_monthly": 80,
         "target_weekly": 20,
-        "progress_pct": 5.0,
+        "progress_pct": 6.2,
         "weekly": [
-          4,
+          5,
           0,
           0,
           0
@@ -878,12 +873,12 @@
       {
         "id": "total",
         "label": "総タスク完了数",
-        "current": 7,
+        "current": 8,
         "target_monthly": 120,
         "target_weekly": 30,
-        "progress_pct": 5.8,
+        "progress_pct": 6.7,
         "weekly": [
-          7,
+          8,
           0,
           0,
           0
@@ -1005,7 +1000,7 @@
     "generated_for_date": "2026-08-05"
   },
   "stats": {
-    "total_tasks": 527,
+    "total_tasks": 528,
     "total_knowledge": 353,
     "knowledge_categories": {
       "architecture": 1,
@@ -1026,15 +1021,6 @@
     "comm_sessions": 17
   },
   "task_history_by_cat": [
-    {
-      "date": "2026-03-17",
-      "total": 17,
-      "spmat": 8,
-      "tc_tbe": 1,
-      "eng": 1,
-      "comm": 0,
-      "other": 7
-    },
     {
       "date": "2026-03-18",
       "total": 21,
@@ -1835,6 +1821,15 @@
       "eng": 58,
       "comm": 36,
       "other": 142
+    },
+    {
+      "date": "2026-08-04",
+      "total": 528,
+      "spmat": 248,
+      "tc_tbe": 44,
+      "eng": 58,
+      "comm": 36,
+      "other": 142
     }
   ],
   "knowledge_history": [
@@ -2513,10 +2508,6 @@
   ],
   "history": [
     {
-      "date": "2026-03-17",
-      "tasks": 12
-    },
-    {
       "date": "2026-03-18",
       "tasks": 4
     },
@@ -2871,6 +2862,10 @@
     {
       "date": "2026-08-03",
       "tasks": 5
+    },
+    {
+      "date": "2026-08-04",
+      "tasks": 1
     }
   ]
 }
