@@ -1,14 +1,19 @@
 {
-  "updated_at": "2026-08-05T17:57:59.520727",
+  "updated_at": "2026-08-05T17:59:06.645121",
   "workload": {
     "source_file": "2026-08-05",
     "days": [
       {
         "date": "2026-08-05",
         "weekday": "水",
-        "task_count": 5,
+        "task_count": 6,
         "meeting_count": 5,
         "tasks": [
+          {
+            "name": "Rev.4C SPMATデータリリース対応（30.Rev.4C(SPW generated only)参照、更新内容はH103 material request list_FSI.xlsx Rev.4C分参照。完了後R列に完了日記入。依頼元:岡本奈々さん8/5 16:51受領）[G1:専門性]",
+            "project": "FSI",
+            "kind": "task"
+          },
           {
             "start": "10:30",
             "end": "11:30",
@@ -364,9 +369,9 @@
         {
           "start": "09:00",
           "end": "10:00",
-          "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-          "project": "IW",
-          "kind": "iw_focus",
+          "name": "Rev.4C SPMATデータリリース対応（30.Rev.4C(SPW generated only)参照、更新内容はH103 material request list_FSI.xlsx Rev.4C分参照。完了後R列に完了日記入。依頼元:岡本奈々さん8/5 16:51受領）[G1:専門性]",
+          "project": "FSI",
+          "kind": "task",
           "auto_scheduled": true
         },
         {
@@ -422,8 +427,8 @@
         }
       ],
       "unscheduled_tasks": [],
-      "task_count": 0,
-      "iw_focus_minutes": 180,
+      "task_count": 1,
+      "iw_focus_minutes": 120,
       "meeting_count": 5
     },
     "week_schedules": [
@@ -444,9 +449,9 @@
           {
             "start": "09:00",
             "end": "10:00",
-            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
+            "name": "Rev.4C SPMATデータリリース対応（30.Rev.4C(SPW generated only)参照、更新内容はH103 material request list_FSI.xlsx Rev.4C分参照。完了後R列に完了日記入。依頼元:岡本奈々さん8/5 16:51受領）[G1:専門性]",
+            "project": "FSI",
+            "kind": "task",
             "auto_scheduled": true
           },
           {
@@ -502,8 +507,8 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 0,
-        "iw_focus_minutes": 180,
+        "task_count": 1,
+        "iw_focus_minutes": 120,
         "meeting_count": 5
       },
       {
@@ -833,11 +838,11 @@
       }
     ],
     "summary": {
-      "today_count": 5,
-      "week_remaining": 16,
+      "today_count": 6,
+      "week_remaining": 17,
       "avg_daily": 2.1,
       "busiest_date": "2026-08-05",
-      "busiest_count": 5
+      "busiest_count": 6
     }
   },
   "goal_progress": {
