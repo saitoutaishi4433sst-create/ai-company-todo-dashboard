@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-05T16:15:01.577891",
+  "updated_at": "2026-08-05T17:24:20.833198",
   "workload": {
     "source_file": "2026-08-05",
     "days": [
@@ -1008,11 +1008,11 @@
   },
   "stats": {
     "total_tasks": 528,
-    "total_knowledge": 353,
+    "total_knowledge": 354,
     "knowledge_categories": {
       "architecture": 1,
       "inbox": 6,
-      "procedures": 86,
+      "procedures": 87,
       "projects": 39,
       "reports": 3,
       "specs": 130,
@@ -2442,6 +2442,18 @@
     },
     {
       "date": "2026-07-23",
+      "total": 337,
+      "architecture": 1,
+      "inbox": 6,
+      "procedures": 80,
+      "projects": 39,
+      "reports": 3,
+      "specs": 127,
+      "tools": 55,
+      "troubleshooting": 26
+    },
+    {
+      "date": "2026-07-27",
       "total": 338,
       "architecture": 1,
       "inbox": 6,
@@ -2453,59 +2465,47 @@
       "troubleshooting": 26
     },
     {
-      "date": "2026-07-24",
-      "total": 339,
-      "architecture": 1,
-      "inbox": 6,
-      "procedures": 80,
-      "projects": 39,
-      "reports": 3,
-      "specs": 129,
-      "tools": 55,
-      "troubleshooting": 26
-    },
-    {
-      "date": "2026-07-27",
-      "total": 340,
-      "architecture": 1,
-      "inbox": 6,
-      "procedures": 80,
-      "projects": 39,
-      "reports": 3,
-      "specs": 130,
-      "tools": 55,
-      "troubleshooting": 26
-    },
-    {
       "date": "2026-07-30",
-      "total": 344,
+      "total": 342,
       "architecture": 1,
       "inbox": 6,
       "procedures": 84,
       "projects": 39,
       "reports": 3,
-      "specs": 130,
+      "specs": 128,
       "tools": 55,
       "troubleshooting": 26
     },
     {
       "date": "2026-07-31",
-      "total": 347,
+      "total": 345,
       "architecture": 1,
       "inbox": 6,
       "procedures": 85,
       "projects": 39,
       "reports": 3,
-      "specs": 130,
+      "specs": 128,
       "tools": 57,
       "troubleshooting": 26
     },
     {
       "date": "2026-08-03",
-      "total": 353,
+      "total": 351,
       "architecture": 1,
       "inbox": 6,
       "procedures": 86,
+      "projects": 39,
+      "reports": 3,
+      "specs": 128,
+      "tools": 60,
+      "troubleshooting": 28
+    },
+    {
+      "date": "2026-08-05",
+      "total": 354,
+      "architecture": 1,
+      "inbox": 6,
+      "procedures": 87,
       "projects": 39,
       "reports": 3,
       "specs": 130,
