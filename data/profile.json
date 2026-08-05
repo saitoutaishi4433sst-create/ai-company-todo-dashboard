@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-06T08:46:07.552715",
+  "updated_at": "2026-08-06T08:53:29.657907",
   "workload": {
     "source_file": "2026-08-06",
     "days": [
@@ -255,9 +255,32 @@
       {
         "date": "2026-08-19",
         "weekday": "水",
-        "is_today": false,
-        "task_count": 0,
-        "tasks": []
+        "task_count": 3,
+        "meeting_count": 3,
+        "tasks": [
+          {
+            "start": "14:00",
+            "end": "14:55",
+            "name": "【UNION/57期】定例評議員会",
+            "project": "-",
+            "kind": "meeting"
+          },
+          {
+            "start": "15:00",
+            "end": "15:30",
+            "name": "[IW: LE Document改定] Weekly進捗レビュー",
+            "project": "IW",
+            "kind": "meeting"
+          },
+          {
+            "start": "17:15",
+            "end": "17:25",
+            "name": "SPMAT Dairy meeting 17:15-",
+            "project": "FSI",
+            "kind": "meeting"
+          }
+        ],
+        "is_today": false
       },
       {
         "date": "2026-08-20",
@@ -812,7 +835,7 @@
     "summary": {
       "today_count": 3,
       "week_remaining": 13,
-      "avg_daily": 1.7,
+      "avg_daily": 1.9,
       "busiest_date": "2026-08-07",
       "busiest_count": 4
     }
