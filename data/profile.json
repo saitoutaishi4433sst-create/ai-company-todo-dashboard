@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-05T08:21:32.787474",
+  "updated_at": "2026-08-05T09:27:08.653431",
   "workload": {
     "source_file": "2026-08-05",
     "days": [
@@ -307,8 +307,13 @@
         "tasks": []
       }
     ],
-    "overdue": [],
-    "overdue_count": 0,
+    "overdue": [
+      {
+        "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
+        "project": "FSI"
+      }
+    ],
+    "overdue_count": 1,
     "undated": [
       {
         "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
@@ -333,7 +338,7 @@
       "date": "2026-08-05",
       "weekday": "水",
       "is_workday": true,
-      "source_file": "2026-08-05.md",
+      "source_file": "2026-08-05_Today.md",
       "calendar_source": "daily_todo",
       "work_hours": {
         "start": "09:00",
@@ -346,9 +351,9 @@
         {
           "start": "09:00",
           "end": "10:00",
-          "name": "[AXHI023E] PFAライニング配管7E Batch BM SHEET発行対応（H03。SPMat登録→MTO取込→Status report→BM sheet作成。依頼元:芹澤さん8/4 15:36受領、購買提出8/5期限）[G1:専門性]",
+          "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
           "project": "FSI",
-          "kind": "task",
+          "kind": "overdue",
           "auto_scheduled": true
         },
         {
@@ -361,9 +366,9 @@
         {
           "start": "13:00",
           "end": "14:00",
-          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-          "project": "IW",
-          "kind": "iw_focus",
+          "name": "[AXHI023E] PFAライニング配管7E Batch BM SHEET発行対応（H03。SPMat登録→MTO取込→Status report→BM sheet作成。依頼元:芹澤さん8/4 15:36受領、購買提出8/5期限）[G1:専門性]",
+          "project": "FSI",
+          "kind": "task",
           "auto_scheduled": true
         },
         {
@@ -404,8 +409,8 @@
         }
       ],
       "unscheduled_tasks": [],
-      "task_count": 1,
-      "iw_focus_minutes": 120,
+      "task_count": 2,
+      "iw_focus_minutes": 60,
       "meeting_count": 5
     },
     "week_schedules": [
@@ -413,7 +418,7 @@
         "date": "2026-08-05",
         "weekday": "水",
         "is_workday": true,
-        "source_file": "2026-08-05.md",
+        "source_file": "2026-08-05_Today.md",
         "calendar_source": "daily_todo",
         "work_hours": {
           "start": "09:00",
@@ -426,9 +431,9 @@
           {
             "start": "09:00",
             "end": "10:00",
-            "name": "[AXHI023E] PFAライニング配管7E Batch BM SHEET発行対応（H03。SPMat登録→MTO取込→Status report→BM sheet作成。依頼元:芹澤さん8/4 15:36受領、購買提出8/5期限）[G1:専門性]",
+            "name": "SPEC_LIST_IDENT_STV4880.csv 234（ASA400フランジ、452710?・400か要確認）の該当行を候補2行から精査し回答[G1:専門性]",
             "project": "FSI",
-            "kind": "task",
+            "kind": "overdue",
             "auto_scheduled": true
           },
           {
@@ -441,9 +446,9 @@
           {
             "start": "13:00",
             "end": "14:00",
-            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
+            "name": "[AXHI023E] PFAライニング配管7E Batch BM SHEET発行対応（H03。SPMat登録→MTO取込→Status report→BM sheet作成。依頼元:芹澤さん8/4 15:36受領、購買提出8/5期限）[G1:専門性]",
+            "project": "FSI",
+            "kind": "task",
             "auto_scheduled": true
           },
           {
@@ -484,8 +489,8 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 1,
-        "iw_focus_minutes": 120,
+        "task_count": 2,
+        "iw_focus_minutes": 60,
         "meeting_count": 5
       },
       {
