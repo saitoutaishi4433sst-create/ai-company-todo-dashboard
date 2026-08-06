@@ -1,14 +1,19 @@
 {
-  "updated_at": "2026-08-06T09:26:16.400332",
+  "updated_at": "2026-08-06T09:26:59.816878",
   "workload": {
     "source_file": "2026-08-06",
     "days": [
       {
         "date": "2026-08-06",
         "weekday": "木",
-        "task_count": 3,
+        "task_count": 4,
         "meeting_count": 3,
         "tasks": [
+          {
+            "name": "Special Bolt & Nut登録依頼（\"検討中\"5アイテムをSBS Rev.2A参照でSPMAT登録：SBS-RF10025/RF20025/SXH129140/SXH-129150/SXH-129180。依頼元:岡本奈々さん8/5 18:34受領）[G1:専門性]",
+            "project": "FSI",
+            "kind": "task"
+          },
           {
             "start": "15:30",
             "end": "16:00",
@@ -363,9 +368,9 @@
         {
           "start": "10:00",
           "end": "11:00",
-          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-          "project": "IW",
-          "kind": "iw_focus",
+          "name": "Special Bolt & Nut登録依頼（\"検討中\"5アイテムをSBS Rev.2A参照でSPMAT登録：SBS-RF10025/RF20025/SXH129140/SXH-129150/SXH-129180。依頼元:岡本奈々さん8/5 18:34受領）[G1:専門性]",
+          "project": "FSI",
+          "kind": "task",
           "auto_scheduled": true
         },
         {
@@ -415,8 +420,8 @@
         }
       ],
       "unscheduled_tasks": [],
-      "task_count": 1,
-      "iw_focus_minutes": 240,
+      "task_count": 2,
+      "iw_focus_minutes": 180,
       "meeting_count": 3
     },
     "week_schedules": [
@@ -445,9 +450,9 @@
           {
             "start": "10:00",
             "end": "11:00",
-            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
+            "name": "Special Bolt & Nut登録依頼（\"検討中\"5アイテムをSBS Rev.2A参照でSPMAT登録：SBS-RF10025/RF20025/SXH129140/SXH-129150/SXH-129180。依頼元:岡本奈々さん8/5 18:34受領）[G1:専門性]",
+            "project": "FSI",
+            "kind": "task",
             "auto_scheduled": true
           },
           {
@@ -497,8 +502,8 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 1,
-        "iw_focus_minutes": 240,
+        "task_count": 2,
+        "iw_focus_minutes": 180,
         "meeting_count": 3
       },
       {
@@ -829,10 +834,10 @@
       }
     ],
     "summary": {
-      "today_count": 3,
-      "week_remaining": 13,
-      "avg_daily": 1.9,
-      "busiest_date": "2026-08-07",
+      "today_count": 4,
+      "week_remaining": 14,
+      "avg_daily": 2.0,
+      "busiest_date": "2026-08-06",
       "busiest_count": 4
     }
   },
@@ -876,12 +881,12 @@
       {
         "id": "total",
         "label": "総タスク完了数",
-        "current": 7,
+        "current": 8,
         "target_monthly": 120,
         "target_weekly": 30,
-        "progress_pct": 5.8,
+        "progress_pct": 6.7,
         "weekly": [
-          7,
+          8,
           0,
           0,
           0
@@ -1007,7 +1012,7 @@
     "generated_for_date": "2026-08-06"
   },
   "stats": {
-    "total_tasks": 529,
+    "total_tasks": 530,
     "total_knowledge": 354,
     "knowledge_categories": {
       "architecture": 1,
@@ -1028,15 +1033,6 @@
     "comm_sessions": 17
   },
   "task_history_by_cat": [
-    {
-      "date": "2026-03-17",
-      "total": 17,
-      "spmat": 8,
-      "tc_tbe": 1,
-      "eng": 1,
-      "comm": 0,
-      "other": 7
-    },
     {
       "date": "2026-03-18",
       "total": 21,
@@ -1837,6 +1833,15 @@
       "eng": 58,
       "comm": 36,
       "other": 144
+    },
+    {
+      "date": "2026-08-05",
+      "total": 530,
+      "spmat": 248,
+      "tc_tbe": 44,
+      "eng": 58,
+      "comm": 36,
+      "other": 144
     }
   ],
   "knowledge_history": [
@@ -2515,10 +2520,6 @@
   ],
   "history": [
     {
-      "date": "2026-03-17",
-      "tasks": 12
-    },
-    {
       "date": "2026-03-18",
       "tasks": 4
     },
@@ -2873,6 +2874,10 @@
     {
       "date": "2026-08-03",
       "tasks": 5
+    },
+    {
+      "date": "2026-08-05",
+      "tasks": 1
     }
   ]
 }
