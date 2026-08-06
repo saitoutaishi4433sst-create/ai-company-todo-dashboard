@@ -1,21 +1,16 @@
 {
-  "updated_at": "2026-08-06T19:06:11.482949",
+  "updated_at": "2026-08-06T19:23:20.877760",
   "workload": {
     "source_file": "2026-08-06",
     "days": [
       {
         "date": "2026-08-06",
         "weekday": "木",
-        "task_count": 6,
+        "task_count": 5,
         "meeting_count": 3,
         "tasks": [
           {
             "name": "Special Bolt & Nut登録依頼（\"検討中\"5アイテムをSBS Rev.2A参照でSPMAT登録：SBS-RF10025/RF20025/SXH129140/SXH-129150/SXH-129180。依頼元:岡本奈々さん8/5 18:34受領）[G1:専門性]",
-            "project": "FSI",
-            "kind": "task"
-          },
-          {
-            "name": "AFC BOM of WMI Batch_20260807エラーチェック（保存先▶20260807のBOMデータをチェック。エラーなければSPMat取込＋BOM copy実施、取込画面Snapshotを工事部共有用に提出。依頼元:芹澤遼太さん8/6 17:26受領）[G1:専門性]",
             "project": "FSI",
             "kind": "task"
           },
@@ -346,10 +341,14 @@
     "waiting": [],
     "waiting_count": 0,
     "daily_actuals": [],
-    "completed_today_count": 1,
+    "completed_today_count": 2,
     "completed_today_tasks": [
       {
         "name": "Rev.4C SPMATデータリリース対応（岡本奈々さん8/5 16:51依頼。H103 Rev.4C内容でSPMAT更新完了(8/6 19:01岡本さんへ報告)・3D data共有完了(20260806_Rev4Cフォルダ、浅見喜代司さんへ8/6 19:00共有)。残件4件[FROM-TO逆転/TUBE/RC3/1S116 BA1]は全てCLOSE）",
+        "project": "FSI"
+      },
+      {
+        "name": "AFC BOM of WMI Batch_20260807エラーチェック〜SPMat取込〜BOM copy〜工事部共有 完了（19:21芹澤遼太さん他へBOM COPY完了報告・SPMAT画面Snapshot・AFC LINE BM(FSI_AFC_LINE_BM_20260806.xlsx)送付、工事部への転送依頼済み）",
         "project": "FSI"
       }
     ],
@@ -378,7 +377,7 @@
         {
           "start": "10:00",
           "end": "11:00",
-          "name": "AFC BOM of WMI Batch_20260807エラーチェック（保存先▶20260807のBOMデータをチェック。エラーなければSPMat取込＋BOM copy実施、取込画面Snapshotを工事部共有用に提出。依頼元:芹澤遼太さん8/6 17:26受領）[G1:専門性]",
+          "name": "H103 material request list_FSI.xlsx のR列にRev.4C完了日を記入（SPMAT更新・3D data共有完了済、岡本さん依頼の最終ステップ）[G1:専門性]",
           "project": "FSI",
           "kind": "task",
           "auto_scheduled": true
@@ -386,9 +385,9 @@
         {
           "start": "11:00",
           "end": "12:00",
-          "name": "H103 material request list_FSI.xlsx のR列にRev.4C完了日を記入（SPMAT更新・3D data共有完了済、岡本さん依頼の最終ステップ）[G1:専門性]",
-          "project": "FSI",
-          "kind": "task",
+          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+          "project": "IW",
+          "kind": "iw_focus",
           "auto_scheduled": true
         },
         {
@@ -430,8 +429,8 @@
         }
       ],
       "unscheduled_tasks": [],
-      "task_count": 3,
-      "iw_focus_minutes": 120,
+      "task_count": 2,
+      "iw_focus_minutes": 180,
       "meeting_count": 3
     },
     "week_schedules": [
@@ -460,7 +459,7 @@
           {
             "start": "10:00",
             "end": "11:00",
-            "name": "AFC BOM of WMI Batch_20260807エラーチェック（保存先▶20260807のBOMデータをチェック。エラーなければSPMat取込＋BOM copy実施、取込画面Snapshotを工事部共有用に提出。依頼元:芹澤遼太さん8/6 17:26受領）[G1:専門性]",
+            "name": "H103 material request list_FSI.xlsx のR列にRev.4C完了日を記入（SPMAT更新・3D data共有完了済、岡本さん依頼の最終ステップ）[G1:専門性]",
             "project": "FSI",
             "kind": "task",
             "auto_scheduled": true
@@ -468,9 +467,9 @@
           {
             "start": "11:00",
             "end": "12:00",
-            "name": "H103 material request list_FSI.xlsx のR列にRev.4C完了日を記入（SPMAT更新・3D data共有完了済、岡本さん依頼の最終ステップ）[G1:専門性]",
-            "project": "FSI",
-            "kind": "task",
+            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
             "auto_scheduled": true
           },
           {
@@ -512,8 +511,8 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 3,
-        "iw_focus_minutes": 120,
+        "task_count": 2,
+        "iw_focus_minutes": 180,
         "meeting_count": 3
       },
       {
@@ -844,11 +843,11 @@
       }
     ],
     "summary": {
-      "today_count": 6,
-      "week_remaining": 16,
+      "today_count": 5,
+      "week_remaining": 15,
       "avg_daily": 2.1,
       "busiest_date": "2026-08-06",
-      "busiest_count": 6
+      "busiest_count": 5
     }
   },
   "goal_progress": {
@@ -891,12 +890,12 @@
       {
         "id": "total",
         "label": "総タスク完了数",
-        "current": 9,
+        "current": 10,
         "target_monthly": 120,
         "target_weekly": 30,
-        "progress_pct": 7.5,
+        "progress_pct": 8.3,
         "weekly": [
-          9,
+          10,
           0,
           0,
           0
@@ -1022,7 +1021,7 @@
     "generated_for_date": "2026-08-06"
   },
   "stats": {
-    "total_tasks": 531,
+    "total_tasks": 532,
     "total_knowledge": 354,
     "knowledge_categories": {
       "architecture": 1,
@@ -1846,8 +1845,8 @@
     },
     {
       "date": "2026-08-06",
-      "total": 531,
-      "spmat": 249,
+      "total": 532,
+      "spmat": 250,
       "tc_tbe": 44,
       "eng": 58,
       "comm": 36,
@@ -2887,7 +2886,7 @@
     },
     {
       "date": "2026-08-06",
-      "tasks": 1
+      "tasks": 2
     }
   ]
 }
