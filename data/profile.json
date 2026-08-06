@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-06T15:54:30.193252",
+  "updated_at": "2026-08-06T15:54:49.434865",
   "workload": {
     "source_file": "2026-08-06",
     "days": [
@@ -318,7 +318,7 @@
     ],
     "overdue": [
       {
-        "name": "Rev.4C SPMATデータリリース対応（30.Rev.4C(SPW generated only)参照、更新内容はH103 material request list_FSI.xlsx Rev.4C分参照。完了後R列に完了日記入。依頼元:岡本奈々さん8/5 16:51受領。残件4件: ①GL013/VJ/BALL FROM-TO逆転(65/50)要確認 ②2ST14/TUBE FROM=16 TO=16要確認 ③1S112 RC3 Commodity_Code DCDWC0SCGZ60のCC.csv草稿あり(TD_ID5=759494)だが未Import ④1S116 BA1 Invalid Geometric NameのBolt Filter未登録。8/6 13:16時点SI Import Errorは朝と同じ内訳(OK930/エラー7)）[G1:専門性]",
+        "name": "Rev.4C SPMATデータリリース対応（30.Rev.4C(SPW generated only)参照、更新内容はH103 material request list_FSI.xlsx Rev.4C分参照。完了後R列に完了日記入。依頼元:岡本奈々さん8/5 16:51受領。残件2件: ①GL013/VJ/BALL FROM-TO逆転(65/50)要確認 ②2ST14/TUBE FROM=16 TO=16要確認。③RC3 Commodity_Code・④1S116 BA1 Invalid Geometric Nameは解消確認済み（SI IMPORT ERROR3.csv: OK932/エラー5=既知の無視可Duplicate Spec Itemのみ）。次: BUILD IDENT要否確認）[G1:専門性]",
         "project": "FSI"
       }
     ],
@@ -360,7 +360,7 @@
         {
           "start": "09:00",
           "end": "10:00",
-          "name": "Rev.4C SPMATデータリリース対応（30.Rev.4C(SPW generated only)参照、更新内容はH103 material request list_FSI.xlsx Rev.4C分参照。完了後R列に完了日記入。依頼元:岡本奈々さん8/5 16:51受領。残件4件: ①GL013/VJ/BALL FROM-TO逆転(65/50)要確認 ②2ST14/TUBE FROM=16 TO=16要確認 ③1S112 RC3 Commodity_Code DCDWC0SCGZ60のCC.csv草稿あり(TD_ID5=759494)だが未Import ④1S116 BA1 Invalid Geometric NameのBolt Filter未登録。8/6 13:16時点SI Import Errorは朝と同じ内訳(OK930/エラー7)）[G1:専門性]",
+          "name": "Rev.4C SPMATデータリリース対応（30.Rev.4C(SPW generated only)参照、更新内容はH103 material request list_FSI.xlsx Rev.4C分参照。完了後R列に完了日記入。依頼元:岡本奈々さん8/5 16:51受領。残件2件: ①GL013/VJ/BALL FROM-TO逆転(65/50)要確認 ②2ST14/TUBE FROM=16 TO=16要確認。③RC3 Commodity_Code・④1S116 BA1 Invalid Geometric Nameは解消確認済み（SI IMPORT ERROR3.csv: OK932/エラー5=既知の無視可Duplicate Spec Itemのみ）。次: BUILD IDENT要否確認）[G1:専門性]",
           "project": "FSI",
           "kind": "overdue",
           "auto_scheduled": true
@@ -442,7 +442,7 @@
           {
             "start": "09:00",
             "end": "10:00",
-            "name": "Rev.4C SPMATデータリリース対応（30.Rev.4C(SPW generated only)参照、更新内容はH103 material request list_FSI.xlsx Rev.4C分参照。完了後R列に完了日記入。依頼元:岡本奈々さん8/5 16:51受領。残件4件: ①GL013/VJ/BALL FROM-TO逆転(65/50)要確認 ②2ST14/TUBE FROM=16 TO=16要確認 ③1S112 RC3 Commodity_Code DCDWC0SCGZ60のCC.csv草稿あり(TD_ID5=759494)だが未Import ④1S116 BA1 Invalid Geometric NameのBolt Filter未登録。8/6 13:16時点SI Import Errorは朝と同じ内訳(OK930/エラー7)）[G1:専門性]",
+            "name": "Rev.4C SPMATデータリリース対応（30.Rev.4C(SPW generated only)参照、更新内容はH103 material request list_FSI.xlsx Rev.4C分参照。完了後R列に完了日記入。依頼元:岡本奈々さん8/5 16:51受領。残件2件: ①GL013/VJ/BALL FROM-TO逆転(65/50)要確認 ②2ST14/TUBE FROM=16 TO=16要確認。③RC3 Commodity_Code・④1S116 BA1 Invalid Geometric Nameは解消確認済み（SI IMPORT ERROR3.csv: OK932/エラー5=既知の無視可Duplicate Spec Itemのみ）。次: BUILD IDENT要否確認）[G1:専門性]",
             "project": "FSI",
             "kind": "overdue",
             "auto_scheduled": true
