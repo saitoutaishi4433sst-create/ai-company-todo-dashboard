@@ -1,16 +1,21 @@
 {
-  "updated_at": "2026-08-06T17:32:52.333945",
+  "updated_at": "2026-08-06T17:42:25.774374",
   "workload": {
     "source_file": "2026-08-06",
     "days": [
       {
         "date": "2026-08-06",
         "weekday": "木",
-        "task_count": 4,
+        "task_count": 5,
         "meeting_count": 3,
         "tasks": [
           {
             "name": "Special Bolt & Nut登録依頼（\"検討中\"5アイテムをSBS Rev.2A参照でSPMAT登録：SBS-RF10025/RF20025/SXH129140/SXH-129150/SXH-129180。依頼元:岡本奈々さん8/5 18:34受領）[G1:専門性]",
+            "project": "FSI",
+            "kind": "task"
+          },
+          {
+            "name": "AFC BOM of WMI Batch_20260807エラーチェック（保存先▶20260807のBOMデータをチェック。エラーなければSPMat取込＋BOM copy実施、取込画面Snapshotを工事部共有用に提出。依頼元:芹澤遼太さん8/6 17:26受領）[G1:専門性]",
             "project": "FSI",
             "kind": "task"
           },
@@ -41,14 +46,9 @@
       {
         "date": "2026-08-07",
         "weekday": "金",
-        "task_count": 5,
+        "task_count": 4,
         "meeting_count": 4,
         "tasks": [
-          {
-            "name": "AFC BOM of WMI Batch_20260807エラーチェック（保存先▶20260807のBOMデータをチェック。エラーなければSPMat取込＋BOM copy実施、取込画面Snapshotを工事部共有用に提出。依頼元:芹澤遼太さん8/6 17:26受領）[G1:専門性]",
-            "project": "FSI",
-            "kind": "task"
-          },
           {
             "start": "11:30",
             "end": "12:00",
@@ -381,9 +381,9 @@
         {
           "start": "11:00",
           "end": "12:00",
-          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-          "project": "IW",
-          "kind": "iw_focus",
+          "name": "AFC BOM of WMI Batch_20260807エラーチェック（保存先▶20260807のBOMデータをチェック。エラーなければSPMat取込＋BOM copy実施、取込画面Snapshotを工事部共有用に提出。依頼元:芹澤遼太さん8/6 17:26受領）[G1:専門性]",
+          "project": "FSI",
+          "kind": "task",
           "auto_scheduled": true
         },
         {
@@ -425,8 +425,8 @@
         }
       ],
       "unscheduled_tasks": [],
-      "task_count": 2,
-      "iw_focus_minutes": 180,
+      "task_count": 3,
+      "iw_focus_minutes": 120,
       "meeting_count": 3
     },
     "week_schedules": [
@@ -463,9 +463,9 @@
           {
             "start": "11:00",
             "end": "12:00",
-            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
+            "name": "AFC BOM of WMI Batch_20260807エラーチェック（保存先▶20260807のBOMデータをチェック。エラーなければSPMat取込＋BOM copy実施、取込画面Snapshotを工事部共有用に提出。依頼元:芹澤遼太さん8/6 17:26受領）[G1:専門性]",
+            "project": "FSI",
+            "kind": "task",
             "auto_scheduled": true
           },
           {
@@ -507,8 +507,8 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 2,
-        "iw_focus_minutes": 180,
+        "task_count": 3,
+        "iw_focus_minutes": 120,
         "meeting_count": 3
       },
       {
@@ -528,9 +528,9 @@
           {
             "start": "09:00",
             "end": "10:00",
-            "name": "AFC BOM of WMI Batch_20260807エラーチェック（保存先▶20260807のBOMデータをチェック。エラーなければSPMat取込＋BOM copy実施、取込画面Snapshotを工事部共有用に提出。依頼元:芹澤遼太さん8/6 17:26受領）[G1:専門性]",
-            "project": "FSI",
-            "kind": "task",
+            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
             "auto_scheduled": true
           },
           {
@@ -587,8 +587,8 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 1,
-        "iw_focus_minutes": 180,
+        "task_count": 0,
+        "iw_focus_minutes": 240,
         "meeting_count": 4
       },
       {
@@ -839,10 +839,10 @@
       }
     ],
     "summary": {
-      "today_count": 4,
+      "today_count": 5,
       "week_remaining": 15,
       "avg_daily": 2.1,
-      "busiest_date": "2026-08-07",
+      "busiest_date": "2026-08-06",
       "busiest_count": 5
     }
   },
