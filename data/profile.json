@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-06T19:31:45.293567",
+  "updated_at": "2026-08-06T19:31:58.586913",
   "workload": {
     "source_file": "2026-08-06",
     "days": [
@@ -339,7 +339,7 @@
     "completed_today_count": 2,
     "completed_today_tasks": [
       {
-        "name": "Rev.4C SPMATデータリリース対応（岡本奈々さん8/5 16:51依頼。H103 Rev.4C内容でSPMAT更新完了(8/6 19:01岡本さんへ報告)・3D data共有完了(20260806_Rev4Cフォルダ、浅見喜代司さんへ8/6 19:00共有)。残件4件[FROM-TO逆転/TUBE/RC3/1S116 BA1]は全てCLOSE）",
+        "name": "Rev.4C SPMATデータリリース対応（岡本奈々さん8/5 16:51依頼。H103 Rev.4C内容でSPMAT更新完了・3D data共有完了(浅見喜代司さんへ8/6 19:00共有)・H103 material request list_FSI.xlsx R列に完了日入力まで完了(8/6 19:01岡本さんへ編集済み報告)。残件4件[FROM-TO逆転/TUBE/RC3/1S116 BA1]は全てCLOSE。完全クローズ）",
         "project": "FSI"
       },
       {
