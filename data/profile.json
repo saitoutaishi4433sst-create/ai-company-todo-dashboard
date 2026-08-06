@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-08-06T17:42:25.774374",
+  "updated_at": "2026-08-06T19:05:57.327886",
   "workload": {
     "source_file": "2026-08-06",
     "days": [
       {
         "date": "2026-08-06",
         "weekday": "木",
-        "task_count": 5,
+        "task_count": 6,
         "meeting_count": 3,
         "tasks": [
           {
@@ -16,6 +16,11 @@
           },
           {
             "name": "AFC BOM of WMI Batch_20260807エラーチェック（保存先▶20260807のBOMデータをチェック。エラーなければSPMat取込＋BOM copy実施、取込画面Snapshotを工事部共有用に提出。依頼元:芹澤遼太さん8/6 17:26受領）[G1:専門性]",
+            "project": "FSI",
+            "kind": "task"
+          },
+          {
+            "name": "H103 material request list_FSI.xlsx のR列にRev.4C完了日を記入（SPMAT更新・3D data共有完了済、岡本さん依頼の最終ステップ）[G1:専門性]",
             "project": "FSI",
             "kind": "task"
           },
@@ -321,13 +326,8 @@
         "tasks": []
       }
     ],
-    "overdue": [
-      {
-        "name": "Rev.4C SPMATデータリリース対応（30.Rev.4C(SPW generated only)参照、更新内容はH103 material request list_FSI.xlsx Rev.4C分参照。依頼元:岡本奈々さん8/5 16:51受領。残件4件（①GL013/VJ/BALL FROM-TO逆転 ②2ST14/TUBE ③RC3 Commodity_Code ④1S116 BA1 Invalid Geometric Name）は全てCLOSE（①岡本さんへ修正連絡済・Att3差し替え済、②問題なし確認済、③④SPMAT Import後SI再Importで解消確認済、残エラー5件は既知の無視可Duplicate Spec Itemのみ）。次: BUILD IDENT実施要否確認 → H103 material request list_FSI.xlsx R列に完了日記入）[G1:専門性]",
-        "project": "FSI"
-      }
-    ],
-    "overdue_count": 1,
+    "overdue": [],
+    "overdue_count": 0,
     "undated": [
       {
         "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
@@ -346,8 +346,13 @@
     "waiting": [],
     "waiting_count": 0,
     "daily_actuals": [],
-    "completed_today_count": 0,
-    "completed_today_tasks": [],
+    "completed_today_count": 1,
+    "completed_today_tasks": [
+      {
+        "name": "Rev.4C SPMATデータリリース対応（岡本奈々さん8/5 16:51依頼。H103 Rev.4C内容でSPMAT更新完了(8/6 19:01岡本さんへ報告)・3D data共有完了(20260806_Rev4Cフォルダ、浅見喜代司さんへ8/6 19:00共有)。残件4件[FROM-TO逆転/TUBE/RC3/1S116 BA1]は全てCLOSE）",
+        "project": "FSI"
+      }
+    ],
     "today_schedule": {
       "date": "2026-08-06",
       "weekday": "木",
@@ -365,15 +370,15 @@
         {
           "start": "09:00",
           "end": "10:00",
-          "name": "Rev.4C SPMATデータリリース対応（30.Rev.4C(SPW generated only)参照、更新内容はH103 material request list_FSI.xlsx Rev.4C分参照。依頼元:岡本奈々さん8/5 16:51受領。残件4件（①GL013/VJ/BALL FROM-TO逆転 ②2ST14/TUBE ③RC3 Commodity_Code ④1S116 BA1 Invalid Geometric Name）は全てCLOSE（①岡本さんへ修正連絡済・Att3差し替え済、②問題なし確認済、③④SPMAT Import後SI再Importで解消確認済、残エラー5件は既知の無視可Duplicate Spec Itemのみ）。次: BUILD IDENT実施要否確認 → H103 material request list_FSI.xlsx R列に完了日記入）[G1:専門性]",
+          "name": "Special Bolt & Nut登録依頼（\"検討中\"5アイテムをSBS Rev.2A参照でSPMAT登録：SBS-RF10025/RF20025/SXH129140/SXH-129150/SXH-129180。依頼元:岡本奈々さん8/5 18:34受領）[G1:専門性]",
           "project": "FSI",
-          "kind": "overdue",
+          "kind": "task",
           "auto_scheduled": true
         },
         {
           "start": "10:00",
           "end": "11:00",
-          "name": "Special Bolt & Nut登録依頼（\"検討中\"5アイテムをSBS Rev.2A参照でSPMAT登録：SBS-RF10025/RF20025/SXH129140/SXH-129150/SXH-129180。依頼元:岡本奈々さん8/5 18:34受領）[G1:専門性]",
+          "name": "AFC BOM of WMI Batch_20260807エラーチェック（保存先▶20260807のBOMデータをチェック。エラーなければSPMat取込＋BOM copy実施、取込画面Snapshotを工事部共有用に提出。依頼元:芹澤遼太さん8/6 17:26受領）[G1:専門性]",
           "project": "FSI",
           "kind": "task",
           "auto_scheduled": true
@@ -381,7 +386,7 @@
         {
           "start": "11:00",
           "end": "12:00",
-          "name": "AFC BOM of WMI Batch_20260807エラーチェック（保存先▶20260807のBOMデータをチェック。エラーなければSPMat取込＋BOM copy実施、取込画面Snapshotを工事部共有用に提出。依頼元:芹澤遼太さん8/6 17:26受領）[G1:専門性]",
+          "name": "H103 material request list_FSI.xlsx のR列にRev.4C完了日を記入（SPMAT更新・3D data共有完了済、岡本さん依頼の最終ステップ）[G1:専門性]",
           "project": "FSI",
           "kind": "task",
           "auto_scheduled": true
@@ -447,15 +452,15 @@
           {
             "start": "09:00",
             "end": "10:00",
-            "name": "Rev.4C SPMATデータリリース対応（30.Rev.4C(SPW generated only)参照、更新内容はH103 material request list_FSI.xlsx Rev.4C分参照。依頼元:岡本奈々さん8/5 16:51受領。残件4件（①GL013/VJ/BALL FROM-TO逆転 ②2ST14/TUBE ③RC3 Commodity_Code ④1S116 BA1 Invalid Geometric Name）は全てCLOSE（①岡本さんへ修正連絡済・Att3差し替え済、②問題なし確認済、③④SPMAT Import後SI再Importで解消確認済、残エラー5件は既知の無視可Duplicate Spec Itemのみ）。次: BUILD IDENT実施要否確認 → H103 material request list_FSI.xlsx R列に完了日記入）[G1:専門性]",
+            "name": "Special Bolt & Nut登録依頼（\"検討中\"5アイテムをSBS Rev.2A参照でSPMAT登録：SBS-RF10025/RF20025/SXH129140/SXH-129150/SXH-129180。依頼元:岡本奈々さん8/5 18:34受領）[G1:専門性]",
             "project": "FSI",
-            "kind": "overdue",
+            "kind": "task",
             "auto_scheduled": true
           },
           {
             "start": "10:00",
             "end": "11:00",
-            "name": "Special Bolt & Nut登録依頼（\"検討中\"5アイテムをSBS Rev.2A参照でSPMAT登録：SBS-RF10025/RF20025/SXH129140/SXH-129150/SXH-129180。依頼元:岡本奈々さん8/5 18:34受領）[G1:専門性]",
+            "name": "AFC BOM of WMI Batch_20260807エラーチェック（保存先▶20260807のBOMデータをチェック。エラーなければSPMat取込＋BOM copy実施、取込画面Snapshotを工事部共有用に提出。依頼元:芹澤遼太さん8/6 17:26受領）[G1:専門性]",
             "project": "FSI",
             "kind": "task",
             "auto_scheduled": true
@@ -463,7 +468,7 @@
           {
             "start": "11:00",
             "end": "12:00",
-            "name": "AFC BOM of WMI Batch_20260807エラーチェック（保存先▶20260807のBOMデータをチェック。エラーなければSPMat取込＋BOM copy実施、取込画面Snapshotを工事部共有用に提出。依頼元:芹澤遼太さん8/6 17:26受領）[G1:専門性]",
+            "name": "H103 material request list_FSI.xlsx のR列にRev.4C完了日を記入（SPMAT更新・3D data共有完了済、岡本さん依頼の最終ステップ）[G1:専門性]",
             "project": "FSI",
             "kind": "task",
             "auto_scheduled": true
@@ -839,11 +844,11 @@
       }
     ],
     "summary": {
-      "today_count": 5,
-      "week_remaining": 15,
+      "today_count": 6,
+      "week_remaining": 16,
       "avg_daily": 2.1,
       "busiest_date": "2026-08-06",
-      "busiest_count": 5
+      "busiest_count": 6
     }
   },
   "goal_progress": {
@@ -886,12 +891,12 @@
       {
         "id": "total",
         "label": "総タスク完了数",
-        "current": 8,
+        "current": 9,
         "target_monthly": 120,
         "target_weekly": 30,
-        "progress_pct": 6.7,
+        "progress_pct": 7.5,
         "weekly": [
-          8,
+          9,
           0,
           0,
           0
@@ -1017,7 +1022,7 @@
     "generated_for_date": "2026-08-06"
   },
   "stats": {
-    "total_tasks": 530,
+    "total_tasks": 531,
     "total_knowledge": 354,
     "knowledge_categories": {
       "architecture": 1,
@@ -1038,15 +1043,6 @@
     "comm_sessions": 17
   },
   "task_history_by_cat": [
-    {
-      "date": "2026-03-18",
-      "total": 21,
-      "spmat": 8,
-      "tc_tbe": 1,
-      "eng": 1,
-      "comm": 2,
-      "other": 9
-    },
     {
       "date": "2026-03-19",
       "total": 32,
@@ -1847,6 +1843,15 @@
       "eng": 58,
       "comm": 36,
       "other": 144
+    },
+    {
+      "date": "2026-08-06",
+      "total": 531,
+      "spmat": 249,
+      "tc_tbe": 44,
+      "eng": 58,
+      "comm": 36,
+      "other": 144
     }
   ],
   "knowledge_history": [
@@ -2525,10 +2530,6 @@
   ],
   "history": [
     {
-      "date": "2026-03-18",
-      "tasks": 4
-    },
-    {
       "date": "2026-03-19",
       "tasks": 11
     },
@@ -2882,6 +2883,10 @@
     },
     {
       "date": "2026-08-05",
+      "tasks": 1
+    },
+    {
+      "date": "2026-08-06",
       "tasks": 1
     }
   ]
