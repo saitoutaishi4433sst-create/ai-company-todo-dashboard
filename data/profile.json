@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-07T08:37:26.670653",
+  "updated_at": "2026-08-07T08:40:12.132780",
   "workload": {
     "source_file": "2026-08-07",
     "days": [
@@ -288,8 +288,13 @@
         "tasks": []
       }
     ],
-    "overdue": [],
-    "overdue_count": 0,
+    "overdue": [
+      {
+        "name": "Special Bolt & Nut登録依頼（\"検討中\"5アイテムをSBS Rev.2A参照でSPMAT登録：SBS-RF10025/RF20025/SXH129140/SXH-129150/SXH-129180。依頼元:岡本奈々さん8/5 18:34受領）[G1:専門性]",
+        "project": "FSI"
+      }
+    ],
+    "overdue_count": 1,
     "undated": [],
     "undated_count": 0,
     "waiting": [],
@@ -301,7 +306,7 @@
       "date": "2026-08-07",
       "weekday": "金",
       "is_workday": true,
-      "source_file": "2026-08-07.md",
+      "source_file": "2026-08-07_Today.md",
       "calendar_source": "daily_todo",
       "work_hours": {
         "start": "09:00",
@@ -311,6 +316,14 @@
       },
       "default_task_minutes": 60,
       "events": [
+        {
+          "start": "09:00",
+          "end": "10:00",
+          "name": "Special Bolt & Nut登録依頼（\"検討中\"5アイテムをSBS Rev.2A参照でSPMAT登録：SBS-RF10025/RF20025/SXH129140/SXH-129150/SXH-129180。依頼元:岡本奈々さん8/5 18:34受領）[G1:専門性]",
+          "project": "FSI",
+          "kind": "overdue",
+          "auto_scheduled": true
+        },
         {
           "start": "11:30",
           "end": "12:00",
@@ -341,7 +354,7 @@
         }
       ],
       "unscheduled_tasks": [],
-      "task_count": 0,
+      "task_count": 1,
       "iw_focus_minutes": 0,
       "meeting_count": 4
     },
@@ -350,7 +363,7 @@
         "date": "2026-08-07",
         "weekday": "金",
         "is_workday": true,
-        "source_file": "2026-08-07.md",
+        "source_file": "2026-08-07_Today.md",
         "calendar_source": "daily_todo",
         "work_hours": {
           "start": "09:00",
@@ -360,6 +373,14 @@
         },
         "default_task_minutes": 60,
         "events": [
+          {
+            "start": "09:00",
+            "end": "10:00",
+            "name": "Special Bolt & Nut登録依頼（\"検討中\"5アイテムをSBS Rev.2A参照でSPMAT登録：SBS-RF10025/RF20025/SXH129140/SXH-129150/SXH-129180。依頼元:岡本奈々さん8/5 18:34受領）[G1:専門性]",
+            "project": "FSI",
+            "kind": "overdue",
+            "auto_scheduled": true
+          },
           {
             "start": "11:30",
             "end": "12:00",
@@ -390,7 +411,7 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 0,
+        "task_count": 1,
         "iw_focus_minutes": 0,
         "meeting_count": 4
       },
