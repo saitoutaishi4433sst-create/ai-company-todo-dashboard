@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-06T08:53:39.786262",
+  "updated_at": "2026-08-06T09:26:16.400332",
   "workload": {
     "source_file": "2026-08-06",
     "days": [
@@ -315,13 +315,9 @@
       {
         "name": "Rev.4C SPMATデータリリース対応（30.Rev.4C(SPW generated only)参照、更新内容はH103 material request list_FSI.xlsx Rev.4C分参照。完了後R列に完了日記入。依頼元:岡本奈々さん8/5 16:51受領）[G1:専門性]",
         "project": "FSI"
-      },
-      {
-        "name": "[AXHI023E] PFAライニング配管7E Batch BM SHEET発行対応（H03。SPMat登録→MTO取込→Status report→BM sheet作成。依頼元:芹澤さん8/4 15:36受領、購買提出8/5期限。8/4「完了」報告はオーナー訂正により再オープン、未完了範囲は確認中）[G1:専門性]",
-        "project": "FSI"
       }
     ],
-    "overdue_count": 2,
+    "overdue_count": 1,
     "undated": [
       {
         "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
@@ -367,9 +363,9 @@
         {
           "start": "10:00",
           "end": "11:00",
-          "name": "[AXHI023E] PFAライニング配管7E Batch BM SHEET発行対応（H03。SPMat登録→MTO取込→Status report→BM sheet作成。依頼元:芹澤さん8/4 15:36受領、購買提出8/5期限。8/4「完了」報告はオーナー訂正により再オープン、未完了範囲は確認中）[G1:専門性]",
-          "project": "FSI",
-          "kind": "overdue",
+          "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+          "project": "IW",
+          "kind": "iw_focus",
           "auto_scheduled": true
         },
         {
@@ -419,8 +415,8 @@
         }
       ],
       "unscheduled_tasks": [],
-      "task_count": 2,
-      "iw_focus_minutes": 180,
+      "task_count": 1,
+      "iw_focus_minutes": 240,
       "meeting_count": 3
     },
     "week_schedules": [
@@ -449,9 +445,9 @@
           {
             "start": "10:00",
             "end": "11:00",
-            "name": "[AXHI023E] PFAライニング配管7E Batch BM SHEET発行対応（H03。SPMat登録→MTO取込→Status report→BM sheet作成。依頼元:芹澤さん8/4 15:36受領、購買提出8/5期限。8/4「完了」報告はオーナー訂正により再オープン、未完了範囲は確認中）[G1:専門性]",
-            "project": "FSI",
-            "kind": "overdue",
+            "name": "LEドキュメント改定（16P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
             "auto_scheduled": true
           },
           {
@@ -501,8 +497,8 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 2,
-        "iw_focus_minutes": 180,
+        "task_count": 1,
+        "iw_focus_minutes": 240,
         "meeting_count": 3
       },
       {
@@ -1027,7 +1023,7 @@
     "total_trace": 2,
     "trace_max_depth": 5,
     "total_feedback": 52,
-    "total_sessions": 107,
+    "total_sessions": 108,
     "english_sessions": 5,
     "comm_sessions": 17
   },
