@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-06T19:23:20.877760",
+  "updated_at": "2026-08-06T19:28:59.686764",
   "workload": {
     "source_file": "2026-08-06",
     "days": [
@@ -348,7 +348,7 @@
         "project": "FSI"
       },
       {
-        "name": "AFC BOM of WMI Batch_20260807エラーチェック〜SPMat取込〜BOM copy〜工事部共有 完了（19:21芹澤遼太さん他へBOM COPY完了報告・SPMAT画面Snapshot・AFC LINE BM(FSI_AFC_LINE_BM_20260806.xlsx)送付、工事部への転送依頼済み）",
+        "name": "AFC BOM of WMI Batch_20260807エラーチェック〜SPMat取込〜BOM copy〜工事部共有 完了（19:21芹澤遼太さん他へBOM COPY完了報告・SPMAT画面Snapshot・AFC LINE BM(FSI_AFC_LINE_BM_20260807.xlsx、当初20260806表記から修正済み)送付、工事部への転送依頼済み）",
         "project": "FSI"
       }
     ],
