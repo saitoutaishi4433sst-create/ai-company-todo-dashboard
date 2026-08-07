@@ -1,14 +1,19 @@
 {
-  "updated_at": "2026-08-07T10:28:50.572835",
+  "updated_at": "2026-08-07T10:31:17.123334",
   "workload": {
     "source_file": "2026-08-07",
     "days": [
       {
         "date": "2026-08-07",
         "weekday": "金",
-        "task_count": 4,
+        "task_count": 5,
         "meeting_count": 4,
         "tasks": [
+          {
+            "name": "Special item Tag No.回答（REQ BXHI074C、特殊品3件:SFL-PED15F6/SRC-PED15RC6X4/SRC-PED15RC4X3。依頼元:岡本奈々さん8/7 10:22受領）[G1:専門性]",
+            "project": "FSI",
+            "kind": "task"
+          },
           {
             "start": "11:30",
             "end": "12:00",
@@ -336,9 +341,9 @@
         {
           "start": "10:00",
           "end": "11:00",
-          "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-          "project": "IW",
-          "kind": "iw_focus",
+          "name": "Special item Tag No.回答（REQ BXHI074C、特殊品3件:SFL-PED15F6/SRC-PED15RC6X4/SRC-PED15RC4X3。依頼元:岡本奈々さん8/7 10:22受領）[G1:専門性]",
+          "project": "FSI",
+          "kind": "task",
           "auto_scheduled": true
         },
         {
@@ -387,8 +392,8 @@
         }
       ],
       "unscheduled_tasks": [],
-      "task_count": 1,
-      "iw_focus_minutes": 180,
+      "task_count": 2,
+      "iw_focus_minutes": 120,
       "meeting_count": 4
     },
     "week_schedules": [
@@ -417,9 +422,9 @@
           {
             "start": "10:00",
             "end": "11:00",
-            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
+            "name": "Special item Tag No.回答（REQ BXHI074C、特殊品3件:SFL-PED15F6/SRC-PED15RC6X4/SRC-PED15RC4X3。依頼元:岡本奈々さん8/7 10:22受領）[G1:専門性]",
+            "project": "FSI",
+            "kind": "task",
             "auto_scheduled": true
           },
           {
@@ -468,8 +473,8 @@
           }
         ],
         "unscheduled_tasks": [],
-        "task_count": 1,
-        "iw_focus_minutes": 180,
+        "task_count": 2,
+        "iw_focus_minutes": 120,
         "meeting_count": 4
       },
       {
@@ -816,11 +821,11 @@
       }
     ],
     "summary": {
-      "today_count": 4,
-      "week_remaining": 14,
-      "avg_daily": 1.7,
+      "today_count": 5,
+      "week_remaining": 15,
+      "avg_daily": 1.8,
       "busiest_date": "2026-08-07",
-      "busiest_count": 4
+      "busiest_count": 5
     }
   },
   "goal_progress": {
