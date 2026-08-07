@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-07T16:15:06.943454",
+  "updated_at": "2026-08-07T17:15:20.968035",
   "workload": {
     "source_file": "2026-08-07",
     "days": [
@@ -267,9 +267,16 @@
       {
         "date": "2026-08-20",
         "weekday": "木",
-        "task_count": 2,
-        "meeting_count": 2,
+        "task_count": 3,
+        "meeting_count": 3,
         "tasks": [
+          {
+            "start": "13:30",
+            "end": "14:30",
+            "name": "[1003会議室] Material Team: 1hr Roundtable Work Shop [33st]:PPDG-1126-J_配管材料業務 標準手順書 ⑦⑨",
+            "project": "-",
+            "kind": "meeting"
+          },
           {
             "start": "15:30",
             "end": "16:00",
@@ -860,7 +867,7 @@
     "summary": {
       "today_count": 6,
       "week_remaining": 16,
-      "avg_daily": 2.0,
+      "avg_daily": 2.1,
       "busiest_date": "2026-08-07",
       "busiest_count": 6
     }
