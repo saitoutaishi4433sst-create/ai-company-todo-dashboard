@@ -1,18 +1,25 @@
 {
-  "updated_at": "2026-08-07T10:31:45.108320",
+  "updated_at": "2026-08-07T10:43:46.500032",
   "workload": {
     "source_file": "2026-08-07",
     "days": [
       {
         "date": "2026-08-07",
         "weekday": "金",
-        "task_count": 5,
-        "meeting_count": 4,
+        "task_count": 6,
+        "meeting_count": 5,
         "tasks": [
           {
             "name": "Special item Tag No.回答（REQ BXHI074C、特殊品3件:SFL-PED15F6/SRC-PED15RC6X4/SRC-PED15RC4X3。依頼元:岡本奈々さん8/7 10:22受領）[G1:専門性]",
             "project": "FSI",
             "kind": "task"
+          },
+          {
+            "start": "11:00",
+            "end": "11:25",
+            "name": "同一REQ-Number　Supplement＝０がPO済，１が未POの場合の処理",
+            "project": "FSI",
+            "kind": "meeting"
           },
           {
             "start": "11:30",
@@ -48,16 +55,9 @@
       {
         "date": "2026-08-10",
         "weekday": "月",
-        "task_count": 2,
-        "meeting_count": 2,
+        "task_count": 1,
+        "meeting_count": 1,
         "tasks": [
-          {
-            "start": "10:30",
-            "end": "10:55",
-            "name": "SPMAT weekly toolbox meeting",
-            "project": "FSI",
-            "kind": "meeting"
-          },
           {
             "start": "17:15",
             "end": "17:25",
@@ -94,9 +94,16 @@
       {
         "date": "2026-08-12",
         "weekday": "水",
-        "task_count": 2,
-        "meeting_count": 2,
+        "task_count": 3,
+        "meeting_count": 3,
         "tasks": [
+          {
+            "start": "10:30",
+            "end": "10:55",
+            "name": "SPMAT weekly toolbox meeting",
+            "project": "FSI",
+            "kind": "meeting"
+          },
           {
             "start": "15:00",
             "end": "15:30",
@@ -260,9 +267,25 @@
       {
         "date": "2026-08-20",
         "weekday": "木",
-        "is_today": false,
-        "task_count": 0,
-        "tasks": []
+        "task_count": 2,
+        "meeting_count": 2,
+        "tasks": [
+          {
+            "start": "15:30",
+            "end": "16:00",
+            "name": "[IW: JIS/JPI重量登録] Weekly進捗レビュー",
+            "project": "IW",
+            "kind": "meeting"
+          },
+          {
+            "start": "17:15",
+            "end": "17:25",
+            "name": "SPMAT Dairy meeting 17:15-",
+            "project": "FSI",
+            "kind": "meeting"
+          }
+        ],
+        "is_today": false
       },
       {
         "date": "2026-08-21",
@@ -347,6 +370,13 @@
           "auto_scheduled": true
         },
         {
+          "start": "11:00",
+          "end": "11:25",
+          "name": "同一REQ-Number　Supplement＝０がPO済，１が未POの場合の処理",
+          "project": "FSI",
+          "kind": "meeting"
+        },
+        {
           "start": "11:30",
           "end": "12:00",
           "name": "weekly report",
@@ -394,7 +424,7 @@
       "unscheduled_tasks": [],
       "task_count": 2,
       "iw_focus_minutes": 120,
-      "meeting_count": 4
+      "meeting_count": 5
     },
     "week_schedules": [
       {
@@ -426,6 +456,13 @@
             "project": "FSI",
             "kind": "task",
             "auto_scheduled": true
+          },
+          {
+            "start": "11:00",
+            "end": "11:25",
+            "name": "同一REQ-Number　Supplement＝０がPO済，１が未POの場合の処理",
+            "project": "FSI",
+            "kind": "meeting"
           },
           {
             "start": "11:30",
@@ -475,7 +512,7 @@
         "unscheduled_tasks": [],
         "task_count": 2,
         "iw_focus_minutes": 120,
-        "meeting_count": 4
+        "meeting_count": 5
       },
       {
         "date": "2026-08-10",
@@ -500,15 +537,16 @@
             "auto_scheduled": true
           },
           {
-            "start": "10:30",
-            "end": "10:55",
-            "name": "SPMAT weekly toolbox meeting",
-            "project": "FSI",
-            "kind": "meeting"
+            "start": "10:00",
+            "end": "11:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
           },
           {
-            "start": "10:55",
-            "end": "11:55",
+            "start": "11:00",
+            "end": "12:00",
             "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
             "project": "IW",
             "kind": "iw_focus",
@@ -556,8 +594,8 @@
         ],
         "unscheduled_tasks": [],
         "task_count": 0,
-        "iw_focus_minutes": 360,
-        "meeting_count": 2
+        "iw_focus_minutes": 420,
+        "meeting_count": 1
       },
       {
         "date": "2026-08-11",
@@ -664,16 +702,15 @@
             "auto_scheduled": true
           },
           {
-            "start": "10:00",
-            "end": "11:00",
-            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
-            "project": "IW",
-            "kind": "iw_focus",
-            "auto_scheduled": true
+            "start": "10:30",
+            "end": "10:55",
+            "name": "SPMAT weekly toolbox meeting",
+            "project": "FSI",
+            "kind": "meeting"
           },
           {
-            "start": "11:00",
-            "end": "12:00",
+            "start": "10:55",
+            "end": "11:55",
             "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
             "project": "IW",
             "kind": "iw_focus",
@@ -720,8 +757,8 @@
         ],
         "unscheduled_tasks": [],
         "task_count": 0,
-        "iw_focus_minutes": 360,
-        "meeting_count": 2
+        "iw_focus_minutes": 300,
+        "meeting_count": 3
       },
       {
         "date": "2026-08-13",
@@ -821,11 +858,11 @@
       }
     ],
     "summary": {
-      "today_count": 5,
-      "week_remaining": 15,
-      "avg_daily": 1.8,
+      "today_count": 6,
+      "week_remaining": 16,
+      "avg_daily": 2.0,
       "busiest_date": "2026-08-07",
-      "busiest_count": 5
+      "busiest_count": 6
     }
   },
   "goal_progress": {
