@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-07T08:40:12.132780",
+  "updated_at": "2026-08-07T10:28:40.488857",
   "workload": {
     "source_file": "2026-08-07",
     "days": [
@@ -295,8 +295,17 @@
       }
     ],
     "overdue_count": 1,
-    "undated": [],
-    "undated_count": 0,
+    "undated": [
+      {
+        "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+        "project": "IW"
+      },
+      {
+        "name": "JIS JPI 重量確認 [G1:専門性]",
+        "project": "IW"
+      }
+    ],
+    "undated_count": 2,
     "waiting": [],
     "waiting_count": 0,
     "daily_actuals": [],
@@ -325,11 +334,27 @@
           "auto_scheduled": true
         },
         {
+          "start": "10:00",
+          "end": "11:00",
+          "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+          "project": "IW",
+          "kind": "iw_focus",
+          "auto_scheduled": true
+        },
+        {
           "start": "11:30",
           "end": "12:00",
           "name": "weekly report",
           "project": "-",
           "kind": "meeting"
+        },
+        {
+          "start": "13:00",
+          "end": "14:00",
+          "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+          "project": "IW",
+          "kind": "iw_focus",
+          "auto_scheduled": true
         },
         {
           "start": "14:00",
@@ -346,6 +371,14 @@
           "kind": "meeting"
         },
         {
+          "start": "15:55",
+          "end": "16:55",
+          "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+          "project": "IW",
+          "kind": "iw_focus",
+          "auto_scheduled": true
+        },
+        {
           "start": "17:15",
           "end": "17:25",
           "name": "SPMAT Dairy meeting 17:15-",
@@ -355,7 +388,7 @@
       ],
       "unscheduled_tasks": [],
       "task_count": 1,
-      "iw_focus_minutes": 0,
+      "iw_focus_minutes": 180,
       "meeting_count": 4
     },
     "week_schedules": [
@@ -382,11 +415,27 @@
             "auto_scheduled": true
           },
           {
+            "start": "10:00",
+            "end": "11:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
             "start": "11:30",
             "end": "12:00",
             "name": "weekly report",
             "project": "-",
             "kind": "meeting"
+          },
+          {
+            "start": "13:00",
+            "end": "14:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
           },
           {
             "start": "14:00",
@@ -403,6 +452,14 @@
             "kind": "meeting"
           },
           {
+            "start": "15:55",
+            "end": "16:55",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
             "start": "17:15",
             "end": "17:25",
             "name": "SPMAT Dairy meeting 17:15-",
@@ -412,7 +469,7 @@
         ],
         "unscheduled_tasks": [],
         "task_count": 1,
-        "iw_focus_minutes": 0,
+        "iw_focus_minutes": 180,
         "meeting_count": 4
       },
       {
@@ -430,11 +487,59 @@
         "default_task_minutes": 60,
         "events": [
           {
+            "start": "09:00",
+            "end": "10:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
             "start": "10:30",
             "end": "10:55",
             "name": "SPMAT weekly toolbox meeting",
             "project": "FSI",
             "kind": "meeting"
+          },
+          {
+            "start": "10:55",
+            "end": "11:55",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
+            "start": "13:00",
+            "end": "14:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
+            "start": "14:00",
+            "end": "15:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
+            "start": "15:00",
+            "end": "16:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
+            "start": "16:00",
+            "end": "17:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
           },
           {
             "start": "17:15",
@@ -446,7 +551,7 @@
         ],
         "unscheduled_tasks": [],
         "task_count": 0,
-        "iw_focus_minutes": 0,
+        "iw_focus_minutes": 360,
         "meeting_count": 2
       },
       {
@@ -464,11 +569,59 @@
         "default_task_minutes": 60,
         "events": [
           {
+            "start": "09:00",
+            "end": "10:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
+            "start": "10:00",
+            "end": "11:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
             "start": "11:00",
             "end": "11:50",
             "name": "PEP2: PIP REQ, TBE & VP status update",
             "project": "FSI",
             "kind": "meeting"
+          },
+          {
+            "start": "13:00",
+            "end": "14:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
+            "start": "14:00",
+            "end": "15:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
+            "start": "15:00",
+            "end": "16:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
+            "start": "16:00",
+            "end": "17:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
           },
           {
             "start": "17:15",
@@ -480,7 +633,7 @@
         ],
         "unscheduled_tasks": [],
         "task_count": 0,
-        "iw_focus_minutes": 0,
+        "iw_focus_minutes": 360,
         "meeting_count": 2
       },
       {
@@ -498,11 +651,59 @@
         "default_task_minutes": 60,
         "events": [
           {
+            "start": "09:00",
+            "end": "10:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
+            "start": "10:00",
+            "end": "11:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
+            "start": "11:00",
+            "end": "12:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
+            "start": "13:00",
+            "end": "14:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
+            "start": "14:00",
+            "end": "15:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
             "start": "15:00",
             "end": "15:30",
             "name": "[IW: LE Document改定] Weekly進捗レビュー",
             "project": "IW",
             "kind": "meeting"
+          },
+          {
+            "start": "15:30",
+            "end": "16:30",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
           },
           {
             "start": "17:15",
@@ -514,7 +715,7 @@
         ],
         "unscheduled_tasks": [],
         "task_count": 0,
-        "iw_focus_minutes": 0,
+        "iw_focus_minutes": 360,
         "meeting_count": 2
       },
       {
@@ -532,6 +733,30 @@
         "default_task_minutes": 60,
         "events": [
           {
+            "start": "09:00",
+            "end": "10:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
+            "start": "10:00",
+            "end": "11:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
+            "start": "11:00",
+            "end": "12:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
             "start": "12:10",
             "end": "12:55",
             "name": "FW: 介護カフェ☕開催案内（変則木曜）",
@@ -539,11 +764,35 @@
             "kind": "meeting"
           },
           {
+            "start": "13:00",
+            "end": "14:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
+            "start": "14:00",
+            "end": "15:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
+          },
+          {
             "start": "15:30",
             "end": "16:00",
             "name": "[IW: JIS/JPI重量登録] Weekly進捗レビュー",
             "project": "IW",
             "kind": "meeting"
+          },
+          {
+            "start": "16:00",
+            "end": "17:00",
+            "name": "LEドキュメント改定（53P完了・翻訳完了TARGET 6/末・完成TARGET 7/末・材料WF新規BGと整合）[G4:組織価値]",
+            "project": "IW",
+            "kind": "iw_focus",
+            "auto_scheduled": true
           },
           {
             "start": "17:15",
@@ -562,7 +811,7 @@
         ],
         "unscheduled_tasks": [],
         "task_count": 0,
-        "iw_focus_minutes": 0,
+        "iw_focus_minutes": 360,
         "meeting_count": 4
       }
     ],
@@ -765,7 +1014,7 @@
     "total_trace": 2,
     "trace_max_depth": 5,
     "total_feedback": 52,
-    "total_sessions": 108,
+    "total_sessions": 109,
     "english_sessions": 5,
     "comm_sessions": 17
   },
